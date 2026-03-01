@@ -23,13 +23,13 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      <body className="h-screen overflow-hidden">
+      <body className="h-screen">
         <I18nProviderClient locale={locale}>
           <Theme>
             <div className="flex flex-col h-full">
               <Header />
 
-              <div className="flex flex-1 overflow-hidden">
+              <div className="flex flex-1">
                 <Aside />
 
                 <main className="flex-1 overflow-y-auto bg-zinc-100 dark:bg-zinc-900 p-8">
