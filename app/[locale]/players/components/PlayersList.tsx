@@ -1,32 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { collection, query, getDocs } from "firebase/firestore";
-import { db } from "@/firebase-config";
 import User from "@/interfaces/user";
 import { Box, Card, Flex, Text, Avatar } from "@radix-ui/themes";
 import Link from "next/link";
+import { useUsers } from "@/hooks/useUsers";
 
 export default function PlayersList() {
-  const [users, setUsers] = useState<User[]>([]);
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const q = query(collection(db, "users"));
-      const querySnapshot = await getDocs(q);
-
-      const usersList: User[] = querySnapshot.docs.map((doc) => ({
-        id: doc.id,
-        name: doc.data().name,
-        points: doc.data().points,
-        creationDate: doc.data().creationDate,
-      }));
-
-      setUsers(usersList);
-    };
-
-    fetchUsers();
-  }, []);
+  const { users } = useUsers();
 
   return (
     <div className="grid grid-cols-6 gap-2">

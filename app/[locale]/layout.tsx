@@ -7,6 +7,7 @@ import { ReactElement } from "react";
 import Header from "@/components/header/Header";
 import Aside from "@/components/Aside/Aside";
 import { ThemeProvider } from "next-themes";
+import { UsersProvider } from "@/contexts/usersContext/UsersProvider";
 
 export const metadata: Metadata = {
   title: "Oneblind 2.0",
@@ -28,17 +29,17 @@ export default async function RootLayout({
         <I18nProviderClient locale={locale}>
           <ThemeProvider attribute="class">
             <Theme>
-              <div className="flex flex-col h-full">
-                <Header />
-
-                <div className="flex flex-1">
-                  <Aside />
-
-                  <main className="flex-1 overflow-y-auto bg-zinc-100 dark:bg-zinc-900 p-8">
-                    {children}
-                  </main>
+              <UsersProvider>
+                <div className="flex flex-col h-full">
+                  <Header />
+                  <div className="flex flex-1">
+                    <Aside />
+                    <main className="flex-1 overflow-y-auto bg-zinc-100 dark:bg-zinc-900 p-8">
+                      {children}
+                    </main>
+                  </div>
                 </div>
-              </div>
+              </UsersProvider>
             </Theme>
           </ThemeProvider>
         </I18nProviderClient>
