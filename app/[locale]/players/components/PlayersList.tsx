@@ -13,7 +13,7 @@ export default function PlayersList() {
       {users.map((user: User) => (
         <Link
           className={"hover:cursor-pointer"}
-          href={`/users/${user.id}`}
+          href={`/players/${user.id}`}
           key={user.id}
         >
           <Box maxWidth="240px">
