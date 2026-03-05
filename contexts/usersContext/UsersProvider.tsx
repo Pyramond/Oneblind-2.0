@@ -3,7 +3,13 @@
 import { ReactNode, useEffect, useState } from "react";
 import { UsersContext } from "@/contexts/usersContext/UsersContext";
 import User from "@/interfaces/user";
-import { collection, getDocs, query } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  query,
+  Timestamp,
+} from "firebase/firestore";
 import { db } from "@/firebase-config";
 
 type UsersProviderProps = {
@@ -27,6 +33,19 @@ export function UsersProvider({ children }: UsersProviderProps) {
     setUsers(usersList);
   };
 
+  const addUser = async (userName: string) => {
+    try {
+      await addDoc(collection(db, "users"), {
+        name: userName,
+        creationDate: Timestamp.fromDate(new Date()),
+        points: 0,
+      });
+      await update();
+    } catch (error) {
+      console.error("Error :", error);
+    }
+  };
+
   useEffect(() => {
     (async () => {
       await update();
@@ -34,7 +53,7 @@ export function UsersProvider({ children }: UsersProviderProps) {
   }, []);
 
   return (
-    <UsersContext.Provider value={{ users, update }}>
+    <UsersContext.Provider value={{ users, update, addUser }}>
       {children}
     </UsersContext.Provider>
   );

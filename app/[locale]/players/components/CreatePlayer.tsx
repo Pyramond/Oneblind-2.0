@@ -3,25 +3,17 @@
 import { Button, Dialog, Flex, TextField } from "@radix-ui/themes";
 import { useI18n } from "@/locales/client";
 import { useState } from "react";
-import { addDoc, collection, Timestamp } from "firebase/firestore";
-import { db } from "@/firebase-config";
+import { useUsers } from "@/hooks/useUsers";
 
 export default function CreatePlayer() {
+  const { addUser } = useUsers();
+
   const t = useI18n();
   const [userName, setUserName] = useState<string>("");
 
   async function create() {
     if (!userName) return;
-
-    try {
-      await addDoc(collection(db, "users"), {
-        name: userName,
-        creationDate: Timestamp.fromDate(new Date()),
-        points: 0,
-      });
-    } catch (error) {
-      console.error("Error :", error);
-    }
+    await addUser(userName);
   }
 
   return (
