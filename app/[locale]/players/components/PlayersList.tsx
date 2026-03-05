@@ -9,7 +9,7 @@ export default function PlayersList() {
   const { users } = useUsers();
 
   return (
-    <div className="grid grid-cols-6 gap-2">
+    <div className="grid grid-cols-6 gap-x-3 gap-y-6">
       {users.map((user: User) => (
         <Link
           className={"hover:cursor-pointer"}
