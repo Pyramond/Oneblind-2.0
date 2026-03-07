@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/firebase-config";
 import User from "@/interfaces/user";
-import { Avatar, Card, Badge } from "@radix-ui/themes";
+import { Avatar, Card, Badge, Skeleton } from "@radix-ui/themes";
 import Title from "@/components/Title/Title";
 import { useI18n } from "@/locales/client";
 
@@ -58,17 +58,21 @@ export default function PlayerProfilePage() {
               />
 
               <div className="flex flex-col gap-2">
-                <Title level="h2">{user?.name || "Chargement..."}</Title>
+                <Title level="h2">
+                  {user?.name || <Skeleton width="150px" height="24px" />}
+                </Title>
 
                 <Badge color="indigo" variant="soft" className="w-fit">
                   {user?.points ?? 0}{" "}
                   {(user?.points ?? 0) > 1 ? "points" : "point"}
                 </Badge>
 
-                {creationDate && (
+                {user ? (
                   <p className="text-sm text-gray-500">
                     {t("player.profile.playerDate")} {creationDate}
                   </p>
+                ) : (
+                  <Skeleton width="150px" height="16px" />
                 )}
               </div>
             </div>
