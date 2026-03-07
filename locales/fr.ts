@@ -17,5 +17,9 @@ export default {
       closeBtn: "Annuler",
       saveBtn: "Sauvegarder",
     },
+    profile: {
+      playerDate: "Membre depuis le",
+      history: "Historique",
+    },
   },
 } as const;

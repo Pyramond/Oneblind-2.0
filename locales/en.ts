@@ -17,5 +17,9 @@ export default {
       closeBtn: "Cancel",
       saveBtn: "Save",
     },
+    profile: {
+      playerDate: "Member since",
+      history: "History",
+    },
   },
 } as const;
