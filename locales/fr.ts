@@ -2,9 +2,13 @@ export default {
   hello: "Bonjour",
   "hello.world": "Hello world!",
   welcome: "Hello {name}!",
-  home: "Accueil",
-  players: "Joueurs",
-  tournaments: "Tournois",
+
+  aside: {
+    home: "Accueil",
+    players: "Joueurs",
+    tournaments: "Tournois",
+    blind: "Structure de blind",
+  },
 
   player: {
     title: "Joueurs",
