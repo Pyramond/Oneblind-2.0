@@ -10,11 +10,7 @@ export default function Title({ level, children }: TitleProps) {
   switch (level) {
     case "h1":
       return (
-        <Heading
-          as={"h1"}
-          size="8"
-          className="font-bold text-indigo-600 dark:text-indigo-400 p-2"
-        >
+        <Heading as={"h1"} size="8" color={"indigo"}>
           {children}
         </Heading>
       );
