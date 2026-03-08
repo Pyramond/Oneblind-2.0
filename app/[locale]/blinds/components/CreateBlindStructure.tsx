@@ -1,6 +1,6 @@
 "use client";
 
-import { Badge, Button } from "@radix-ui/themes";
+import { Badge, Button, Switch } from "@radix-ui/themes";
 import { useI18n } from "@/locales/client";
 import { Dialog, Flex, TextField, Select } from "@radix-ui/themes";
 import { useState } from "react";
@@ -16,6 +16,8 @@ export default function CreateBlindStructure() {
   const [sb, setSb] = useState<number>(0);
   const [bb, setBb] = useState<number>(0);
   const [type, setType] = useState<"game" | "pause">("game");
+
+  const [checked, setChecked] = useState(false);
 
   const [steps, setSteps] = useState<BlindStep[]>([]);
 
@@ -33,6 +35,11 @@ export default function CreateBlindStructure() {
 
   function removeStep(index: number) {
     setSteps(steps.filter((_, i) => i !== index));
+  }
+
+  function updateSb(value: string) {
+    setSb(Number(value) || 0);
+    if (checked) setBb(Number(value) * 2 || 0);
   }
 
   async function createStructure() {
@@ -67,6 +74,11 @@ export default function CreateBlindStructure() {
           <Flex direction="column" gap="3">
             <p className="mt-6">{t("blinds.create.createStepTitle")}</p>
 
+            <Flex direction={"row"} gap="4" className="ml-1">
+              <Switch checked={checked} onCheckedChange={setChecked} />
+              <p>Doubler la grosse blind</p>
+            </Flex>
+
             <Flex gap="2" align="end">
               <Select.Root
                 defaultValue="game"
@@ -89,12 +101,13 @@ export default function CreateBlindStructure() {
 
               <TextField.Root
                 placeholder={t("blinds.create.createStepSmallBlind")}
-                onChange={(e) => setSb(Number(e.target.value) || 0)}
+                onChange={(e) => updateSb(e.target.value)}
               />
 
               <TextField.Root
                 placeholder={t("blinds.create.createStepBigBlind")}
                 onChange={(e) => setBb(Number(e.target.value) || 0)}
+                value={bb}
               />
 
               <TextField.Root
