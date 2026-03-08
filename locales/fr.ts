@@ -26,4 +26,8 @@ export default {
       history: "Historique",
     },
   },
+
+  settings: {
+    colorSelectionTitle: "Selection de la couleur",
+  },
 } as const;
