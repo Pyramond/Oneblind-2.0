@@ -1,5 +1,8 @@
+"use client";
+
 import React from "react";
 import { Heading } from "@radix-ui/themes";
+import { useSettings } from "@/contexts/SettingsContext";
 
 interface TitleProps {
   level: "h1" | "h2";
@@ -7,10 +10,12 @@ interface TitleProps {
 }
 
 export default function Title({ level, children }: TitleProps) {
+  const { color } = useSettings();
+
   switch (level) {
     case "h1":
       return (
-        <Heading as={"h1"} size="8" color={"indigo"}>
+        <Heading as={"h1"} size="8" color={color}>
           {children}
         </Heading>
       );
