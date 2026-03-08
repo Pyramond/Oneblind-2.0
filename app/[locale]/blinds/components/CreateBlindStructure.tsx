@@ -40,6 +40,8 @@ export default function CreateBlindStructure() {
       name: name,
       steps: steps,
     });
+    setSteps([]);
+    setName("");
   }
 
   return (
