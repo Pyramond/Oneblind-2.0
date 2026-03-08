@@ -7,7 +7,7 @@ import {
   useState,
   ReactNode,
 } from "react";
-import ColorName from "@/interfaces/colorName";
+import { ColorName } from "@/interfaces/colorName";
 
 type SettingsContextType = {
   theme: "dark" | "light";
