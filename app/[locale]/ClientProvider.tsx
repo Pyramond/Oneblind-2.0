@@ -6,6 +6,7 @@ import { I18nProviderClient } from "@/locales/client";
 import { ThemeProvider } from "next-themes";
 import { UsersProvider } from "@/contexts/usersContext/UsersProvider";
 import ThemeWrapper from "@/components/ThemeWrapper/ThemeWrapper";
+import { BlindProvider } from "@/contexts/blindContext";
 
 export default function ClientProviders({
   children,
@@ -19,7 +20,9 @@ export default function ClientProviders({
       <I18nProviderClient locale={locale}>
         <ThemeProvider attribute="class">
           <ThemeWrapper>
-            <UsersProvider>{children}</UsersProvider>
+            <BlindProvider>
+              <UsersProvider>{children}</UsersProvider>
+            </BlindProvider>
           </ThemeWrapper>
         </ThemeProvider>
       </I18nProviderClient>
