@@ -27,6 +27,27 @@ export default {
     },
   },
 
+  blinds: {
+    title: "Structure des blinds",
+
+    create: {
+      btnTitle: "Créer une structure des blinds",
+      dialogTitle: "Créer une structure des blinds",
+      textFieldLabel: "Nom",
+      textFieldPlaceholder: "Nom",
+      createStepTitle: "Créer une étape",
+      createStepTime: "Temps (min)",
+      createStepSmallBlind: "Petite blind",
+      createStepBigBlind: "Grosse blind",
+      createStepType: "Type",
+      createStepTypePause: "Pause",
+      createStepTypeGame: "Jeu",
+      createStepAddBtn: "Ajouter",
+      closeBtn: "Annuler",
+      saveBtn: "Sauvegarder",
+    },
+  },
+
   settings: {
     colorSelectionTitle: "Selection de la couleur",
   },

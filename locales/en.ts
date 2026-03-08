@@ -27,6 +27,27 @@ export default {
     },
   },
 
+  blinds: {
+    title: "Blind structure",
+
+    create: {
+      btnTitle: "Create blind structure",
+      dialogTitle: "Create blind structure",
+      textFieldLabel: "Name",
+      textFieldPlaceholder: "Name",
+      createStepTitle: "Create new step",
+      createStepTime: "Time (min)",
+      createStepSmallBlind: "Small blind",
+      createStepBigBlind: "Big blind",
+      createStepType: "Type",
+      createStepTypePause: "Pause",
+      createStepTypeGame: "Game",
+      createStepAddBtn: "Add",
+      closeBtn: "Cancel",
+      saveBtn: "Save",
+    },
+  },
+
   settings: {
     colorSelectionTitle: "Color Selection",
   },
