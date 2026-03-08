@@ -62,7 +62,7 @@ export default function PlayerProfilePage() {
                   {user?.name || <Skeleton width="150px" height="24px" />}
                 </Title>
 
-                <Badge color="indigo" variant="soft" className="w-fit">
+                <Badge variant="soft" className="w-fit">
                   {user?.points ?? 0}{" "}
                   {(user?.points ?? 0) > 1 ? "points" : "point"}
                 </Badge>
