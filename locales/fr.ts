@@ -7,7 +7,7 @@ export default {
     home: "Accueil",
     players: "Joueurs",
     tournaments: "Tournois",
-    blind: "Structure de blind",
+    blind: "Structure des blinds",
   },
 
   player: {
