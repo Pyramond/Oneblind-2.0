@@ -5,9 +5,11 @@ import { useI18n } from "@/locales/client";
 import { Dialog, Flex, TextField, Select } from "@radix-ui/themes";
 import { useState } from "react";
 import { BlindStep } from "@/interfaces/blindStructure.interface";
+import { useBlinds } from "@/contexts/blindContext";
 
 export default function CreateBlindStructure() {
   const t = useI18n();
+  const { addBlindStructure } = useBlinds();
 
   const [name, setName] = useState<string>("");
   const [time, setTime] = useState<number>(0);
@@ -31,6 +33,13 @@ export default function CreateBlindStructure() {
 
   function removeStep(index: number) {
     setSteps(steps.filter((_, i) => i !== index));
+  }
+
+  async function createStructure() {
+    addBlindStructure({
+      name: name,
+      steps: steps,
+    });
   }
 
   return (
@@ -141,7 +150,9 @@ export default function CreateBlindStructure() {
               </Button>
             </Dialog.Close>
             <Dialog.Close>
-              <Button>{t("blinds.create.saveBtn")}</Button>
+              <Button onClick={createStructure}>
+                {t("blinds.create.saveBtn")}
+              </Button>
             </Dialog.Close>
           </Flex>
         </Dialog.Content>
