@@ -9,7 +9,14 @@ import {
 } from "react";
 
 import { BlindStructure } from "@/interfaces/blindStructure.interface";
-import { addDoc, collection, getDocs, query } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  doc,
+  getDocs,
+  query,
+} from "firebase/firestore";
 import { db } from "@/firebase-config";
 
 type BlindContextType = {
@@ -24,7 +31,7 @@ const BlindContext = createContext<BlindContextType | null>(null);
 export function BlindProvider({ children }: { children: ReactNode }) {
   const [blindStructures, setBlindStructures] = useState<BlindStructure[]>([]);
 
-  async function addBlindStructure(structure: BlindStructure) {
+  async function addBlindStructure(structure: BlindStructure): Promise<void> {
     try {
       await addDoc(collection(db, "blind_structures"), {
         name: structure.name,
@@ -36,9 +43,12 @@ export function BlindProvider({ children }: { children: ReactNode }) {
     }
   }
 
-  function removeBlindStructure(id: string) {}
+  async function removeBlindStructure(id: string): Promise<void> {
+    await deleteDoc(doc(db, "blind_structures", id));
+    await update();
+  }
 
-  async function update() {
+  async function update(): Promise<void> {
     const q = query(collection(db, "blind_structures"));
     const querySnapshot = await getDocs(q);
 

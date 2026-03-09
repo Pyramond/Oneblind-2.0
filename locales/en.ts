@@ -3,6 +3,11 @@ export default {
   "hello.world": "Hello world!",
   welcome: "Hello {name}!",
 
+  common: {
+    cancel: "Cancel",
+    delete: "Delete",
+  },
+
   aside: {
     home: "Home",
     players: "Players",
@@ -49,6 +54,8 @@ export default {
 
     card: {
       deleteBtn: "Delete",
+      deleteTitle: "Are you sure you want to delete this blind structure?",
+      deleteDescription: "This action cannot be undone.",
     },
   },
 

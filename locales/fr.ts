@@ -3,6 +3,11 @@ export default {
   "hello.world": "Hello world!",
   welcome: "Hello {name}!",
 
+  common: {
+    cancel: "Annuler",
+    delete: "Supprimer",
+  },
+
   aside: {
     home: "Accueil",
     players: "Joueurs",
@@ -46,9 +51,11 @@ export default {
       closeBtn: "Annuler",
       saveBtn: "Sauvegarder",
     },
-
     card: {
       deleteBtn: "Supprimer",
+      deleteTitle:
+        "Êtes-vous sûr de vouloir supprimer cette structure des blinds ?",
+      deleteDescription: "Cette action ne peut pas être annulée.",
     },
   },
 
