@@ -46,6 +46,10 @@ export default {
       closeBtn: "Cancel",
       saveBtn: "Save",
     },
+
+    card: {
+      deleteBtn: "Delete",
+    },
   },
 
   settings: {
