@@ -57,6 +57,15 @@ export default {
         "Êtes-vous sûr de vouloir supprimer cette structure des blinds ?",
       deleteDescription: "Cette action ne peut pas être annulée.",
     },
+
+    view: {
+      table: {
+        type: "Type",
+        time: "Temps (min)",
+        smallBlind: "Petite Blind",
+        bigBlind: "Grosse Blind",
+      },
+    },
   },
 
   settings: {

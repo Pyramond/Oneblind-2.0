@@ -57,6 +57,15 @@ export default {
       deleteTitle: "Are you sure you want to delete this blind structure?",
       deleteDescription: "This action cannot be undone.",
     },
+
+    view: {
+      table: {
+        type: "Type",
+        time: "Time (min)",
+        smallBlind: "Small Blind",
+        bigBlind: "Big Blind",
+      },
+    },
   },
 
   settings: {

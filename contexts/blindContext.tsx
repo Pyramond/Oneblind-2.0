@@ -23,6 +23,7 @@ type BlindContextType = {
   blindStructures: BlindStructure[];
   addBlindStructure: (structure: BlindStructure) => void;
   removeBlindStructure: (id: string) => void;
+  getBlindStructureById: (id: string) => BlindStructure | undefined;
   update: () => Promise<void>;
 };
 
@@ -46,6 +47,10 @@ export function BlindProvider({ children }: { children: ReactNode }) {
   async function removeBlindStructure(id: string): Promise<void> {
     await deleteDoc(doc(db, "blind_structures", id));
     await update();
+  }
+
+  function getBlindStructureById(id: string): BlindStructure | undefined {
+    return blindStructures.find((structure) => structure.id === id);
   }
 
   async function update(): Promise<void> {
@@ -75,6 +80,7 @@ export function BlindProvider({ children }: { children: ReactNode }) {
         blindStructures,
         addBlindStructure,
         removeBlindStructure,
+        getBlindStructureById,
         update,
       }}
     >
