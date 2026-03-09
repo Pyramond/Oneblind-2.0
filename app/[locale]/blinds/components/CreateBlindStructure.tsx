@@ -44,6 +44,7 @@ export default function CreateBlindStructure() {
 
   async function createStructure() {
     addBlindStructure({
+      id: "",
       name: name,
       steps: steps,
     });
