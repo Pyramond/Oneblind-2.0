@@ -6,6 +6,7 @@ export interface BlindStep {
 }
 
 export interface BlindStructure {
+  id: string;
   name: string;
   steps: BlindStep[];
 }
