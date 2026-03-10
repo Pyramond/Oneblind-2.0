@@ -1,15 +1,17 @@
-import Link from "next/link";
-import ColorSelection from "@/app/[locale]/settings/components/ColorSelection";
-import RadiusSelection from "@/app/[locale]/settings/components/RadiusSelection";
+import AppearanceCard from "@/app/[locale]/settings/components/AppearanceCard";
+import Title from "@/components/Title/Title";
+import { getI18n } from "@/locales/server";
 
-export default function SettingsPage() {
+export default async function SettingsPage() {
+  const t = await getI18n();
+
   return (
     <>
-      <h1>Settings</h1>
-      <Link href={"/"}>Home</Link>
+      <Title level={"h2"}>{t("settings.title")}</Title>
 
-      <ColorSelection />
-      <RadiusSelection />
+      <div className={"mt-5"}>
+        <AppearanceCard />
+      </div>
     </>
   );
 }

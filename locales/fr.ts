@@ -69,6 +69,8 @@ export default {
   },
 
   settings: {
+    title: "Paramètres",
+
     appearance: {
       title: "Apparence",
       radius: {
