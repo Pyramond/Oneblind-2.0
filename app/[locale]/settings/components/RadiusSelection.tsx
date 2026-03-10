@@ -4,9 +4,11 @@ import { Select } from "@radix-ui/themes";
 import { useSettings } from "@/contexts/SettingsContext";
 import { RadiusType, radiusTypes } from "@/interfaces/radius.interface";
 import Title from "@/components/Title/Title";
+import { useI18n } from "@/locales/client";
 
 export default function RadiusSelection() {
   const { setRadius, radius } = useSettings();
+  const t = useI18n();
 
   function changeRadius(value: string): void {
     if (radiusTypes.includes(value as RadiusType)) {
@@ -16,7 +18,7 @@ export default function RadiusSelection() {
 
   return (
     <>
-      <Title level={"h3"}>Changer les bordures</Title>
+      <Title level={"h3"}>{t("settings.appearance.radius.title")}</Title>
 
       <div className={"m-3"}>
         <Select.Root
@@ -28,7 +30,7 @@ export default function RadiusSelection() {
             <Select.Group>
               {radiusTypes.map((item, index) => (
                 <Select.Item key={index} value={item}>
-                  {item}
+                  {t(`settings.appearance.radius.type.${item}`)}
                 </Select.Item>
               ))}
             </Select.Group>
