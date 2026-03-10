@@ -18,7 +18,7 @@ export default function LogoThemeSelection() {
 
   return (
     <>
-      <Title level={"h4"}>{t("settings.appearance.radius.title")}</Title>
+      <Title level={"h4"}>{t("settings.appearance.logoTheme.title")}</Title>
 
       <div className={"ml-3"}>
         <Select.Root
