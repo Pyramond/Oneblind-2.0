@@ -93,7 +93,7 @@ export default {
         title: "Selection de la couleur",
       },
       logoTheme: {
-        title: "Logo Theme",
+        title: "Theme du logo",
 
         type: {
           default: "Par défaut",
