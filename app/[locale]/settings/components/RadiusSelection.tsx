@@ -18,9 +18,9 @@ export default function RadiusSelection() {
 
   return (
     <>
-      <Title level={"h3"}>{t("settings.appearance.radius.title")}</Title>
+      <Title level={"h4"}>{t("settings.appearance.radius.title")}</Title>
 
-      <div className={"m-3"}>
+      <div className={"ml-3"}>
         <Select.Root
           defaultValue={radius}
           onValueChange={(value) => changeRadius(value)}

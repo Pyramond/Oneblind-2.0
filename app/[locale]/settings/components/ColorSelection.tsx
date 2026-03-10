@@ -13,9 +13,9 @@ export default function ColorSelection() {
 
   return (
     <>
-      <Title level={"h3"}>{t("settings.appearance.color.title")}</Title>
+      <Title level={"h4"}>{t("settings.appearance.color.title")}</Title>
 
-      <div className="flex flex-wrap gap-1 mt-3">
+      <div className="flex flex-wrap gap-1 ml-3">
         {colorNames.map((name) => (
           <IconButton
             key={name}

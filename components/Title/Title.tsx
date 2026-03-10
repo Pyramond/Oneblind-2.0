@@ -5,7 +5,7 @@ import { Heading } from "@radix-ui/themes";
 import { useSettings } from "@/contexts/SettingsContext";
 
 interface TitleProps {
-  level: "h1" | "h2" | "h3";
+  level: "h1" | "h2" | "h3" | "h4";
   children: React.ReactNode;
 }
 
@@ -36,6 +36,17 @@ export default function Title({ level, children }: TitleProps) {
           as="h3"
           size="6"
           className="font-semibold text-zinc-700 dark:text-zinc-300 p-2"
+        >
+          {children}
+        </Heading>
+      );
+
+    case "h4":
+      return (
+        <Heading
+          as="h4"
+          size="5"
+          className="font-medium text-zinc-700 dark:text-zinc-300 p-2"
         >
           {children}
         </Heading>
