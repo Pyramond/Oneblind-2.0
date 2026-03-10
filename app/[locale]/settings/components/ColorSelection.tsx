@@ -13,7 +13,7 @@ export default function ColorSelection() {
 
   return (
     <>
-      <Title level={"h2"}>{t("settings.colorSelectionTitle")}</Title>
+      <Title level={"h3"}>{t("settings.appearance.color.title")}</Title>
 
       <div className="flex flex-wrap gap-1 mt-3">
         {colorNames.map((name) => (
