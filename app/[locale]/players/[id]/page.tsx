@@ -2,12 +2,11 @@
 
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { doc, getDoc } from "firebase/firestore";
-import { db } from "@/firebase-config";
 import User from "@/interfaces/user";
 import { Avatar, Card, Badge, Skeleton } from "@radix-ui/themes";
 import Title from "@/components/Title/Title";
 import { useI18n } from "@/locales/client";
+import { useUsers } from "@/hooks/useUsers";
 
 export default function PlayerProfilePage() {
   const params = useParams();
@@ -15,24 +14,13 @@ export default function PlayerProfilePage() {
   const locale = params.locale as string;
 
   const t = useI18n();
+  const { getUserById } = useUsers();
 
   const [user, setUser] = useState<User | undefined>();
 
   useEffect(() => {
-    (async () => {
-      const docRef = doc(db, "users", id);
-      const docSnap = await getDoc(docRef);
-
-      if (docSnap.exists()) {
-        setUser({
-          name: docSnap.data().name,
-          creationDate: docSnap.data().creationDate,
-          id: id,
-          points: docSnap.data().points,
-        });
-      }
-    })();
-  }, [id]);
+    setUser(getUserById(id));
+  }, [id, getUserById]);
 
   const creationDate = user
     ? new Date(user.creationDate.seconds * 1000).toLocaleDateString(locale, {

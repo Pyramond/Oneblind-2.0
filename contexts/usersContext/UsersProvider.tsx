@@ -33,6 +33,10 @@ export function UsersProvider({ children }: UsersProviderProps) {
     setUsers(usersList);
   };
 
+  function getUserById(id: string): User | undefined {
+    return users.find((user) => user.id === id);
+  }
+
   const addUser = async (userName: string) => {
     try {
       await addDoc(collection(db, "users"), {
@@ -53,7 +57,7 @@ export function UsersProvider({ children }: UsersProviderProps) {
   }, []);
 
   return (
-    <UsersContext.Provider value={{ users, update, addUser }}>
+    <UsersContext.Provider value={{ users, update, addUser, getUserById }}>
       {children}
     </UsersContext.Provider>
   );
