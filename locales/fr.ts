@@ -35,6 +35,11 @@ export default {
   blinds: {
     title: "Structure des blinds",
 
+    type: {
+      game: "Jeu",
+      pause: "Pause",
+    },
+
     create: {
       btnTitle: "Créer une structure des blinds",
       dialogTitle: "Créer une structure des blinds",

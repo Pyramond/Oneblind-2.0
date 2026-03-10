@@ -137,7 +137,7 @@ export default function CreateBlindStructure() {
               >
                 <Flex gap="3">
                   <Badge color={step.type == "game" ? "grass" : "amber"}>
-                    {step.type}
+                    {t(`blinds.type.${step.type}`)}
                   </Badge>
                   <span>{step.time} min</span>
                   {step.type === "game" && (
@@ -153,7 +153,7 @@ export default function CreateBlindStructure() {
                   color="red"
                   onClick={() => removeStep(index)}
                 >
-                  Supprimer
+                  {t("common.delete")}
                 </Button>
               </Flex>
             ))}
