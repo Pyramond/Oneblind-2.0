@@ -5,7 +5,7 @@ import { ReactNode, useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 
 export default function ThemeWrapper({ children }: { children: ReactNode }) {
-  const { color } = useSettings();
+  const { color, radius } = useSettings();
   const [mounted, setMounted] = useState(false);
 
   const { systemTheme } = useTheme();
@@ -23,6 +23,7 @@ export default function ThemeWrapper({ children }: { children: ReactNode }) {
           : "inherit"
       }
       accentColor={color}
+      radius={radius}
     >
       {children}
     </Theme>

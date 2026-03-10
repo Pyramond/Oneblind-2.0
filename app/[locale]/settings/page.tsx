@@ -1,5 +1,6 @@
 import Link from "next/link";
 import ColorSelection from "@/app/[locale]/settings/components/ColorSelection";
+import RadiusSelection from "@/app/[locale]/settings/components/RadiusSelection";
 
 export default function SettingsPage() {
   return (
@@ -8,6 +9,7 @@ export default function SettingsPage() {
       <Link href={"/"}>Home</Link>
 
       <ColorSelection />
+      <RadiusSelection />
     </>
   );
 }

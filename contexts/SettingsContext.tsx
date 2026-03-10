@@ -8,12 +8,15 @@ import {
   ReactNode,
 } from "react";
 import { ColorName } from "@/interfaces/colorName";
+import { RadiusType } from "@/interfaces/radius.interface";
 
 type SettingsContextType = {
   theme: "dark" | "light";
   color: ColorName;
+  radius: RadiusType;
   setTheme: (theme: "dark" | "light") => void;
   setColor: (color: ColorName) => void;
+  setRadius: (radius: RadiusType) => void;
 };
 
 const SettingsContext = createContext<SettingsContextType | null>(null);
@@ -33,13 +36,23 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     return (saved as ColorName) || "indigo";
   });
 
+  const [radius, setRadius] = useState<RadiusType>(() => {
+    if (typeof window === "undefined") return "medium";
+
+    const saved = localStorage.getItem("radius");
+    return (saved as RadiusType) || "medium";
+  });
+
   useEffect(() => {
     localStorage.setItem("theme", theme);
     localStorage.setItem("color", color);
-  }, [theme, color]);
+    localStorage.setItem("radius", radius);
+  }, [theme, color, radius]);
 
   return (
-    <SettingsContext.Provider value={{ theme, color, setTheme, setColor }}>
+    <SettingsContext.Provider
+      value={{ theme, color, radius, setTheme, setColor, setRadius }}
+    >
       {children}
     </SettingsContext.Provider>
   );
