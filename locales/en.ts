@@ -69,6 +69,22 @@ export default {
   },
 
   settings: {
-    colorSelectionTitle: "Color Selection",
+    appearance: {
+      title: "Appearance",
+      radius: {
+        title: "Borders",
+
+        type: {
+          none: "None",
+          small: "Small",
+          medium: "Medium",
+          large: "Large",
+          full: "Full",
+        },
+      },
+      color: {
+        title: "Color Selection",
+      },
+    },
   },
 } as const;
