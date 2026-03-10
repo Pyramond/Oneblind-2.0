@@ -9,14 +9,17 @@ import {
 } from "react";
 import { ColorName } from "@/interfaces/colorName";
 import { RadiusType } from "@/interfaces/radius.interface";
+import { LogoTheme } from "@/interfaces/logoTheme.interface";
 
 type SettingsContextType = {
   theme: "dark" | "light";
   color: ColorName;
   radius: RadiusType;
+  logoTheme: LogoTheme;
   setTheme: (theme: "dark" | "light") => void;
   setColor: (color: ColorName) => void;
   setRadius: (radius: RadiusType) => void;
+  setLogoTheme: (logoTheme: LogoTheme) => void;
 };
 
 const SettingsContext = createContext<SettingsContextType | null>(null);
@@ -36,6 +39,13 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     return (saved as ColorName) || "indigo";
   });
 
+  const [logoTheme, setLogoTheme] = useState<LogoTheme>(() => {
+    if (typeof window === "undefined") return "default";
+
+    const saved = localStorage.getItem("logoTheme");
+    return (saved as LogoTheme) || "default";
+  });
+
   const [radius, setRadius] = useState<RadiusType>(() => {
     if (typeof window === "undefined") return "medium";
 
@@ -47,11 +57,21 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("theme", theme);
     localStorage.setItem("color", color);
     localStorage.setItem("radius", radius);
-  }, [theme, color, radius]);
+    localStorage.setItem("logoTheme", logoTheme);
+  }, [theme, color, radius, logoTheme]);
 
   return (
     <SettingsContext.Provider
-      value={{ theme, color, radius, setTheme, setColor, setRadius }}
+      value={{
+        theme,
+        color,
+        radius,
+        logoTheme,
+        setTheme,
+        setColor,
+        setRadius,
+        setLogoTheme,
+      }}
     >
       {children}
     </SettingsContext.Provider>

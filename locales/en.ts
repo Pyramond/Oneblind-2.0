@@ -92,6 +92,14 @@ export default {
       color: {
         title: "Color Selection",
       },
+      logoTheme: {
+        title: "Logo Theme",
+
+        type: {
+          default: "Default",
+          onePiece: "One Piece",
+        },
+      },
     },
   },
 } as const;

@@ -3,6 +3,7 @@ import RadiusSelection from "@/app/[locale]/settings/components/RadiusSelection"
 import { Card } from "@radix-ui/themes";
 import Title from "@/components/Title/Title";
 import { getI18n } from "@/locales/server";
+import LogoThemeSelection from "@/app/[locale]/settings/components/LogoThemeSelection";
 
 export default async function AppearanceCard() {
   const t = await getI18n();
@@ -14,6 +15,7 @@ export default async function AppearanceCard() {
       <div className={"flex flex-col gap-5 mt-3 ml-2"}>
         <ColorSelection />
         <RadiusSelection />
+        <LogoThemeSelection />
       </div>
     </Card>
   );
