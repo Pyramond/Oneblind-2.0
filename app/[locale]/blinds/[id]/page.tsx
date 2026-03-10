@@ -46,7 +46,9 @@ export default function BlindStructurePage() {
         <Table.Body>
           {blindStructure?.steps.map((step, index) => (
             <Table.Row key={index}>
-              <Table.RowHeaderCell>{step.type}</Table.RowHeaderCell>
+              <Table.RowHeaderCell>
+                {t(`blinds.type.${step.type}`)}
+              </Table.RowHeaderCell>
               <Table.Cell>{step.time}</Table.Cell>
               <Table.Cell>
                 {step.small_blind === 0 ? "/" : step.small_blind}
