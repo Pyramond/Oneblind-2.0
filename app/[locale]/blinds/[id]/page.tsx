@@ -6,7 +6,9 @@ import Title from "@/components/Title/Title";
 import { useI18n } from "@/locales/client";
 import { useBlinds } from "@/contexts/blindContext";
 import { BlindStructure } from "@/interfaces/blindStructure.interface";
-import { Table, Badge } from "@radix-ui/themes";
+import { Table, Badge, IconButton } from "@radix-ui/themes";
+import Link from "next/link";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
 
 export default function BlindStructurePage() {
   const params = useParams();
@@ -23,7 +25,14 @@ export default function BlindStructurePage() {
 
   return (
     <div className={"flex flex-col gap-13"}>
-      <Title level={"h2"}>{blindStructure?.name}</Title>
+      <div className="flex flex-row items-center gap-2">
+        <Link href="/blinds">
+          <IconButton variant={"ghost"} radius={"full"}>
+            <ArrowLeftIcon width={30} height={30} />
+          </IconButton>
+        </Link>
+        <Title level={"h2"}>{blindStructure?.name}</Title>
+      </div>
 
       <Table.Root>
         <Table.Header>

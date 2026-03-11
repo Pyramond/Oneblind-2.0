@@ -3,10 +3,12 @@
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import User from "@/interfaces/user";
-import { Avatar, Card, Badge, Skeleton } from "@radix-ui/themes";
+import { Avatar, Card, Badge, Skeleton, IconButton } from "@radix-ui/themes";
 import Title from "@/components/Title/Title";
 import { useI18n } from "@/locales/client";
 import { useUsers } from "@/hooks/useUsers";
+import Link from "next/link";
+import { ArrowLeftIcon } from "@radix-ui/react-icons";
 
 export default function PlayerProfilePage() {
   const params = useParams();
@@ -32,7 +34,13 @@ export default function PlayerProfilePage() {
 
   return (
     <div className={"flex flex-col gap-13"}>
-      <div className="flex justify-center mt-10 px-6">
+      <Link href="/players">
+        <IconButton variant={"ghost"} radius={"full"}>
+          <ArrowLeftIcon width={30} height={30} />
+        </IconButton>
+      </Link>
+
+      <div className="flex justify-center px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-6xl">
           <Card className="p-6">
             <div className="flex items-center gap-6">
