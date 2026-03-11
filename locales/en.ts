@@ -20,7 +20,12 @@ export default {
 
     playerList: {
       profileBtn: "Profile",
-      deleteBtn: "Delete",
+
+      delete: {
+        deleteBtn: "Delete",
+        title: "Are you sure you want to delete {name} ?",
+        description: "This action cannot be undone",
+      },
     },
 
     create: {

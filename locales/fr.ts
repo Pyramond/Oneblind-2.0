@@ -20,7 +20,12 @@ export default {
 
     playerList: {
       profileBtn: "Profil",
-      deleteBtn: "Supprimer",
+
+      delete: {
+        deleteBtn: "Supprimer",
+        title: "Êtes-vous sûr de vouloir supprimer {name} ?",
+        description: "Cette action ne peut pas être annulée.",
+      },
     },
 
     create: {
