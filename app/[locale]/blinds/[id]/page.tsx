@@ -6,7 +6,7 @@ import Title from "@/components/Title/Title";
 import { useI18n } from "@/locales/client";
 import { useBlinds } from "@/contexts/blindContext";
 import { BlindStructure } from "@/interfaces/blindStructure.interface";
-import { Table } from "@radix-ui/themes";
+import { Table, Badge } from "@radix-ui/themes";
 
 export default function BlindStructurePage() {
   const params = useParams();
@@ -47,7 +47,12 @@ export default function BlindStructurePage() {
           {blindStructure?.steps.map((step, index) => (
             <Table.Row key={index}>
               <Table.RowHeaderCell>
-                {t(`blinds.type.${step.type}`)}
+                <Badge
+                  color={step.type == "game" ? "grass" : "amber"}
+                  className="w-12 justify-center"
+                >
+                  {t(`blinds.type.${step.type}`)}
+                </Badge>
               </Table.RowHeaderCell>
               <Table.Cell>{step.time}</Table.Cell>
               <Table.Cell>

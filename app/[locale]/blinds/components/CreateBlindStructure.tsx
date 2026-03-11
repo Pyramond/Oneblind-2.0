@@ -136,7 +136,10 @@ export default function CreateBlindStructure() {
                 }}
               >
                 <Flex gap="3">
-                  <Badge color={step.type == "game" ? "grass" : "amber"}>
+                  <Badge
+                    color={step.type == "game" ? "grass" : "amber"}
+                    className="w-12 justify-center"
+                  >
                     {t(`blinds.type.${step.type}`)}
                   </Badge>
                   <span>{step.time} min</span>
