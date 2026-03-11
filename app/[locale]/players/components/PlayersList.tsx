@@ -42,8 +42,13 @@ export default function PlayersList() {
             </Link>
           </ContextMenu.Trigger>
           <ContextMenu.Content>
+            <Link href={`/players/${user.id}`}>
+              <ContextMenu.Item>
+                {t("player.playerList.profileBtn")}
+              </ContextMenu.Item>
+            </Link>
             <ContextMenu.Item color="red" onClick={() => removeUser(user.id)}>
-              {t("player.deleteBtn")}
+              {t("player.playerList.deleteBtn")}
             </ContextMenu.Item>
           </ContextMenu.Content>
         </ContextMenu.Root>

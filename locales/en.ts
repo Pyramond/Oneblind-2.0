@@ -18,7 +18,10 @@ export default {
   player: {
     title: "Players",
 
-    deleteBtn: "Delete",
+    playerList: {
+      profileBtn: "Profile",
+      deleteBtn: "Delete",
+    },
 
     create: {
       btnTitle: "Create player",
