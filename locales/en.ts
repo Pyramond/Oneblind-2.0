@@ -18,6 +18,8 @@ export default {
   player: {
     title: "Players",
 
+    deleteBtn: "Delete",
+
     create: {
       btnTitle: "Create player",
       dialogTitle: "Create player",

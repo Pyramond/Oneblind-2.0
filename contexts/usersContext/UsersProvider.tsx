@@ -6,6 +6,8 @@ import User from "@/interfaces/user";
 import {
   addDoc,
   collection,
+  deleteDoc,
+  doc,
   getDocs,
   query,
   Timestamp,
@@ -50,6 +52,11 @@ export function UsersProvider({ children }: UsersProviderProps) {
     }
   };
 
+  const removeUser = async (id: string) => {
+    await deleteDoc(doc(db, "users", id));
+    await update();
+  };
+
   useEffect(() => {
     (async () => {
       await update();
@@ -57,7 +64,9 @@ export function UsersProvider({ children }: UsersProviderProps) {
   }, []);
 
   return (
-    <UsersContext.Provider value={{ users, update, addUser, getUserById }}>
+    <UsersContext.Provider
+      value={{ users, update, addUser, getUserById, removeUser }}
+    >
       {children}
     </UsersContext.Provider>
   );

@@ -8,6 +8,7 @@ export type UsersContextType = {
   update: () => Promise<void>;
   addUser: (userName: string) => Promise<void>;
   getUserById: (id: string) => User | undefined;
+  removeUser: (id: string) => void;
 };
 
 export const UsersContext = createContext<UsersContextType | null>(null);
