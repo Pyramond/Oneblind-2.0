@@ -24,15 +24,17 @@ export default function CreateBlindStructure() {
   const [steps, setSteps] = useState<BlindStep[]>([]);
 
   function addStep() {
-    setSteps([
-      ...steps,
-      {
-        type: type,
-        time: time,
-        small_blind: type === "pause" ? 0 : sb,
-        big_blind: type === "pause" ? 0 : bb,
-      },
-    ]);
+    if (time !== 0 && ((sb !== 0 && bb !== 0) || type === "pause")) {
+      setSteps([
+        ...steps,
+        {
+          type: type,
+          time: time,
+          small_blind: type === "pause" ? 0 : sb,
+          big_blind: type === "pause" ? 0 : bb,
+        },
+      ]);
+    }
   }
 
   function removeStep(index: number) {
@@ -60,9 +62,17 @@ export default function CreateBlindStructure() {
         name: name,
         steps: steps,
       });
-      setSteps([]);
-      setName("");
+      resetFields();
     }
+  }
+
+  function resetFields() {
+    setName("");
+    setTime(0);
+    setSb(0);
+    setBb(0);
+    setType("game");
+    setSteps([]);
   }
 
   return (
@@ -177,7 +187,7 @@ export default function CreateBlindStructure() {
 
           <Flex gap="3" mt="4" justify="end">
             <Dialog.Close>
-              <Button variant="soft" color="gray">
+              <Button variant="soft" color="gray" onClick={resetFields}>
                 {t("blinds.create.closeBtn")}
               </Button>
             </Dialog.Close>
