@@ -6,6 +6,7 @@ export default {
   common: {
     cancel: "Cancel",
     delete: "Delete",
+    close: "Close",
   },
 
   aside: {
@@ -65,6 +66,12 @@ export default {
       createStepAddBtn: "Add",
       closeBtn: "Cancel",
       saveBtn: "Save",
+
+      errors: {
+        title: "Error",
+        name: "The blind structure name is empty",
+        steps: "The structure must contain at least one step",
+      },
     },
 
     card: {

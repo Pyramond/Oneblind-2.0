@@ -6,6 +6,7 @@ export default {
   common: {
     cancel: "Annuler",
     delete: "Supprimer",
+    close: "Fermer",
   },
 
   aside: {
@@ -65,6 +66,12 @@ export default {
       createStepAddBtn: "Ajouter",
       closeBtn: "Annuler",
       saveBtn: "Sauvegarder",
+
+      errors: {
+        title: "Erreur",
+        name: "Le nom de la structure des blinds est vide",
+        steps: "La structure doit contenir au moins une étape",
+      },
     },
     card: {
       deleteBtn: "Supprimer",

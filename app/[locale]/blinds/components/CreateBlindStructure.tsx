@@ -1,6 +1,6 @@
 "use client";
 
-import { Badge, Button, Switch } from "@radix-ui/themes";
+import { Badge, Button, Switch, AlertDialog } from "@radix-ui/themes";
 import { useI18n } from "@/locales/client";
 import { Dialog, Flex, TextField, Select } from "@radix-ui/themes";
 import { useState } from "react";
@@ -16,6 +16,8 @@ export default function CreateBlindStructure() {
   const [sb, setSb] = useState<number>(0);
   const [bb, setBb] = useState<number>(0);
   const [type, setType] = useState<"game" | "pause">("game");
+  const [msg, setMsg] = useState<string>("");
+  const [open, setOpen] = useState<boolean>(false);
 
   const [checked, setChecked] = useState(false);
 
@@ -43,13 +45,22 @@ export default function CreateBlindStructure() {
   }
 
   async function createStructure() {
-    addBlindStructure({
-      id: "",
-      name: name,
-      steps: steps,
-    });
-    setSteps([]);
-    setName("");
+    if (name.trim() === "") {
+      setMsg(t("blinds.create.errors.name"));
+      setOpen(true);
+    }
+    if (steps.length === 0) {
+      setMsg(t("blinds.create.errors.steps"));
+      setOpen(true);
+    } else {
+      addBlindStructure({
+        id: "",
+        name: name,
+        steps: steps,
+      });
+      setSteps([]);
+      setName("");
+    }
   }
 
   return (
@@ -176,6 +187,27 @@ export default function CreateBlindStructure() {
           </Flex>
         </Dialog.Content>
       </Dialog.Root>
+
+      <AlertDialog.Root open={open}>
+        <AlertDialog.Content maxWidth="450px">
+          <AlertDialog.Title>
+            {t("blinds.create.errors.title")}
+          </AlertDialog.Title>
+          <AlertDialog.Description size="2">{msg}</AlertDialog.Description>
+
+          <Flex gap="3" mt="4" justify="end">
+            <AlertDialog.Cancel>
+              <Button
+                variant="soft"
+                color="gray"
+                onClick={() => setOpen(false)}
+              >
+                {t("common.close")}
+              </Button>
+            </AlertDialog.Cancel>
+          </Flex>
+        </AlertDialog.Content>
+      </AlertDialog.Root>
     </>
   );
 }
