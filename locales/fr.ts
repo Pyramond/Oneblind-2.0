@@ -7,6 +7,7 @@ export default {
     cancel: "Annuler",
     delete: "Supprimer",
     close: "Fermer",
+    save: "Sauvegarder",
   },
 
   aside: {
@@ -89,6 +90,17 @@ export default {
         smallBlind: "Petite Blind",
         bigBlind: "Grosse Blind",
       },
+    },
+  },
+
+  tournaments: {
+    title: "Tournois",
+
+    create: {
+      btnTitle: "Créer un tournois",
+      dialogTitle: "Créer un tournois",
+
+      name: "Nom",
     },
   },
 
