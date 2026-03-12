@@ -1,7 +1,7 @@
 "use client";
 
 import { useBlinds } from "@/contexts/blindContext";
-import BlindStructureCard from "@/app/[locale]/players/components/BlindStructureCard";
+import BlindStructureCard from "@/app/[locale]/blinds/components/BlindStructureCard";
 
 export default function BlindStructureList() {
   const { blindStructures } = useBlinds();
