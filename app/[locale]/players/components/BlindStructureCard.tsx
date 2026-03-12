@@ -34,7 +34,7 @@ export default function BlindStructureCard({
 
           <AlertDialog.Content maxWidth="450px">
             <AlertDialog.Title>
-              {t("blinds.card.deleteTitle")}
+              {t("blinds.card.deleteTitle", { structure: blindStructure.name })}
             </AlertDialog.Title>
 
             <AlertDialog.Description>

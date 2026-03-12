@@ -69,7 +69,8 @@ export default {
 
     card: {
       deleteBtn: "Delete",
-      deleteTitle: "Are you sure you want to delete this blind structure?",
+      deleteTitle:
+        "Are you sure you want to delete {structure} blind structure ?",
       deleteDescription: "This action cannot be undone.",
     },
 

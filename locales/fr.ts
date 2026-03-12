@@ -69,7 +69,7 @@ export default {
     card: {
       deleteBtn: "Supprimer",
       deleteTitle:
-        "Êtes-vous sûr de vouloir supprimer cette structure des blinds ?",
+        "Êtes-vous sûr de vouloir supprimer la structure des blinds {structure} ?",
       deleteDescription: "Cette action ne peut pas être annulée.",
     },
 
