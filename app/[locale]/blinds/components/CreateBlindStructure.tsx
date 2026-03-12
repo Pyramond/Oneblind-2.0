@@ -48,10 +48,12 @@ export default function CreateBlindStructure() {
     if (name.trim() === "") {
       setMsg(t("blinds.create.errors.name"));
       setOpen(true);
+      return;
     }
     if (steps.length === 0) {
       setMsg(t("blinds.create.errors.steps"));
       setOpen(true);
+      return;
     } else {
       addBlindStructure({
         id: "",
