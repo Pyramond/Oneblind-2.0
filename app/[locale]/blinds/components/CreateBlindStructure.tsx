@@ -88,7 +88,7 @@ export default function CreateBlindStructure() {
 
             <Flex direction={"row"} gap="4" className="ml-1">
               <Switch checked={checked} onCheckedChange={setChecked} />
-              <p>Doubler la grosse blind</p>
+              <p>{t("blinds.create.double")}</p>
             </Flex>
 
             <Flex gap="2" align="end">

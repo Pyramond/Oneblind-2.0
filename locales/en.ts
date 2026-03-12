@@ -67,6 +67,8 @@ export default {
       closeBtn: "Cancel",
       saveBtn: "Save",
 
+      double: "Double big blind",
+
       errors: {
         title: "Error",
         name: "The blind structure name is empty",

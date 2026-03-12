@@ -67,6 +67,8 @@ export default {
       closeBtn: "Annuler",
       saveBtn: "Sauvegarder",
 
+      double: "Doubler la grosse blind",
+
       errors: {
         title: "Erreur",
         name: "Le nom de la structure des blinds est vide",
