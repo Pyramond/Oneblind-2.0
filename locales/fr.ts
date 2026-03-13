@@ -104,6 +104,7 @@ export default {
       blindStructure: "Structure des blinds",
       startingStack: "Tapis de départ",
       countPoints: "Compter les points",
+      players: "Joueurs",
     },
   },
 

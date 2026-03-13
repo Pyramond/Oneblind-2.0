@@ -13,15 +13,24 @@ import { useI18n } from "@/locales/client";
 import { useEffect, useState } from "react";
 import { useBlinds } from "@/contexts/blindContext";
 import { BlindStructure } from "@/interfaces/blindStructure.interface";
+import { useUsers } from "@/hooks/useUsers";
 
 export default function CreateTournament() {
   const t = useI18n();
   const { blindStructures } = useBlinds();
+  const { users } = useUsers();
 
   const [name, setName] = useState<string>("");
   const [blindStructureId, setBlindStructureId] = useState<string>("");
   const [startingStack, setStartingStack] = useState<number | "">("");
   const [countPoints, setCountPoints] = useState<boolean>(true);
+  const [playerIds, setPlayerIds] = useState<string[]>([]);
+
+  function togglePlayer(id: string) {
+    setPlayerIds((prev) =>
+      prev.includes(id) ? prev.filter((p) => p !== id) : [...prev, id],
+    );
+  }
 
   useEffect(() => {
     if (blindStructures.length > 0 && !blindStructureId) {
@@ -81,7 +90,9 @@ export default function CreateTournament() {
                 placeholder={t("tournaments.create.startingStack")}
                 onChange={(e) =>
                   setStartingStack(
-                    e.target.value === "" ? "" : Math.max(0, parseInt(e.target.value))
+                    e.target.value === ""
+                      ? ""
+                      : Math.max(0, parseInt(e.target.value)),
                   )
                 }
                 value={startingStack}
@@ -92,13 +103,36 @@ export default function CreateTournament() {
               <label>
                 <Checkbox
                   checked={countPoints}
-                  onCheckedChange={(checked) => setCountPoints(checked === true)}
+                  onCheckedChange={(checked) =>
+                    setCountPoints(checked === true)
+                  }
                 />
                 <Text as="span" size="2" weight="bold">
                   {t("tournaments.create.countPoints")}
                 </Text>
               </label>
             </Flex>
+
+            <div>
+              <Text as="div" size="2" mb="1" weight="bold">
+                {t("tournaments.create.players")}
+              </Text>
+              <Flex direction="column" gap="2">
+                {users.map((user) => (
+                  <Flex asChild key={user.id} align="center" gap="2">
+                    <label>
+                      <Checkbox
+                        checked={playerIds.includes(user.id)}
+                        onCheckedChange={() => togglePlayer(user.id)}
+                      />
+                      <Text as="span" size="2">
+                        {user.name}
+                      </Text>
+                    </label>
+                  </Flex>
+                ))}
+              </Flex>
+            </div>
           </Flex>
 
           <Flex gap="3" mt="4" justify="end">

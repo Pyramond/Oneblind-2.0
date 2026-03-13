@@ -105,6 +105,7 @@ export default {
       blindStructure: "Blind structure",
       startingStack: "Starting stack",
       countPoints: "Count points",
+      players: "Players",
     },
   },
 
