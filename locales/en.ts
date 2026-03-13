@@ -104,6 +104,7 @@ export default {
       name: "Name",
       blindStructure: "Blind structure",
       startingStack: "Starting stack",
+      countPoints: "Count points",
     },
   },
 

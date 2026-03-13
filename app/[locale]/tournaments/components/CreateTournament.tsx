@@ -2,6 +2,7 @@
 
 import {
   Button,
+  Checkbox,
   Dialog,
   Flex,
   TextField,
@@ -20,6 +21,7 @@ export default function CreateTournament() {
   const [name, setName] = useState<string>("");
   const [blindStructureId, setBlindStructureId] = useState<string>("");
   const [startingStack, setStartingStack] = useState<number | "">("");
+  const [countPoints, setCountPoints] = useState<boolean>(true);
 
   useEffect(() => {
     if (blindStructures.length > 0 && !blindStructureId) {
@@ -85,6 +87,18 @@ export default function CreateTournament() {
                 value={startingStack}
               />
             </label>
+
+            <Flex asChild align="center" gap="2">
+              <label>
+                <Checkbox
+                  checked={countPoints}
+                  onCheckedChange={(checked) => setCountPoints(checked === true)}
+                />
+                <Text as="span" size="2" weight="bold">
+                  {t("tournaments.create.countPoints")}
+                </Text>
+              </label>
+            </Flex>
           </Flex>
 
           <Flex gap="3" mt="4" justify="end">
