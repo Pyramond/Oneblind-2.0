@@ -102,6 +102,7 @@ export default {
       dialogTitle: "Create tournament",
 
       name: "Name",
+      blindStructure: "Blind structure",
     },
   },
 

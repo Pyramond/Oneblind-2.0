@@ -1,13 +1,31 @@
 "use client";
 
-import { Button, Dialog, Flex, TextField, Text } from "@radix-ui/themes";
+import {
+  Button,
+  Dialog,
+  Flex,
+  TextField,
+  Text,
+  Select,
+} from "@radix-ui/themes";
 import { useI18n } from "@/locales/client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useBlinds } from "@/contexts/blindContext";
+import { BlindStructure } from "@/interfaces/blindStructure.interface";
 
 export default function CreateTournament() {
   const t = useI18n();
+  const { blindStructures } = useBlinds();
 
   const [name, setName] = useState<string>("");
+  const [blindStructureId, setBlindStructureId] = useState<string>("");
+
+  useEffect(() => {
+    if (blindStructures.length > 0 && !blindStructureId) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setBlindStructureId(blindStructures[0].id);
+    }
+  }, [blindStructures, blindStructureId]);
 
   return (
     <>
@@ -29,6 +47,25 @@ export default function CreateTournament() {
                 onChange={(e) => setName(e.target.value)}
                 value={name}
               />
+            </label>
+
+            <label>
+              <Text as="div" size="2" mb="1" weight="bold">
+                {t("tournaments.create.blindStructure")}
+              </Text>
+              <Select.Root
+                value={blindStructureId}
+                onValueChange={setBlindStructureId}
+              >
+                <Select.Trigger />
+                <Select.Content>
+                  {blindStructures.map((item: BlindStructure) => (
+                    <Select.Item key={item.id} value={item.id}>
+                      {item.name}
+                    </Select.Item>
+                  ))}
+                </Select.Content>
+              </Select.Root>
             </label>
           </Flex>
 

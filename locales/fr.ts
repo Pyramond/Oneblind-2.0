@@ -101,6 +101,7 @@ export default {
       dialogTitle: "Créer un tournois",
 
       name: "Nom",
+      blindStructure: "Structure des blinds",
     },
   },
 
