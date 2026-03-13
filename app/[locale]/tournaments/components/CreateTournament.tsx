@@ -19,6 +19,7 @@ export default function CreateTournament() {
 
   const [name, setName] = useState<string>("");
   const [blindStructureId, setBlindStructureId] = useState<string>("");
+  const [startingStack, setStartingStack] = useState<number | "">("");
 
   useEffect(() => {
     if (blindStructures.length > 0 && !blindStructureId) {
@@ -66,6 +67,23 @@ export default function CreateTournament() {
                   ))}
                 </Select.Content>
               </Select.Root>
+            </label>
+
+            <label>
+              <Text as="div" size="2" mb="1" weight="bold">
+                {t("tournaments.create.startingStack")}
+              </Text>
+              <TextField.Root
+                type="number"
+                min="0"
+                placeholder={t("tournaments.create.startingStack")}
+                onChange={(e) =>
+                  setStartingStack(
+                    e.target.value === "" ? "" : Math.max(0, parseInt(e.target.value))
+                  )
+                }
+                value={startingStack}
+              />
             </label>
           </Flex>
 

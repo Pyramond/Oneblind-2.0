@@ -102,6 +102,7 @@ export default {
 
       name: "Nom",
       blindStructure: "Structure des blinds",
+      startingStack: "Tapis de départ",
     },
   },
 
