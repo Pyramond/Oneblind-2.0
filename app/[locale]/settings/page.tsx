@@ -1,6 +1,9 @@
-import AppearanceCard from "@/app/[locale]/settings/components/AppearanceCard";
 import Title from "@/components/Title/Title";
 import { getI18n } from "@/locales/server";
+import SettingsCard from "@/app/[locale]/settings/components/SettingsCard";
+import ColorSelection from "@/app/[locale]/settings/components/appearance/ColorSelection";
+import RadiusSelection from "@/app/[locale]/settings/components/appearance/RadiusSelection";
+import LogoThemeSelection from "@/app/[locale]/settings/components/appearance/LogoThemeSelection";
 
 export default async function SettingsPage() {
   const t = await getI18n();
@@ -10,7 +13,11 @@ export default async function SettingsPage() {
       <Title level={"h2"}>{t("settings.title")}</Title>
 
       <div className={"mt-5"}>
-        <AppearanceCard />
+        <SettingsCard title={t("settings.appearance.title")}>
+          <ColorSelection />
+          <RadiusSelection />
+          <LogoThemeSelection />
+        </SettingsCard>
       </div>
     </>
   );
