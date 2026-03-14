@@ -112,6 +112,16 @@ export default {
   settings: {
     title: "Settings",
 
+    other: {
+      title: "Others",
+
+      language: {
+        title: "Language",
+        fr: "French",
+        en: "English",
+      },
+    },
+
     appearance: {
       title: "Appearance",
       radius: {
