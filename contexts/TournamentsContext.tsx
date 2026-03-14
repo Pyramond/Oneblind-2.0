@@ -14,9 +14,12 @@ import {
 import {
   addDoc,
   collection,
+  deleteDoc,
+  doc,
   getDocs,
   query,
   Timestamp,
+  where,
 } from "firebase/firestore";
 import { db } from "@/firebase-config";
 
@@ -76,7 +79,23 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const removeTournament = async (id: string) => {};
+  const removeTournament = async (id: string) => {
+    try {
+      const participationsQuery = query(
+        collection(db, "participations"),
+        where("tournamentId", "==", id)
+      );
+      const participationsSnapshot = await getDocs(participationsQuery);
+      for (const participation of participationsSnapshot.docs) {
+        await deleteDoc(doc(db, "participations", participation.id));
+      }
+
+      await deleteDoc(doc(db, "tournaments", id));
+      await update();
+    } catch (error) {
+      console.error("Error :", error);
+    }
+  };
 
   useEffect(() => {
     (async () => {
