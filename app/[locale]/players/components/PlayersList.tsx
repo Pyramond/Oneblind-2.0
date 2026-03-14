@@ -1,7 +1,7 @@
 "use client";
 
 import User from "@/interfaces/user";
-import { useUsers } from "@/hooks/useUsers";
+import { useUsers } from "@/contexts/UsersContext";
 import PLayerCard from "@/app/[locale]/players/components/PlayerCard";
 
 export default function PlayersList() {

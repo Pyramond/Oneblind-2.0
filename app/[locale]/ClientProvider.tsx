@@ -4,7 +4,7 @@ import { ReactNode } from "react";
 import { SettingsProvider } from "@/contexts/SettingsContext";
 import { I18nProviderClient } from "@/locales/client";
 import { ThemeProvider } from "next-themes";
-import { UsersProvider } from "@/contexts/usersContext/UsersProvider";
+import { UsersProvider } from "@/contexts/UsersContext";
 import ThemeWrapper from "@/components/ThemeWrapper/ThemeWrapper";
 import { BlindProvider } from "@/contexts/blindContext";
 

@@ -13,7 +13,7 @@ import {
 import User from "@/interfaces/user";
 import { useI18n } from "@/locales/client";
 import { useState } from "react";
-import { useUsers } from "@/hooks/useUsers";
+import { useUsers } from "@/contexts/UsersContext";
 import Link from "next/link";
 
 export default function PLayerCard({ user }: { user: User }) {

@@ -6,7 +6,7 @@ import User from "@/interfaces/user";
 import { Avatar, Card, Badge, Skeleton, IconButton } from "@radix-ui/themes";
 import Title from "@/components/Title/Title";
 import { useI18n } from "@/locales/client";
-import { useUsers } from "@/hooks/useUsers";
+import { useUsers } from "@/contexts/UsersContext";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 

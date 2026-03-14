@@ -3,7 +3,7 @@
 import { Button, Dialog, Flex, TextField } from "@radix-ui/themes";
 import { useI18n } from "@/locales/client";
 import { useState } from "react";
-import { useUsers } from "@/hooks/useUsers";
+import { useUsers } from "@/contexts/UsersContext";
 
 export default function CreatePlayer() {
   const { addUser } = useUsers();

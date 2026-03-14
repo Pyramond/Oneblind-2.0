@@ -13,7 +13,7 @@ import { useI18n } from "@/locales/client";
 import { useEffect, useState } from "react";
 import { useBlinds } from "@/contexts/blindContext";
 import { BlindStructure } from "@/interfaces/blindStructure.interface";
-import { useUsers } from "@/hooks/useUsers";
+import { useUsers } from "@/contexts/UsersContext";
 
 export default function CreateTournament() {
   const t = useI18n();
