@@ -7,6 +7,7 @@ import { ThemeProvider } from "next-themes";
 import { UsersProvider } from "@/contexts/UsersContext";
 import ThemeWrapper from "@/components/ThemeWrapper/ThemeWrapper";
 import { BlindProvider } from "@/contexts/BlindsContext";
+import { TournamentProvider } from "@/contexts/TournamentsContext";
 
 export default function ClientProviders({
   children,
@@ -21,7 +22,9 @@ export default function ClientProviders({
         <ThemeProvider attribute="class">
           <ThemeWrapper>
             <BlindProvider>
-              <UsersProvider>{children}</UsersProvider>
+              <TournamentProvider>
+                <UsersProvider>{children}</UsersProvider>
+              </TournamentProvider>
             </BlindProvider>
           </ThemeWrapper>
         </ThemeProvider>

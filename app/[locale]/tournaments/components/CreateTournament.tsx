@@ -14,11 +14,14 @@ import { useEffect, useState } from "react";
 import { useBlinds } from "@/contexts/BlindsContext";
 import { BlindStructure } from "@/interfaces/blindStructure.interface";
 import { useUsers } from "@/contexts/UsersContext";
+import { useTournaments } from "@/contexts/TournamentsContext";
+import { Tournament } from "@/interfaces/tournament.interface";
 
 export default function CreateTournament() {
   const t = useI18n();
   const { blindStructures } = useBlinds();
   const { users } = useUsers();
+  const { addTournament } = useTournaments();
 
   const [name, setName] = useState<string>("");
   const [blindStructureId, setBlindStructureId] = useState<string>("");
@@ -30,6 +33,17 @@ export default function CreateTournament() {
     setPlayerIds((prev) =>
       prev.includes(id) ? prev.filter((p) => p !== id) : [...prev, id],
     );
+  }
+
+  function handleCreate() {
+    const t: Tournament = {
+      name: name,
+      blindStructureId: blindStructureId,
+      startingStack: Number(startingStack),
+      countPoints: countPoints,
+    };
+
+    addTournament(t, playerIds);
   }
 
   useEffect(() => {
@@ -142,7 +156,7 @@ export default function CreateTournament() {
               </Button>
             </Dialog.Close>
             <Dialog.Close>
-              <Button>{t("common.save")}</Button>
+              <Button onClick={handleCreate}>{t("common.save")}</Button>
             </Dialog.Close>
           </Flex>
         </Dialog.Content>
