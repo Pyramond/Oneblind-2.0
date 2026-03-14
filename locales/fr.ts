@@ -106,6 +106,16 @@ export default {
       countPoints: "Compter les points",
       players: "Joueurs",
     },
+
+    card: {
+      viewBtn: "Voir",
+      blindStructure: "Structure des blinds",
+      startingStack: "Tapis de départ",
+      countPoints: {
+        yes: "Points comptés",
+        no: "Points non comptés",
+      },
+    },
   },
 
   settings: {

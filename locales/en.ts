@@ -107,6 +107,16 @@ export default {
       countPoints: "Count points",
       players: "Players",
     },
+
+    card: {
+      viewBtn: "View",
+      blindStructure: "Blind structure",
+      startingStack: "Starting stack",
+      countPoints: {
+        yes: "Points counted",
+        no: "Points not counted",
+      },
+    },
   },
 
   settings: {

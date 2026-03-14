@@ -1,6 +1,7 @@
 import { DateInterface } from "@/interfaces/date.interface";
 
 export interface Tournament {
+  id?: string;
   name: string;
   countPoints: boolean;
   startingStack: number;
