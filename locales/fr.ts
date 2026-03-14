@@ -8,6 +8,7 @@ export default {
     delete: "Supprimer",
     close: "Fermer",
     save: "Sauvegarder",
+    open: "Ouvrir",
   },
 
   aside: {
@@ -114,6 +115,12 @@ export default {
       countPoints: {
         yes: "Points comptés",
         no: "Points non comptés",
+      },
+
+      delete: {
+        deleteTitle:
+          "Êtes-vous sûr de vouloir supprimer le tournoi {tournament} ?",
+        deleteDescription: "Cette action ne peut pas être annulée.",
       },
     },
   },

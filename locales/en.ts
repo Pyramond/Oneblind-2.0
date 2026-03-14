@@ -8,6 +8,7 @@ export default {
     delete: "Delete",
     close: "Close",
     save: "Save",
+    open: "Open",
   },
 
   aside: {
@@ -115,6 +116,12 @@ export default {
       countPoints: {
         yes: "Points counted",
         no: "Points not counted",
+      },
+
+      delete: {
+        deleteTitle:
+          "Are you sure you want to delete {tournament} tournament ?",
+        deleteDescription: "This action cannot be undone.",
       },
     },
   },
