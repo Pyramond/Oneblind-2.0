@@ -6,7 +6,7 @@ import { I18nProviderClient } from "@/locales/client";
 import { ThemeProvider } from "next-themes";
 import { UsersProvider } from "@/contexts/UsersContext";
 import ThemeWrapper from "@/components/ThemeWrapper/ThemeWrapper";
-import { BlindProvider } from "@/contexts/blindContext";
+import { BlindProvider } from "@/contexts/BlindsContext";
 
 export default function ClientProviders({
   children,

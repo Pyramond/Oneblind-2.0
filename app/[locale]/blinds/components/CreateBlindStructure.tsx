@@ -5,7 +5,7 @@ import { useI18n } from "@/locales/client";
 import { Dialog, Flex, TextField, Select } from "@radix-ui/themes";
 import { useState } from "react";
 import { BlindStep } from "@/interfaces/blindStructure.interface";
-import { useBlinds } from "@/contexts/blindContext";
+import { useBlinds } from "@/contexts/BlindsContext";
 
 export default function CreateBlindStructure() {
   const t = useI18n();

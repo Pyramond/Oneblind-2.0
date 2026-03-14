@@ -4,7 +4,7 @@ import { BlindStructure } from "@/interfaces/blindStructure.interface";
 import { Button, Card, AlertDialog } from "@radix-ui/themes";
 import { useI18n } from "@/locales/client";
 import Link from "next/link";
-import { useBlinds } from "@/contexts/blindContext";
+import { useBlinds } from "@/contexts/BlindsContext";
 
 export default function BlindStructureCard({
   blindStructure,

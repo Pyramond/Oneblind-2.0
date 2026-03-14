@@ -11,7 +11,7 @@ import {
 } from "@radix-ui/themes";
 import { useI18n } from "@/locales/client";
 import { useEffect, useState } from "react";
-import { useBlinds } from "@/contexts/blindContext";
+import { useBlinds } from "@/contexts/BlindsContext";
 import { BlindStructure } from "@/interfaces/blindStructure.interface";
 import { useUsers } from "@/contexts/UsersContext";
 

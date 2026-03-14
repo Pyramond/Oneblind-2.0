@@ -1,6 +1,6 @@
 "use client";
 
-import { useBlinds } from "@/contexts/blindContext";
+import { useBlinds } from "@/contexts/BlindsContext";
 import BlindStructureCard from "@/app/[locale]/blinds/components/BlindStructureCard";
 
 export default function BlindStructureList() {

@@ -4,7 +4,7 @@ import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Title from "@/components/Title/Title";
 import { useI18n } from "@/locales/client";
-import { useBlinds } from "@/contexts/blindContext";
+import { useBlinds } from "@/contexts/BlindsContext";
 import { BlindStructure } from "@/interfaces/blindStructure.interface";
 import { Table, Badge, IconButton } from "@radix-ui/themes";
 import Link from "next/link";

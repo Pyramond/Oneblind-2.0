@@ -27,7 +27,7 @@ type BlindContextType = {
   update: () => Promise<void>;
 };
 
-const BlindContext = createContext<BlindContextType | null>(null);
+const BlindsContext = createContext<BlindContextType | null>(null);
 
 export function BlindProvider({ children }: { children: ReactNode }) {
   const [blindStructures, setBlindStructures] = useState<BlindStructure[]>([]);
@@ -75,7 +75,7 @@ export function BlindProvider({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <BlindContext.Provider
+    <BlindsContext.Provider
       value={{
         blindStructures,
         addBlindStructure,
@@ -85,12 +85,12 @@ export function BlindProvider({ children }: { children: ReactNode }) {
       }}
     >
       {children}
-    </BlindContext.Provider>
+    </BlindsContext.Provider>
   );
 }
 
 export function useBlinds() {
-  const context = useContext(BlindContext);
+  const context = useContext(BlindsContext);
 
   if (!context) {
     throw new Error("useBlinds must be used inside BlindProvider");
