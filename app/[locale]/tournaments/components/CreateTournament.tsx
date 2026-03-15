@@ -8,6 +8,7 @@ import {
   TextField,
   Text,
   Select,
+  Callout,
 } from "@radix-ui/themes";
 import { useI18n } from "@/locales/client";
 import { useEffect, useState } from "react";
@@ -16,6 +17,7 @@ import { BlindStructure } from "@/interfaces/blindStructure.interface";
 import { useUsers } from "@/contexts/UsersContext";
 import { useTournaments } from "@/contexts/TournamentsContext";
 import { Tournament } from "@/interfaces/tournament.interface";
+import { InfoCircledIcon } from "@radix-ui/react-icons";
 
 export default function CreateTournament() {
   const t = useI18n();
@@ -36,14 +38,14 @@ export default function CreateTournament() {
   }
 
   function handleCreate() {
-    const t: Tournament = {
-      name: name,
-      blindStructureId: blindStructureId,
+    const tournament: Tournament = {
+      name,
+      blindStructureId,
       startingStack: Number(startingStack),
-      countPoints: countPoints,
+      countPoints,
     };
 
-    addTournament(t, playerIds);
+    addTournament(tournament, playerIds);
   }
 
   useEffect(() => {
@@ -54,8 +56,7 @@ export default function CreateTournament() {
   }, [blindStructures, blindStructureId]);
 
   return (
-    <>
-      <Dialog.Root>
+    <Dialog.Root>
         <Dialog.Trigger>
           <Button>{t("tournaments.create.btnTitle")}</Button>
         </Dialog.Trigger>
@@ -79,19 +80,30 @@ export default function CreateTournament() {
               <Text as="div" size="2" mb="1" weight="bold">
                 {t("tournaments.create.blindStructure")}
               </Text>
-              <Select.Root
-                value={blindStructureId}
-                onValueChange={setBlindStructureId}
-              >
-                <Select.Trigger />
-                <Select.Content>
-                  {blindStructures.map((item: BlindStructure) => (
-                    <Select.Item key={item.id} value={item.id}>
-                      {item.name}
-                    </Select.Item>
-                  ))}
-                </Select.Content>
-              </Select.Root>
+              {blindStructures.length > 0 ? (
+                <Select.Root
+                  value={blindStructureId}
+                  onValueChange={setBlindStructureId}
+                >
+                  <Select.Trigger />
+                  <Select.Content>
+                    {blindStructures.map((item: BlindStructure) => (
+                      <Select.Item key={item.id} value={item.id}>
+                        {item.name}
+                      </Select.Item>
+                    ))}
+                  </Select.Content>
+                </Select.Root>
+              ) : (
+                <Callout.Root color="red" className="mt-3 mb-3">
+                  <Callout.Icon>
+                    <InfoCircledIcon />
+                  </Callout.Icon>
+                  <Callout.Text>
+                    {t("tournaments.create.blindStructureErr")}
+                  </Callout.Text>
+                </Callout.Root>
+              )}
             </label>
 
             <label>
@@ -160,7 +172,6 @@ export default function CreateTournament() {
             </Dialog.Close>
           </Flex>
         </Dialog.Content>
-      </Dialog.Root>
-    </>
+    </Dialog.Root>
   );
 }

@@ -107,6 +107,8 @@ export default {
       startingStack: "Starting stack",
       countPoints: "Count points",
       players: "Players",
+
+      blindStructureErr: "You don't have a blind structure created yet",
     },
 
     card: {

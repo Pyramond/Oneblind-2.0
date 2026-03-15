@@ -98,14 +98,16 @@ export default {
     title: "Tournois",
 
     create: {
-      btnTitle: "Créer un tournois",
-      dialogTitle: "Créer un tournois",
+      btnTitle: "Créer un tournoi",
+      dialogTitle: "Créer un tournoi",
 
       name: "Nom",
       blindStructure: "Structure des blinds",
       startingStack: "Tapis de départ",
       countPoints: "Compter les points",
       players: "Joueurs",
+
+      blindStructureErr: "Vous n'avez pas encore de structure de blind créée.",
     },
 
     card: {
