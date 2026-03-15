@@ -38,8 +38,9 @@ export default function CreateTournament() {
   }
 
   function handleCreate() {
+    const defaultName = new Date().toLocaleDateString("fr-FR");
     const tournament: Tournament = {
-      name,
+      name: name || defaultName,
       blindStructureId,
       startingStack: Number(startingStack),
       countPoints,
