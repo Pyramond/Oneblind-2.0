@@ -108,6 +108,7 @@ export default {
       players: "Joueurs",
 
       blindStructureErr: "Vous n'avez pas encore de structure de blind créée.",
+      playerErr: "Vous n'avez pas encore créé de joueur.",
     },
 
     card: {
