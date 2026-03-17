@@ -118,6 +118,7 @@ export default {
       viewBtn: "Voir",
       blindStructure: "Structure des blinds",
       startingStack: "Tapis de départ",
+      playerCount: "Joueurs",
       countPoints: {
         yes: "Points comptés",
         no: "Points non comptés",

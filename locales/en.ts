@@ -121,6 +121,7 @@ export default {
       viewBtn: "View",
       blindStructure: "Blind structure",
       startingStack: "Starting stack",
+      playerCount: "Players",
       countPoints: {
         yes: "Points counted",
         no: "Points not counted",

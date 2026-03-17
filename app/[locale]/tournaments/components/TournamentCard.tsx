@@ -5,6 +5,7 @@ import { Badge, Button, Card, ContextMenu, Flex, Text } from "@radix-ui/themes";
 import Link from "next/link";
 import { useI18n } from "@/locales/client";
 import { useBlinds } from "@/contexts/BlindsContext";
+import { useTournaments } from "@/contexts/TournamentsContext";
 import DeleteTournamentItem from "./DeleteTournamentItem";
 
 export default function TournamentCard({
@@ -14,6 +15,11 @@ export default function TournamentCard({
 }) {
   const t = useI18n();
   const { blindStructures } = useBlinds();
+  const { participations } = useTournaments();
+
+  const playerCount = participations.filter(
+    (p) => p.tournamentId === tournament.id,
+  ).length;
 
   const blindStructure = blindStructures.find(
     (b) => b.id === tournament.blindStructureId,
@@ -59,6 +65,9 @@ export default function TournamentCard({
                 <Text size="2" color="gray">
                   {t("tournaments.card.startingStack")} :{" "}
                   {tournament.startingStack}
+                </Text>
+                <Text size="2" color="gray">
+                  {t("tournaments.card.playerCount")} : {playerCount}
                 </Text>
               </Flex>
             </div>
