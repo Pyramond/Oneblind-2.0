@@ -9,6 +9,7 @@ export default {
     close: "Close",
     save: "Save",
     open: "Open",
+    error: "Error",
   },
 
   aside: {
@@ -109,7 +110,11 @@ export default {
       players: "Players",
 
       blindStructureErr: "You don't have a blind structure created yet",
-      playerErr: "You haven't created a player yet.",
+      playerErr: "You haven't created a player yet",
+
+      playerCountErr:
+        "At least two players are required to create a tournament",
+      initialStackErr: "The initial stack must be greater than zero",
     },
 
     card: {

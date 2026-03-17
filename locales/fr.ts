@@ -9,6 +9,7 @@ export default {
     close: "Fermer",
     save: "Sauvegarder",
     open: "Ouvrir",
+    error: "Erreur",
   },
 
   aside: {
@@ -109,6 +110,8 @@ export default {
 
       blindStructureErr: "Vous n'avez pas encore de structure de blind créée.",
       playerErr: "Vous n'avez pas encore créé de joueur.",
+      playerCountErr: "Au moins deux joueurs sont requis pour créer un tournoi",
+      initialStackErr: "Le tapis de départ doit être supérieur à zéro",
     },
 
     card: {
