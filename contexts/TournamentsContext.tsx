@@ -53,6 +53,17 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
     }));
 
     setTournaments(tournamentsList);
+
+    const pQuery = query(collection(db, "participations"));
+    const pSnapshot = await getDocs(pQuery);
+    const participationsList: TournamentParticipation[] = pSnapshot.docs.map(
+      (doc) => ({
+        playerId: doc.data().playerId,
+        tournamentId: doc.data().tournamentId,
+        rank: doc.data().rank,
+      }),
+    );
+    setParticipations(participationsList);
   };
 
   const addTournament = async (tournament: Tournament, playerIds: string[]) => {
