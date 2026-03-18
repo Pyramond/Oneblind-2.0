@@ -10,6 +10,7 @@ export default {
     save: "Sauvegarder",
     open: "Ouvrir",
     error: "Erreur",
+    edit: "Modifier",
   },
 
   aside: {
@@ -101,6 +102,21 @@ export default {
     create: {
       btnTitle: "Créer un tournoi",
       dialogTitle: "Créer un tournoi",
+
+      name: "Nom",
+      blindStructure: "Structure des blinds",
+      startingStack: "Tapis de départ",
+      countPoints: "Compter les points",
+      players: "Joueurs",
+
+      blindStructureErr: "Vous n'avez pas encore de structure de blind créée.",
+      playerErr: "Vous n'avez pas encore créé de joueur.",
+      playerCountErr: "Au moins deux joueurs sont requis pour créer un tournoi",
+      initialStackErr: "Le tapis de départ doit être supérieur à zéro",
+    },
+
+    edit: {
+      dialogTitle: "Modifier le tournoi",
 
       name: "Nom",
       blindStructure: "Structure des blinds",

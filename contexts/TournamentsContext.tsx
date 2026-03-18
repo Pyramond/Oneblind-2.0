@@ -19,6 +19,7 @@ import {
   getDocs,
   query,
   Timestamp,
+  updateDoc,
   where,
 } from "firebase/firestore";
 import { db } from "@/firebase-config";
@@ -28,6 +29,7 @@ type TournamentsContextType = {
   participations: Array<TournamentParticipation>;
   update: () => Promise<void>;
   addTournament: (tournament: Tournament, playerIds: string[]) => Promise<void>;
+  updateTournament: (tournament: Tournament, playerIds: string[]) => Promise<void>;
   removeTournament: (id: string) => Promise<void>;
 };
 
@@ -90,6 +92,38 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const updateTournament = async (tournament: Tournament, playerIds: string[]) => {
+    try {
+      await updateDoc(doc(db, "tournaments", tournament.id!), {
+        name: tournament.name,
+        countPoints: tournament.countPoints,
+        blindStructureId: tournament.blindStructureId,
+        startingStack: tournament.startingStack,
+      });
+
+      const participationsQuery = query(
+        collection(db, "participations"),
+        where("tournamentId", "==", tournament.id)
+      );
+      const participationsSnapshot = await getDocs(participationsQuery);
+      for (const participation of participationsSnapshot.docs) {
+        await deleteDoc(doc(db, "participations", participation.id));
+      }
+
+      for (const id of playerIds) {
+        await addDoc(collection(db, "participations"), {
+          playerId: id,
+          tournamentId: tournament.id,
+          rank: 0,
+        });
+      }
+
+      await update();
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   const removeTournament = async (id: string) => {
     try {
       const participationsQuery = query(
@@ -120,6 +154,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
         tournaments,
         participations,
         addTournament,
+        updateTournament,
         update,
         removeTournament,
       }}

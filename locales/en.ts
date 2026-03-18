@@ -10,6 +10,7 @@ export default {
     save: "Save",
     open: "Open",
     error: "Error",
+    edit: "Edit",
   },
 
   aside: {
@@ -102,6 +103,23 @@ export default {
     create: {
       btnTitle: "Create tournament",
       dialogTitle: "Create tournament",
+
+      name: "Name",
+      blindStructure: "Blind structure",
+      startingStack: "Starting stack",
+      countPoints: "Count points",
+      players: "Players",
+
+      blindStructureErr: "You don't have a blind structure created yet",
+      playerErr: "You haven't created a player yet",
+
+      playerCountErr:
+        "At least two players are required to create a tournament",
+      initialStackErr: "The initial stack must be greater than zero",
+    },
+
+    edit: {
+      dialogTitle: "Edit tournament",
 
       name: "Name",
       blindStructure: "Blind structure",

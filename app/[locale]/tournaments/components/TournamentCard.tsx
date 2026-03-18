@@ -16,6 +16,7 @@ import { useBlinds } from "@/contexts/BlindsContext";
 import { useTournaments } from "@/contexts/TournamentsContext";
 import DeleteTournamentItem from "./DeleteTournamentItem";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
+import EditTournamentItem from "@/app/[locale]/tournaments/components/EditTournamentItem";
 
 export default function TournamentCard({
   tournament,
@@ -104,6 +105,7 @@ export default function TournamentCard({
         <Link href={`/tournaments/${tournament.id}`}>
           <ContextMenu.Item>{t("common.open")}</ContextMenu.Item>
         </Link>
+        {tournament.id && <EditTournamentItem tournament={tournament} />}
         {tournament.id && (
           <DeleteTournamentItem
             tournamentId={tournament.id}
