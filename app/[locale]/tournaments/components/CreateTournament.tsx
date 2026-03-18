@@ -182,14 +182,16 @@ export default function CreateTournament() {
                   ))}
                 </Flex>
               ) : (
-                <Callout.Root color="red" className="mt-3 mb-3">
-                  <Callout.Icon>
-                    <InfoCircledIcon />
-                  </Callout.Icon>
-                  <Callout.Text>
-                    {t("tournaments.create.playerErr")}
-                  </Callout.Text>
-                </Callout.Root>
+                <Link href={"/players"}>
+                  <Callout.Root color="red" className="mt-3 mb-3">
+                    <Callout.Icon>
+                      <InfoCircledIcon />
+                    </Callout.Icon>
+                    <Callout.Text>
+                      {t("tournaments.create.playerErr")}
+                    </Callout.Text>
+                  </Callout.Root>
+                </Link>
               )}
             </div>
           </Flex>
