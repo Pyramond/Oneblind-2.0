@@ -132,6 +132,10 @@ export default {
           "Are you sure you want to delete {tournament} tournament ?",
         deleteDescription: "This action cannot be undone.",
       },
+
+      blindStructureNotFound: "Blind structure not found",
+      blindStructureNotFoundTooltipContent:
+        "The blind structure is missing or has been deleted. The tournament cannot be started.",
     },
   },
 

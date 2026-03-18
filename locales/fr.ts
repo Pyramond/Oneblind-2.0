@@ -129,6 +129,10 @@ export default {
           "Êtes-vous sûr de vouloir supprimer le tournoi {tournament} ?",
         deleteDescription: "Cette action ne peut pas être annulée.",
       },
+
+      blindStructureNotFound: "Structure des blinds inexistante",
+      blindStructureNotFoundTooltipContent:
+        "La structure des blinds est introuvable ou a été supprimée. Le tournoi ne peut pas être lancé.",
     },
   },
 

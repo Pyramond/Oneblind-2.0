@@ -1,12 +1,21 @@
 "use client";
 
 import { Tournament } from "@/interfaces/tournament.interface";
-import { Badge, Button, Card, ContextMenu, Flex, Text } from "@radix-ui/themes";
+import {
+  Badge,
+  Button,
+  Card,
+  ContextMenu,
+  Flex,
+  Text,
+  Tooltip,
+} from "@radix-ui/themes";
 import Link from "next/link";
 import { useI18n } from "@/locales/client";
 import { useBlinds } from "@/contexts/BlindsContext";
 import { useTournaments } from "@/contexts/TournamentsContext";
 import DeleteTournamentItem from "./DeleteTournamentItem";
+import { InfoCircledIcon } from "@radix-ui/react-icons";
 
 export default function TournamentCard({
   tournament,
@@ -56,11 +65,24 @@ export default function TournamentCard({
                     {date}
                   </Text>
                 )}
-                {blindStructure && (
+                {blindStructure ? (
                   <Text size="2" color="gray">
                     {t("tournaments.card.blindStructure")} :{" "}
                     {blindStructure.name}
                   </Text>
+                ) : (
+                  <Tooltip
+                    content={t(
+                      "tournaments.card.blindStructureNotFoundTooltipContent",
+                    )}
+                  >
+                    <Badge color={"red"} className={"hover:cursor-pointer"}>
+                      <InfoCircledIcon />
+                      <Text>
+                        {t("tournaments.card.blindStructureNotFound")}
+                      </Text>
+                    </Badge>
+                  </Tooltip>
                 )}
                 <Text size="2" color="gray">
                   {t("tournaments.card.startingStack")} :{" "}
