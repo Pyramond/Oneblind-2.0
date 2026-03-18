@@ -19,6 +19,7 @@ import { useUsers } from "@/contexts/UsersContext";
 import { useTournaments } from "@/contexts/TournamentsContext";
 import { Tournament } from "@/interfaces/tournament.interface";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
 
 export default function CreateTournament() {
   const t = useI18n();
@@ -114,14 +115,16 @@ export default function CreateTournament() {
                   </Select.Content>
                 </Select.Root>
               ) : (
-                <Callout.Root color="red" className="mt-3 mb-3">
-                  <Callout.Icon>
-                    <InfoCircledIcon />
-                  </Callout.Icon>
-                  <Callout.Text>
-                    {t("tournaments.create.blindStructureErr")}
-                  </Callout.Text>
-                </Callout.Root>
+                <Link href={"/blinds"}>
+                  <Callout.Root color="red" className="mt-3 mb-3">
+                    <Callout.Icon>
+                      <InfoCircledIcon />
+                    </Callout.Icon>
+                    <Callout.Text>
+                      {t("tournaments.create.blindStructureErr")}
+                    </Callout.Text>
+                  </Callout.Root>
+                </Link>
               )}
             </label>
 
