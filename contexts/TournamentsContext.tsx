@@ -34,10 +34,10 @@ type TournamentsContextType = {
     playerIds: string[],
   ) => Promise<void>;
   removeTournament: (id: string) => Promise<void>;
-  getTournamentById: (id: string) => Promise<{
+  getTournamentById: (id: string) => {
     tournament: Tournament | undefined;
     participations: TournamentParticipation[] | undefined;
-  }>;
+  };
 };
 
 const TournamentContext = createContext<TournamentsContextType | null>(null);
@@ -152,20 +152,18 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const getTournamentById = async (
+  const getTournamentById = (
     id: string,
-  ): Promise<{
+  ): {
     tournament: Tournament | undefined;
     participations: TournamentParticipation[] | undefined;
-  }> => {
-    const result = {
+  } => {
+    return {
       tournament: tournaments.find(
         (tournament: Tournament) => tournament.id === id,
       ),
       participations: participations.filter((p) => p.tournamentId === id),
     };
-
-    return result;
   };
 
   useEffect(() => {
