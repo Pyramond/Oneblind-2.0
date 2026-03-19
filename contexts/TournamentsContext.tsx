@@ -29,8 +29,15 @@ type TournamentsContextType = {
   participations: Array<TournamentParticipation>;
   update: () => Promise<void>;
   addTournament: (tournament: Tournament, playerIds: string[]) => Promise<void>;
-  updateTournament: (tournament: Tournament, playerIds: string[]) => Promise<void>;
+  updateTournament: (
+    tournament: Tournament,
+    playerIds: string[],
+  ) => Promise<void>;
   removeTournament: (id: string) => Promise<void>;
+  getTournamentById: (id: string) => Promise<{
+    tournament: Tournament | undefined;
+    participations: TournamentParticipation[] | undefined;
+  }>;
 };
 
 const TournamentContext = createContext<TournamentsContextType | null>(null);
@@ -92,7 +99,10 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const updateTournament = async (tournament: Tournament, playerIds: string[]) => {
+  const updateTournament = async (
+    tournament: Tournament,
+    playerIds: string[],
+  ) => {
     try {
       await updateDoc(doc(db, "tournaments", tournament.id!), {
         name: tournament.name,
@@ -103,7 +113,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
 
       const participationsQuery = query(
         collection(db, "participations"),
-        where("tournamentId", "==", tournament.id)
+        where("tournamentId", "==", tournament.id),
       );
       const participationsSnapshot = await getDocs(participationsQuery);
       for (const participation of participationsSnapshot.docs) {
@@ -128,7 +138,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
     try {
       const participationsQuery = query(
         collection(db, "participations"),
-        where("tournamentId", "==", id)
+        where("tournamentId", "==", id),
       );
       const participationsSnapshot = await getDocs(participationsQuery);
       for (const participation of participationsSnapshot.docs) {
@@ -140,6 +150,22 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
     } catch (error) {
       console.error("Error :", error);
     }
+  };
+
+  const getTournamentById = async (
+    id: string,
+  ): Promise<{
+    tournament: Tournament | undefined;
+    participations: TournamentParticipation[] | undefined;
+  }> => {
+    const result = {
+      tournament: tournaments.find(
+        (tournament: Tournament) => tournament.id === id,
+      ),
+      participations: participations.filter((p) => p.tournamentId === id),
+    };
+
+    return result;
   };
 
   useEffect(() => {
@@ -157,6 +183,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
         updateTournament,
         update,
         removeTournament,
+        getTournamentById,
       }}
     >
       {children}
