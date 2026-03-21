@@ -43,6 +43,8 @@ export default function TournamentDashboardPage(): ReactNode {
   }, [
     getBlindStructureById,
     getUserById,
+    id,
+    removeParticipation,
     tournament.participations,
     tournament.tournament?.blindStructureId,
   ]);
