@@ -1,22 +1,13 @@
 "use client";
 
 import { Tournament } from "@/interfaces/tournament.interface";
-import {
-  Badge,
-  Button,
-  Card,
-  ContextMenu,
-  Flex,
-  Text,
-  Tooltip,
-} from "@radix-ui/themes";
+import { Badge, Button, Card, Flex, Text, Tooltip } from "@radix-ui/themes";
 import Link from "next/link";
 import { useI18n } from "@/locales/client";
 import { useBlinds } from "@/contexts/BlindsContext";
 import { useTournaments } from "@/contexts/TournamentsContext";
-import DeleteTournamentItem from "./DeleteTournamentItem";
 import { InfoCircledIcon } from "@radix-ui/react-icons";
-import EditTournamentItem from "@/app/[locale]/tournaments/components/EditTournamentItem";
+import TournamentCardContextMenu from "./TournamentCardContextMenu";
 
 export default function TournamentCard({
   tournament,
@@ -40,79 +31,63 @@ export default function TournamentCard({
     : null;
 
   return (
-    <ContextMenu.Root>
-      <ContextMenu.Trigger>
-        <Card>
-          <div className="flex items-center justify-between gap-4">
-            <div className="flex flex-col gap-1 flex-1">
-              <Flex align="center" gap="2">
-                <Text size="4" weight="bold">
-                  {tournament.name}
-                </Text>
-                {tournament.countPoints ? (
-                  <Badge color="blue">
-                    {t("tournaments.card.countPoints.yes")}
-                  </Badge>
-                ) : (
-                  <Badge color="orange">
-                    {t("tournaments.card.countPoints.no")}
-                  </Badge>
-                )}
-              </Flex>
+    <TournamentCardContextMenu tournament={tournament}>
+      <Card>
+        <div className="flex items-center justify-between gap-4">
+          <div className="flex flex-col gap-1 flex-1">
+            <Flex align="center" gap="2">
+              <Text size="4" weight="bold">
+                {tournament.name}
+              </Text>
+              {tournament.countPoints ? (
+                <Badge color="blue">
+                  {t("tournaments.card.countPoints.yes")}
+                </Badge>
+              ) : (
+                <Badge color="orange">
+                  {t("tournaments.card.countPoints.no")}
+                </Badge>
+              )}
+            </Flex>
 
-              <Flex gap="4" wrap="wrap">
-                {date && (
-                  <Text size="2" color="gray">
-                    {date}
-                  </Text>
-                )}
-                {blindStructure ? (
-                  <Text size="2" color="gray">
-                    {t("tournaments.card.blindStructure")} :{" "}
-                    {blindStructure.name}
-                  </Text>
-                ) : (
-                  <Tooltip
-                    content={t(
-                      "tournaments.card.blindStructureNotFoundTooltipContent",
-                    )}
-                  >
-                    <Badge color={"red"} className={"hover:cursor-pointer"}>
-                      <InfoCircledIcon />
-                      <Text>
-                        {t("tournaments.card.blindStructureNotFound")}
-                      </Text>
-                    </Badge>
-                  </Tooltip>
-                )}
+            <Flex gap="4" wrap="wrap">
+              {date && (
                 <Text size="2" color="gray">
-                  {t("tournaments.card.startingStack")} :{" "}
-                  {tournament.startingStack}
+                  {date}
                 </Text>
+              )}
+              {blindStructure ? (
                 <Text size="2" color="gray">
-                  {t("tournaments.card.playerCount")} : {playerCount}
+                  {t("tournaments.card.blindStructure")} :{" "}
+                  {blindStructure.name}
                 </Text>
-              </Flex>
-            </div>
-
-            <Link href={`/tournaments/${tournament.id}`}>
-              <Button variant="soft">{t("common.open")}</Button>
-            </Link>
+              ) : (
+                <Tooltip
+                  content={t(
+                    "tournaments.card.blindStructureNotFoundTooltipContent",
+                  )}
+                >
+                  <Badge color={"red"} className={"hover:cursor-pointer"}>
+                    <InfoCircledIcon />
+                    <Text>{t("tournaments.card.blindStructureNotFound")}</Text>
+                  </Badge>
+                </Tooltip>
+              )}
+              <Text size="2" color="gray">
+                {t("tournaments.card.startingStack")} :{" "}
+                {tournament.startingStack}
+              </Text>
+              <Text size="2" color="gray">
+                {t("tournaments.card.playerCount")} : {playerCount}
+              </Text>
+            </Flex>
           </div>
-        </Card>
-      </ContextMenu.Trigger>
-      <ContextMenu.Content>
-        <Link href={`/tournaments/${tournament.id}`}>
-          <ContextMenu.Item>{t("common.open")}</ContextMenu.Item>
-        </Link>
-        {tournament.id && <EditTournamentItem tournament={tournament} />}
-        {tournament.id && (
-          <DeleteTournamentItem
-            tournamentId={tournament.id}
-            tournamentName={tournament.name}
-          />
-        )}
-      </ContextMenu.Content>
-    </ContextMenu.Root>
+
+          <Link href={`/tournaments/${tournament.id}`}>
+            <Button variant="soft">{t("common.open")}</Button>
+          </Link>
+        </div>
+      </Card>
+    </TournamentCardContextMenu>
   );
 }
