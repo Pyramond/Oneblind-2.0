@@ -38,6 +38,7 @@ type TournamentsContextType = {
     tournament: Tournament | undefined;
     participations: TournamentParticipation[] | undefined;
   };
+  removeParticipation: (tournamentId: string, playerId: string) => Promise<void>;
 };
 
 const TournamentContext = createContext<TournamentsContextType | null>(null);
@@ -134,6 +135,26 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const removeParticipation = async (
+    tournamentId: string,
+    playerId: string,
+  ) => {
+    try {
+      const participationsQuery = query(
+        collection(db, "participations"),
+        where("tournamentId", "==", tournamentId),
+        where("playerId", "==", playerId),
+      );
+      const participationsSnapshot = await getDocs(participationsQuery);
+      for (const participation of participationsSnapshot.docs) {
+        await deleteDoc(doc(db, "participations", participation.id));
+      }
+      await update();
+    } catch (error) {
+      console.error("Error :", error);
+    }
+  };
+
   const removeTournament = async (id: string) => {
     try {
       const participationsQuery = query(
@@ -182,6 +203,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
         update,
         removeTournament,
         getTournamentById,
+        removeParticipation,
       }}
     >
       {children}

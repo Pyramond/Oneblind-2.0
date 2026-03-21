@@ -23,7 +23,7 @@ type BlindContextType = {
   blindStructures: BlindStructure[];
   addBlindStructure: (structure: BlindStructure) => void;
   removeBlindStructure: (id: string) => void;
-  getBlindStructureById: (id: string) => BlindStructure | undefined;
+  getBlindStructureById: (id: string | undefined) => BlindStructure | undefined;
   update: () => Promise<void>;
 };
 
@@ -49,7 +49,7 @@ export function BlindProvider({ children }: { children: ReactNode }) {
     await update();
   }
 
-  function getBlindStructureById(id: string): BlindStructure | undefined {
+  function getBlindStructureById(id: string | undefined): BlindStructure | undefined {
     return blindStructures.find((structure) => structure.id === id);
   }
 

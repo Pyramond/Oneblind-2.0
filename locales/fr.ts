@@ -130,6 +130,15 @@ export default {
       initialStackErr: "Le tapis de départ doit être supérieur à zéro",
     },
 
+    dashboard: {
+      cannotStart: {
+        title: "Tournoi non prêt",
+        description:
+          "La configuration du tournoi est incomplète. Veuillez vérifier la structure de blinds et les joueurs inscrits.",
+        btn: "Retour",
+      },
+    },
+
     card: {
       viewBtn: "Voir",
       blindStructure: "Structure des blinds",

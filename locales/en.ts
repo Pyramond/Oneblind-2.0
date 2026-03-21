@@ -135,6 +135,15 @@ export default {
       initialStackErr: "The initial stack must be greater than zero",
     },
 
+    dashboard: {
+      cannotStart: {
+        title: "Tournament not ready",
+        description:
+          "The tournament configuration is incomplete. Please check the blind structure and registered players.",
+        btn: "Go back",
+      },
+    },
+
     card: {
       viewBtn: "View",
       blindStructure: "Blind structure",
