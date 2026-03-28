@@ -133,6 +133,8 @@ export default {
     list: {
       ongoingOnly: "En cours",
       all: "Tous les tournois",
+      sortNewest: "Plus récents",
+      sortOldest: "Plus anciens",
     },
 
     dashboard: {

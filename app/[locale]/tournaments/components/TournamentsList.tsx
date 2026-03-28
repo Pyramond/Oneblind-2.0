@@ -11,6 +11,15 @@ export default function TournamentsList(): ReactNode {
   const t = useI18n();
 
   const [displayFinishedTournaments, setDisplayFinishedTournaments] = useState<boolean>(false);
+  const [sortOrder, setSortOrder] = useState<"newest" | "oldest">("newest");
+
+  const sorted = [...tournaments]
+    .filter((tournament) => displayFinishedTournaments || !tournament.finished)
+    .sort((a, b) => {
+      const aSeconds = a.date?.seconds ?? 0;
+      const bSeconds = b.date?.seconds ?? 0;
+      return sortOrder === "newest" ? bSeconds - aSeconds : aSeconds - bSeconds;
+    });
 
   return (
     <div className="flex flex-col gap-3">
@@ -20,9 +29,14 @@ export default function TournamentsList(): ReactNode {
           <SegmentedControl.Item value={"false"}>{t("tournaments.list.ongoingOnly")}</SegmentedControl.Item>
           <SegmentedControl.Item value={"true"}>{t("tournaments.list.all")}</SegmentedControl.Item>
         </SegmentedControl.Root>
+
+        <SegmentedControl.Root defaultValue={"newest"} onValueChange={(value) => setSortOrder(value as "newest" | "oldest")}>
+          <SegmentedControl.Item value={"newest"}>{t("tournaments.list.sortNewest")}</SegmentedControl.Item>
+          <SegmentedControl.Item value={"oldest"}>{t("tournaments.list.sortOldest")}</SegmentedControl.Item>
+        </SegmentedControl.Root>
       </div>
 
-      {tournaments.filter((t) => displayFinishedTournaments || !t.finished).map((tournament) => (
+      {sorted.map((tournament) => (
           <TournamentCard key={tournament.id} tournament={tournament} />
       ))}
     </div>
