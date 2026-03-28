@@ -34,27 +34,25 @@ export default function PLayerCard({ user }: { user: User }) {
     <>
       <ContextMenu.Root key={user.id}>
         <ContextMenu.Trigger>
-          <Link className={"hover:cursor-pointer"} href={`/players/${user.id}`}>
-            <Box maxWidth="240px">
-              <Card>
-                <Flex gap="3" align="center">
-                  <Avatar
-                    size="4"
-                    src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${user.name}&backgroundColor=65c9ff,b6e3f4`}
-                    radius="full"
-                    fallback="T"
-                  />
-                  <Box>
-                    <Text as="div" size="4" weight="bold">
-                      {user.name}
-                    </Text>
-                    <Text as="div" size="4" color="gray">
-                      {user.points} {user.points > 0 ? "points" : "point"}
-                    </Text>
-                  </Box>
-                </Flex>
-              </Card>
-            </Box>
+          <Link className={"hover:cursor-pointer block h-full"} href={`/players/${user.id}`}>
+            <Card className="h-full">
+              <Flex gap="3" align="center">
+                <Avatar
+                  size="3"
+                  src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${user.name}&backgroundColor=65c9ff,b6e3f4`}
+                  radius="full"
+                  fallback="T"
+                />
+                <Box className="min-w-0">
+                  <Text as="div" size="2" weight="bold" truncate>
+                    {user.name}
+                  </Text>
+                  <Text as="div" size="2" color="gray">
+                    {user.points} {user.points > 0 ? "points" : "point"}
+                  </Text>
+                </Box>
+              </Flex>
+            </Card>
           </Link>
         </ContextMenu.Trigger>
         <ContextMenu.Content>

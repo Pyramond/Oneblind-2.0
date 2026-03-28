@@ -8,7 +8,7 @@ export default function PlayersList() {
   const { users } = useUsers();
 
   return (
-    <div className="grid grid-cols-6 gap-x-3 gap-y-6">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-3">
       {users.map((user: User) => (
         <PLayerCard user={user} key={user.id} />
       ))}
