@@ -62,6 +62,7 @@ export default function CreateTournament() {
       blindStructureId,
       startingStack: Number(startingStack),
       countPoints,
+      finished: false,
     };
 
     addTournament(tournament, playerIds);

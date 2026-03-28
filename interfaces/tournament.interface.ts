@@ -7,6 +7,7 @@ export interface Tournament {
   startingStack: number;
   blindStructureId: string;
   date?: DateInterface;
+  finished: boolean;
 }
 
 export interface TournamentParticipation {

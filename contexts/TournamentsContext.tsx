@@ -60,6 +60,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
       blindStructureId: doc.data().blindStructureId,
       startingStack: doc.data().startingStack,
       date: doc.data().date,
+      finished: doc.data().finished,
     }));
 
     setTournaments(tournamentsList);
@@ -84,6 +85,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
         blindStructureId: tournament.blindStructureId,
         startingStack: tournament.startingStack,
         date: Timestamp.fromDate(new Date()),
+        finished: tournament.finished,
       });
 
       for (const id of playerIds) {
