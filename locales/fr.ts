@@ -26,6 +26,11 @@ export default {
     playerList: {
       profileBtn: "Profil",
 
+      sort: {
+        points: "Nombre de points",
+        creationDate: "Date d'inscription",
+      },
+
       delete: {
         deleteBtn: "Supprimer",
         title: "Êtes-vous sûr de vouloir supprimer {name} ?",
