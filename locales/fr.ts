@@ -130,6 +130,11 @@ export default {
       initialStackErr: "Le tapis de départ doit être supérieur à zéro",
     },
 
+    list: {
+      ongoingOnly: "En cours",
+      all: "Tous les tournois",
+    },
+
     dashboard: {
       cannotStart: {
         title: "Tournoi non prêt",

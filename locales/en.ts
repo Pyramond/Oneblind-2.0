@@ -135,6 +135,11 @@ export default {
       initialStackErr: "The initial stack must be greater than zero",
     },
 
+    list: {
+      ongoingOnly: "Ongoing",
+      all: "All tournaments",
+    },
+
     dashboard: {
       cannotStart: {
         title: "Tournament not ready",
