@@ -147,6 +147,11 @@ export default {
           "The tournament configuration is incomplete. Please check the blind structure and registered players.",
         btn: "Go back",
       },
+      finished: {
+        title: "Tournament finished",
+        description: "This tournament is already finished and cannot be started.",
+        btn: "Go back",
+      },
     },
 
     card: {

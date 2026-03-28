@@ -49,6 +49,28 @@ export default function TournamentDashboardPage(): ReactNode {
     tournament.tournament?.blindStructureId,
   ]);
 
+  if (tournament.tournament?.finished)
+    return (
+      <div className="flex min-h-screen items-center justify-center">
+        <Card size="4" className="w-full max-w-sm">
+          <Flex direction="column" align="center" gap="4">
+            <Heading size="6" color="red">
+              {t("tournaments.dashboard.finished.title")}
+            </Heading>
+            <Text color="gray" align="center">
+              {t("tournaments.dashboard.finished.description")}
+            </Text>
+
+            <Link href={"/tournaments"}>
+              <Button size={"3"}>
+                {t("tournaments.dashboard.finished.btn")}
+              </Button>
+            </Link>
+          </Flex>
+        </Card>
+      </div>
+    );
+
   if (!canStart)
     return (
       <div className="flex min-h-screen items-center justify-center">

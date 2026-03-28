@@ -142,6 +142,11 @@ export default {
           "La configuration du tournoi est incomplète. Veuillez vérifier la structure de blinds et les joueurs inscrits.",
         btn: "Retour",
       },
+      finished: {
+        title: "Tournoi terminé",
+        description: "Ce tournoi est déjà terminé et ne peut plus être lancé.",
+        btn: "Retour",
+      },
     },
 
     card: {
