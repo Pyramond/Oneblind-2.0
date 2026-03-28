@@ -21,10 +21,14 @@ export default function TournamentCardContextMenu({
     <ContextMenu.Root>
       <ContextMenu.Trigger>{children}</ContextMenu.Trigger>
       <ContextMenu.Content>
-        <Link href={`/tournaments/${tournament.id}`}>
-          <ContextMenu.Item>{t("common.open")}</ContextMenu.Item>
-        </Link>
-        {tournament.id && <EditTournamentItem tournament={tournament} />}
+        {!tournament.finished && (
+          <Link href={`/tournaments/${tournament.id}`}>
+            <ContextMenu.Item>{t("common.open")}</ContextMenu.Item>
+          </Link>
+        )}
+        {tournament.id && !tournament.finished && (
+          <EditTournamentItem tournament={tournament} />
+        )}
         {tournament.id && (
           <DeleteTournamentItem
             tournamentId={tournament.id}
