@@ -145,6 +145,7 @@ export default {
     },
 
     card: {
+      finished: "Terminé",
       viewBtn: "Voir",
       blindStructure: "Structure des blinds",
       startingStack: "Tapis de départ",

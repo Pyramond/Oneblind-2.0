@@ -150,6 +150,7 @@ export default {
     },
 
     card: {
+      finished: "Completed",
       viewBtn: "View",
       blindStructure: "Blind structure",
       startingStack: "Starting stack",

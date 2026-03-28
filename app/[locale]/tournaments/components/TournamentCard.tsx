@@ -58,8 +58,7 @@ export default function TournamentCard({
               )}
               {blindStructure ? (
                 <Text size="2" color="gray">
-                  {t("tournaments.card.blindStructure")} :{" "}
-                  {blindStructure.name}
+                  {t("tournaments.card.blindStructure")} : {blindStructure.name}
                 </Text>
               ) : (
                 <Tooltip
@@ -83,9 +82,15 @@ export default function TournamentCard({
             </Flex>
           </div>
 
-          <Link href={`/tournaments/${tournament.id}`}>
-            <Button variant="soft">{t("common.open")}</Button>
-          </Link>
+          {tournament.finished ? (
+            <Badge color={"green"} size={"3"}>
+              {t("tournaments.card.finished")}
+            </Badge>
+          ) : (
+            <Link href={`/tournaments/${tournament.id}`}>
+              <Button variant="soft">{t("common.open")}</Button>
+            </Link>
+          )}
         </div>
       </Card>
     </TournamentCardContextMenu>
