@@ -132,6 +132,7 @@ export default {
 
     list: {
       ongoingOnly: "En cours",
+      finishedOnly: "Terminés",
       all: "Tous les tournois",
       sortNewest: "Plus récents",
       sortOldest: "Plus anciens",

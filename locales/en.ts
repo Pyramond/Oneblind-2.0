@@ -137,6 +137,7 @@ export default {
 
     list: {
       ongoingOnly: "Ongoing",
+      finishedOnly: "Finished",
       all: "All tournaments",
       sortNewest: "Newest",
       sortOldest: "Oldest",
@@ -151,7 +152,8 @@ export default {
       },
       finished: {
         title: "Tournament finished",
-        description: "This tournament is already finished and cannot be started.",
+        description:
+          "This tournament is already finished and cannot be started.",
         btn: "Go back",
       },
     },
