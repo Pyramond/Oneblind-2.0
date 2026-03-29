@@ -14,6 +14,7 @@ export default function CheckFirebase({
   const db = getFirebaseConfig();
   const [apiKey, setApiKey] = useState("");
   const [projectId, setProjectId] = useState("");
+  const [open, setOpen] = useState(!db);
 
   function save() {
     if (!apiKey || !projectId) return;
@@ -26,7 +27,7 @@ export default function CheckFirebase({
     <>
       {children}
 
-      <AlertDialog.Root open={!db}>
+      <AlertDialog.Root open={open}>
         <AlertDialog.Content maxWidth="450px">
           <AlertDialog.Title>
             {t("settings.firebase.setup.title")}
@@ -61,6 +62,12 @@ export default function CheckFirebase({
           </Flex>
 
           <Flex gap="3" mt="4" justify="end">
+            <AlertDialog.Cancel>
+              <Button color="gray" onClick={() => setOpen(false)}>
+                {t("common.cancel")}
+              </Button>
+            </AlertDialog.Cancel>
+
             <AlertDialog.Action>
               <Button
                 variant="solid"
