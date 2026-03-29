@@ -5,6 +5,7 @@ import ColorSelection from "@/app/[locale]/settings/components/appearance/ColorS
 import RadiusSelection from "@/app/[locale]/settings/components/appearance/RadiusSelection";
 import LogoThemeSelection from "@/app/[locale]/settings/components/appearance/LogoThemeSelection";
 import LanguageSelection from "@/app/[locale]/settings/components/other/LanguageSelection";
+import FirebaseStatus from "@/app/[locale]/settings/components/firebase/FirebaseStatus";
 
 export default async function SettingsPage() {
   const t = await getI18n();
@@ -14,6 +15,10 @@ export default async function SettingsPage() {
       <Title level={"h2"}>{t("settings.title")}</Title>
 
       <div className={"mt-5 flex flex-col gap-5"}>
+        <SettingsCard title={"Firebase"}>
+          <FirebaseStatus />
+        </SettingsCard>
+
         <SettingsCard title={t("settings.other.title")}>
           <LanguageSelection />
         </SettingsCard>

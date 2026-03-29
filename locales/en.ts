@@ -199,6 +199,11 @@ export default {
       },
     },
 
+    firebase: {
+      connected: "Connected to {name}",
+      disconnected: "Not connected to Firebase",
+    },
+
     appearance: {
       title: "Appearance",
       radius: {
