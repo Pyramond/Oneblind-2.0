@@ -17,7 +17,7 @@ import {
   getDocs,
   query,
 } from "firebase/firestore";
-import { db } from "@/firebase-config";
+import getFirebaseConfig from "@/utils/firebase/getFirebaseConfig";
 
 type BlindContextType = {
   blindStructures: BlindStructure[];
@@ -33,6 +33,8 @@ export function BlindProvider({ children }: { children: ReactNode }) {
   const [blindStructures, setBlindStructures] = useState<BlindStructure[]>([]);
 
   async function addBlindStructure(structure: BlindStructure): Promise<void> {
+    const db = getFirebaseConfig();
+    if (!db) return;
     try {
       await addDoc(collection(db, "blind_structures"), {
         name: structure.name,
@@ -45,6 +47,8 @@ export function BlindProvider({ children }: { children: ReactNode }) {
   }
 
   async function removeBlindStructure(id: string): Promise<void> {
+    const db = getFirebaseConfig();
+    if (!db) return;
     await deleteDoc(doc(db, "blind_structures", id));
     await update();
   }
@@ -54,18 +58,24 @@ export function BlindProvider({ children }: { children: ReactNode }) {
   }
 
   async function update(): Promise<void> {
-    const q = query(collection(db, "blind_structures"));
-    const querySnapshot = await getDocs(q);
+    const db = getFirebaseConfig();
+    if (!db) return;
+    try {
+      const q = query(collection(db, "blind_structures"));
+      const querySnapshot = await getDocs(q);
 
-    const blindStructuresList: BlindStructure[] = querySnapshot.docs.map(
-      (doc) => ({
-        id: doc.id,
-        name: doc.data().name,
-        steps: doc.data().steps,
-      }),
-    );
+      const blindStructuresList: BlindStructure[] = querySnapshot.docs.map(
+        (doc) => ({
+          id: doc.id,
+          name: doc.data().name,
+          steps: doc.data().steps,
+        }),
+      );
 
-    setBlindStructures(blindStructuresList);
+      setBlindStructures(blindStructuresList);
+    } catch (error) {
+      console.error("Error fetching blind structures:", error);
+    }
   }
 
   useEffect(() => {

@@ -17,7 +17,7 @@ import {
   query,
   Timestamp,
 } from "firebase/firestore";
-import { db } from "@/firebase-config";
+import getFirebaseConfig from "@/utils/firebase/getFirebaseConfig";
 
 type UsersContextType = {
   users: User[];
@@ -33,17 +33,23 @@ export function UsersProvider({ children }: { children: ReactNode }) {
   const [users, setUsers] = useState<User[]>([]);
 
   const update = async () => {
-    const q = query(collection(db, "users"));
-    const querySnapshot = await getDocs(q);
+    const db = getFirebaseConfig();
+    if (!db) return;
+    try {
+      const q = query(collection(db, "users"));
+      const querySnapshot = await getDocs(q);
 
-    const usersList: User[] = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      name: doc.data().name,
-      points: doc.data().points,
-      creationDate: doc.data().creationDate,
-    }));
+      const usersList: User[] = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        name: doc.data().name,
+        points: doc.data().points,
+        creationDate: doc.data().creationDate,
+      }));
 
-    setUsers(usersList);
+      setUsers(usersList);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+    }
   };
 
   function getUserById(id: string): User | undefined {
@@ -51,6 +57,8 @@ export function UsersProvider({ children }: { children: ReactNode }) {
   }
 
   const addUser = async (userName: string) => {
+    const db = getFirebaseConfig();
+    if (!db) return;
     try {
       await addDoc(collection(db, "users"), {
         name: userName,
@@ -64,6 +72,8 @@ export function UsersProvider({ children }: { children: ReactNode }) {
   };
 
   const removeUser = async (id: string) => {
+    const db = getFirebaseConfig();
+    if (!db) return;
     await deleteDoc(doc(db, "users", id));
     await update();
   };

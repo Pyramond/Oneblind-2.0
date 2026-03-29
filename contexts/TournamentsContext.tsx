@@ -22,7 +22,7 @@ import {
   updateDoc,
   where,
 } from "firebase/firestore";
-import { db } from "@/firebase-config";
+import getFirebaseConfig from "@/utils/firebase/getFirebaseConfig";
 
 type TournamentsContextType = {
   tournaments: Array<Tournament>;
@@ -50,34 +50,42 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
   >([]);
 
   const update = async () => {
-    const q = query(collection(db, "tournaments"));
-    const querySnapshot = await getDocs(q);
+    const db = getFirebaseConfig();
+    if (!db) return;
+    try {
+      const q = query(collection(db, "tournaments"));
+      const querySnapshot = await getDocs(q);
 
-    const tournamentsList: Tournament[] = querySnapshot.docs.map((doc) => ({
-      id: doc.id,
-      name: doc.data().name,
-      countPoints: doc.data().countPoints,
-      blindStructureId: doc.data().blindStructureId,
-      startingStack: doc.data().startingStack,
-      date: doc.data().date,
-      finished: doc.data().finished,
-    }));
+      const tournamentsList: Tournament[] = querySnapshot.docs.map((doc) => ({
+        id: doc.id,
+        name: doc.data().name,
+        countPoints: doc.data().countPoints,
+        blindStructureId: doc.data().blindStructureId,
+        startingStack: doc.data().startingStack,
+        date: doc.data().date,
+        finished: doc.data().finished,
+      }));
 
-    setTournaments(tournamentsList);
+      setTournaments(tournamentsList);
 
-    const pQuery = query(collection(db, "participations"));
-    const pSnapshot = await getDocs(pQuery);
-    const participationsList: TournamentParticipation[] = pSnapshot.docs.map(
-      (doc) => ({
-        playerId: doc.data().playerId,
-        tournamentId: doc.data().tournamentId,
-        rank: doc.data().rank,
-      }),
-    );
-    setParticipations(participationsList);
+      const pQuery = query(collection(db, "participations"));
+      const pSnapshot = await getDocs(pQuery);
+      const participationsList: TournamentParticipation[] = pSnapshot.docs.map(
+        (doc) => ({
+          playerId: doc.data().playerId,
+          tournamentId: doc.data().tournamentId,
+          rank: doc.data().rank,
+        }),
+      );
+      setParticipations(participationsList);
+    } catch (error) {
+      console.error("Error fetching tournaments:", error);
+    }
   };
 
   const addTournament = async (tournament: Tournament, playerIds: string[]) => {
+    const db = getFirebaseConfig();
+    if (!db) return;
     try {
       const docRef = await addDoc(collection(db, "tournaments"), {
         name: tournament.name,
@@ -106,6 +114,8 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
     tournament: Tournament,
     playerIds: string[],
   ) => {
+    const db = getFirebaseConfig();
+    if (!db) return;
     try {
       await updateDoc(doc(db, "tournaments", tournament.id!), {
         name: tournament.name,
@@ -141,6 +151,8 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
     tournamentId: string,
     playerId: string,
   ) => {
+    const db = getFirebaseConfig();
+    if (!db) return;
     try {
       const participationsQuery = query(
         collection(db, "participations"),
@@ -158,6 +170,8 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
   };
 
   const removeTournament = async (id: string) => {
+    const db = getFirebaseConfig();
+    if (!db) return;
     try {
       const participationsQuery = query(
         collection(db, "participations"),
