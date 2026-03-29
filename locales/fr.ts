@@ -204,6 +204,7 @@ export default {
         apiKey: "Clé API",
         projectId: "Identifiant du projet",
         connectBtn: "Connecter",
+        editBtn: "Modifier",
       },
     },
 

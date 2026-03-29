@@ -210,6 +210,7 @@ export default {
         apiKey: "API Key",
         projectId: "Project ID",
         connectBtn: "Connect",
+        editBtn: "Edit",
       },
     },
 
