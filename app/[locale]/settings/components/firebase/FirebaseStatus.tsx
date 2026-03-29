@@ -20,7 +20,10 @@ export default function FirebaseStatus() {
       />
 
       <Title level={"h4"}>
-        {db && t("settings.firebase.connected", { name: localStorage.getItem("fireabse.projectId") ?? "" })}
+        {db &&
+          t("settings.firebase.connected", {
+            name: localStorage.getItem("firebase.projectId") ?? "",
+          })}
         {!db && t("settings.firebase.disconnected")}
       </Title>
     </div>

@@ -2,8 +2,8 @@ import { FirebaseApp, getApps, initializeApp } from "firebase/app";
 import { Firestore, getFirestore } from "firebase/firestore";
 
 export default function getFirebaseConfig(): Firestore | null {
-  const apiKey: string | null = localStorage.getItem("fireabse.apiKey");
-  const projectId: string | null = localStorage.getItem("fireabse.projectId");
+  const apiKey: string | null = localStorage.getItem("firebase.apiKey");
+  const projectId: string | null = localStorage.getItem("firebase.projectId");
 
   if (!projectId || !apiKey) return null;
 

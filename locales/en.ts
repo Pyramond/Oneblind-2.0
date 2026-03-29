@@ -202,6 +202,15 @@ export default {
     firebase: {
       connected: "Connected to {name}",
       disconnected: "Not connected to Firebase",
+
+      setup: {
+        title: "Firebase not configured",
+        description: "Enter your Firebase credentials to get started.",
+        link: "Set up a Firebase project",
+        apiKey: "API Key",
+        projectId: "Project ID",
+        connectBtn: "Connect",
+      },
     },
 
     appearance: {
