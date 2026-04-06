@@ -211,6 +211,7 @@ export default {
         projectId: "Project ID",
         connectBtn: "Connect",
         editBtn: "Edit",
+        refreshBtn: "Refresh",
 
         update: {
           title: "Update Firebase configuration",

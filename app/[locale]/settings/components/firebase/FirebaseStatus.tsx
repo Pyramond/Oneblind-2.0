@@ -5,7 +5,7 @@ import { Firestore } from "firebase/firestore";
 import Image from "next/image";
 import Title from "@/components/Title/Title";
 import { useI18n } from "@/locales/client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   AlertDialog,
   Button,
@@ -14,11 +14,13 @@ import {
   TextField,
   Tooltip,
 } from "@radix-ui/themes";
-import { Pencil1Icon } from "@radix-ui/react-icons";
+import { Pencil1Icon, SymbolIcon } from "@radix-ui/react-icons";
 
 export default function FirebaseStatus() {
   const t = useI18n();
-  const db: Firestore | null = getFirebaseConfig();
+
+  const [db, setDb] = useState<Firestore | null>(getFirebaseConfig());
+
   const [open, setOpen] = useState(false);
   const [apiKey, setApiKey] = useState(
     () => localStorage.getItem("firebase.apiKey") ?? "",
@@ -59,6 +61,15 @@ export default function FirebaseStatus() {
             onClick={() => setOpen(true)}
           >
             <Pencil1Icon width={18} height={18} />
+          </IconButton>
+        </Tooltip>
+        <Tooltip content={t("settings.firebase.setup.refreshBtn")}>
+          <IconButton
+            variant="ghost"
+            color="gray"
+            onClick={(): void => setDb(getFirebaseConfig())}
+          >
+            <SymbolIcon width={18} height={18} />
           </IconButton>
         </Tooltip>
       </div>
