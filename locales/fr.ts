@@ -205,6 +205,11 @@ export default {
         projectId: "Identifiant du projet",
         connectBtn: "Connecter",
         editBtn: "Modifier",
+
+        update: {
+          title: "Modifier la configuration Firebase",
+          description: "Renseignez vos identifiants Firebase.",
+        },
       },
     },
 

@@ -66,10 +66,10 @@ export default function FirebaseStatus() {
       <AlertDialog.Root open={open} onOpenChange={setOpen}>
         <AlertDialog.Content maxWidth="450px">
           <AlertDialog.Title>
-            {t("settings.firebase.setup.title")}
+            {t("settings.firebase.setup.update.title")}
           </AlertDialog.Title>
           <AlertDialog.Description size="2">
-            {t("settings.firebase.setup.description")}{" "}
+            {t("settings.firebase.setup.update.description")}{" "}
             <a
               href="https://github.com/Pyramond"
               className="text-blue-400 hover:underline"
