@@ -34,6 +34,8 @@ export default function CheckFirebase({
           </AlertDialog.Title>
           <AlertDialog.Description size="2">
             {t("settings.firebase.setup.description")}{" "}
+          </AlertDialog.Description>
+          <AlertDialog.Description size="2">
             <a
               href="https://github.com/Pyramond"
               className="text-blue-400 hover:underline"

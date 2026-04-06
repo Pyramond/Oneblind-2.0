@@ -70,6 +70,8 @@ export default function FirebaseStatus() {
           </AlertDialog.Title>
           <AlertDialog.Description size="2">
             {t("settings.firebase.setup.update.description")}{" "}
+          </AlertDialog.Description>
+          <AlertDialog.Description size="2">
             <a
               href="https://github.com/Pyramond"
               className="text-blue-400 hover:underline"
