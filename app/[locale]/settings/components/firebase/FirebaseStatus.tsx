@@ -14,7 +14,7 @@ import {
   TextField,
   Tooltip,
 } from "@radix-ui/themes";
-import { Pencil1Icon, SymbolIcon } from "@radix-ui/react-icons";
+import { EyeClosedIcon, EyeOpenIcon, Pencil1Icon, SymbolIcon } from "@radix-ui/react-icons";
 
 export default function FirebaseStatus() {
   const t = useI18n();
@@ -28,6 +28,7 @@ export default function FirebaseStatus() {
   const [projectId, setProjectId] = useState(
     () => localStorage.getItem("firebase.projectId") ?? "",
   );
+  const [showApiKey, setShowApiKey] = useState(false);
 
   function save() {
     if (!apiKey || !projectId) return;
@@ -95,10 +96,22 @@ export default function FirebaseStatus() {
             <label>
               <p>{t("settings.firebase.setup.apiKey")}</p>
               <TextField.Root
-                placeholder="AIzaSy..."
+                placeholder="API Key"
                 value={apiKey}
                 onChange={(e) => setApiKey(e.target.value)}
-              />
+                type={showApiKey ? "text" : "password"}
+              >
+                <TextField.Slot side="right">
+                  <IconButton
+                    size="1"
+                    variant="ghost"
+                    type="button"
+                    onClick={() => setShowApiKey((v) => !v)}
+                  >
+                    {showApiKey ? <EyeOpenIcon /> : <EyeClosedIcon />}
+                  </IconButton>
+                </TextField.Slot>
+              </TextField.Root>
             </label>
             <label>
               <p>{t("settings.firebase.setup.projectId")}</p>
