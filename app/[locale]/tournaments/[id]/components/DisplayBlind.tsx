@@ -5,6 +5,16 @@ interface Props {
 }
 
 export default function DisplayBlind({ step }: Props) {
+  if (step.type === "pause") {
+    return (
+      <div className="flex items-center justify-center h-full w-full">
+        <span className="text-[8rem] font-bold leading-none text-zinc-700 dark:text-zinc-300">
+          Pause
+        </span>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col items-center justify-center gap-2 h-full w-full">
       <span className="text-[8rem] font-bold leading-none tabular-nums text-zinc-700 dark:text-zinc-300">
