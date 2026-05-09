@@ -6,8 +6,8 @@ import {
 } from "@/interfaces/tournament.interface";
 import { BlindStructure } from "@/interfaces/blindStructure.interface";
 import { useState } from "react";
-import { Button } from "@radix-ui/themes";
 import DisplayBlind from "@/app/[locale]/tournaments/[id]/components/DisplayBlind";
+import Timer from "@/app/[locale]/tournaments/[id]/components/Timer";
 
 interface Props {
   tournament: Tournament;
@@ -20,8 +20,13 @@ export default function TournamentRunner({
   participations,
   blindStructure,
 }: Props) {
-  const [currentStep, setCurrentStep] = useState<number>(0);
-  const [steps, setSteps] = useState(blindStructure.steps);
+  const steps = blindStructure.steps;
+  const [currentStep, setCurrentStep] = useState(0);
+
+  const goToPrev = () => setCurrentStep((i) => Math.max(0, i - 1));
+  const goToNext = () => setCurrentStep((i) => Math.min(steps.length - 1, i + 1));
+
+  const step = steps[currentStep];
 
   return (
     <div className="flex flex-col h-screen w-full">
@@ -33,12 +38,14 @@ export default function TournamentRunner({
           {participations.length} joueurs
         </span>
       </header>
-      <div>
-        <Button onClick={() => setCurrentStep(currentStep - 1)}>prev</Button>
-        <Button onClick={() => setCurrentStep(currentStep + 1)}>next</Button>
-      </div>
       <div className="grid grid-cols-2 grid-rows-2 flex-1">
-        <DisplayBlind step={blindStructure.steps[currentStep]} />
+        <DisplayBlind step={step} />
+        <Timer
+          key={currentStep}
+          duration={step.time * 60}
+          onPrev={goToPrev}
+          onNext={goToNext}
+        />
       </div>
     </div>
   );
