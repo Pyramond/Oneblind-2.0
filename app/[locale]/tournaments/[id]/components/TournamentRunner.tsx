@@ -33,6 +33,10 @@ export default function TournamentRunner({
           {participations.length} joueurs
         </span>
       </header>
+      <div>
+        <Button onClick={() => setCurrentStep(currentStep - 1)}>prev</Button>
+        <Button onClick={() => setCurrentStep(currentStep + 1)}>next</Button>
+      </div>
       <div className="grid grid-cols-2 grid-rows-2 flex-1">
         <DisplayBlind step={blindStructure.steps[currentStep]} />
       </div>

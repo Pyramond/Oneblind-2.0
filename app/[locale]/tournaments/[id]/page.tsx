@@ -12,7 +12,7 @@ import { useUsers } from "@/contexts/UsersContext";
 import { Button, Card, Flex, Heading, Text } from "@radix-ui/themes";
 import { useI18n } from "@/locales/client";
 import Link from "next/link";
-import TournamentRunner from "@/components/tournaments/TournamentRunner";
+import TournamentRunner from "@/app/[locale]/tournaments/[id]/components/TournamentRunner";
 
 export default function TournamentDashboardPage(): ReactNode {
   const params = useParams();
