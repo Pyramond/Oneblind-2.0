@@ -8,7 +8,9 @@ import { BlindStructure } from "@/interfaces/blindStructure.interface";
 import { ReactNode, useState } from "react";
 import DisplayBlind from "@/app/[locale]/tournaments/[id]/components/DisplayBlind";
 import Timer from "@/app/[locale]/tournaments/[id]/components/Timer";
-import { Card } from "@radix-ui/themes";
+import { Card, IconButton } from "@radix-ui/themes";
+import { HomeIcon } from "@radix-ui/react-icons";
+import Link from "next/link";
 
 interface Props {
   tournament: Tournament;
@@ -33,9 +35,16 @@ export default function TournamentRunner({
   return (
     <div className="flex flex-col h-screen w-full">
       <header className="flex items-center justify-between px-8 py-4 border-b border-zinc-800 bg-zinc-950 shrink-0">
-        <span className="text-white text-xl font-semibold">
-          {tournament.name}
-        </span>
+        <div className={"flex flex-row gap-3 items-center"}>
+          <Link href="/">
+            <IconButton variant={"ghost"} radius={"full"}>
+              <HomeIcon width={25} height={25} />
+            </IconButton>
+          </Link>
+          <span className="text-white text-xl font-semibold">
+            {tournament.name}
+          </span>
+        </div>
         <span className="text-zinc-400 text-lg">
           {participations.length} joueurs
         </span>
