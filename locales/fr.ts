@@ -164,6 +164,7 @@ export default {
         title: "Eliminer un joueur",
         description: "Sélectionnez le joueur à éliminer du tournoi.",
       },
+      rebuy: "Recave",
     },
 
     card: {

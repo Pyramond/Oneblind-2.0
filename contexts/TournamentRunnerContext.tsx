@@ -46,7 +46,7 @@ export function TournamentRunnerProvider({
   const [remaining, setRemaining] =
     useState<TournamentParticipation[]>(participations);
   const [totalStack, setTotalStack] = useState<number>(
-    tournament.startingStack,
+    tournament.startingStack * remaining.length,
   );
 
   const goToPrev = () => setCurrentStep((i) => Math.max(0, i - 1));

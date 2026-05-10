@@ -170,6 +170,7 @@ export default {
         title: "Eliminate a player",
         description: "Select the player to eliminate from the tournament.",
       },
+      rebuy: "Rebuy",
     },
 
     card: {
