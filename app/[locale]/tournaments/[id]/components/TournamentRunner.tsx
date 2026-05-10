@@ -5,12 +5,14 @@ import {
   TournamentParticipation,
 } from "@/interfaces/tournament.interface";
 import { BlindStructure } from "@/interfaces/blindStructure.interface";
-import { useState } from "react";
-import { useTournaments } from "@/contexts/TournamentsContext";
 import { useI18n } from "@/locales/client";
 import DisplayBlind from "@/app/[locale]/tournaments/[id]/components/DisplayBlind";
 import Timer from "@/app/[locale]/tournaments/[id]/components/Timer";
 import ToolBar from "@/app/[locale]/tournaments/[id]/components/ToolBar";
+import {
+  TournamentRunnerProvider,
+  useTournamentRunner,
+} from "@/contexts/TournamentRunnerContext";
 import { Card, IconButton } from "@radix-ui/themes";
 import { HomeIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
@@ -21,28 +23,10 @@ interface Props {
   blindStructure: BlindStructure;
 }
 
-export default function TournamentRunner({
-  tournament,
-  participations,
-  blindStructure,
-}: Props) {
-  const { updateParticipationRank } = useTournaments();
+function TournamentRunnerContent() {
+  const { tournament, step, currentStep, remaining, goToPrev, goToNext } =
+    useTournamentRunner();
   const t = useI18n();
-  const steps = blindStructure.steps;
-  const [currentStep, setCurrentStep] = useState(0);
-  const [remaining, setRemaining] = useState<TournamentParticipation[]>(participations);
-
-  const goToPrev = () => setCurrentStep((i) => Math.max(0, i - 1));
-  const goToNext = () =>
-    setCurrentStep((i) => Math.min(steps.length - 1, i + 1));
-
-  const eliminatePlayer = (playerId: string) => {
-    const rank = remaining.length;
-    void updateParticipationRank(tournament.id!, playerId, rank);
-    setRemaining((prev) => prev.filter((p) => p.playerId !== playerId));
-  };
-
-  const step = steps[currentStep];
 
   return (
     <div className="flex flex-col h-screen w-full">
@@ -76,9 +60,25 @@ export default function TournamentRunner({
         </Card>
 
         <Card className="m-6">
-          <ToolBar participations={remaining} onEliminate={eliminatePlayer} />
+          <ToolBar />
         </Card>
       </div>
     </div>
+  );
+}
+
+export default function TournamentRunner({
+  tournament,
+  participations,
+  blindStructure,
+}: Props) {
+  return (
+    <TournamentRunnerProvider
+      tournament={tournament}
+      participations={participations}
+      blindStructure={blindStructure}
+    >
+      <TournamentRunnerContent />
+    </TournamentRunnerProvider>
   );
 }
