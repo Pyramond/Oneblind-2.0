@@ -16,6 +16,7 @@ import {
 import { Card, IconButton } from "@radix-ui/themes";
 import { HomeIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
+import AverageStack from "@/app/[locale]/tournaments/[id]/components/AverageStack";
 
 interface Props {
   tournament: Tournament;
@@ -61,6 +62,10 @@ function TournamentRunnerContent() {
 
         <Card className="m-6">
           <ToolBar />
+        </Card>
+
+        <Card className="m-6">
+          <AverageStack />
         </Card>
       </div>
     </div>

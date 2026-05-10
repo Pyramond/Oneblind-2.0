@@ -17,6 +17,8 @@ interface TournamentRunnerContextType {
   currentStep: number;
   step: BlindStep;
   remaining: TournamentParticipation[];
+  totalStack: number;
+  addRebuy: () => void;
   goToPrev: () => void;
   goToNext: () => void;
   eliminatePlayer: (playerId: string) => void;
@@ -43,6 +45,9 @@ export function TournamentRunnerProvider({
   const [currentStep, setCurrentStep] = useState(0);
   const [remaining, setRemaining] =
     useState<TournamentParticipation[]>(participations);
+  const [totalStack, setTotalStack] = useState<number>(
+    tournament.startingStack,
+  );
 
   const goToPrev = () => setCurrentStep((i) => Math.max(0, i - 1));
   const goToNext = () =>
@@ -54,6 +59,11 @@ export function TournamentRunnerProvider({
     setRemaining((prev) => prev.filter((p) => p.playerId !== playerId));
   };
 
+  const addRebuy = (): void => {
+    const newTotal = totalStack + tournament.startingStack;
+    setTotalStack(newTotal);
+  };
+
   return (
     <TournamentRunnerContext.Provider
       value={{
@@ -62,6 +72,8 @@ export function TournamentRunnerProvider({
         currentStep,
         step: steps[currentStep],
         remaining,
+        totalStack,
+        addRebuy,
         goToPrev,
         goToNext,
         eliminatePlayer,
