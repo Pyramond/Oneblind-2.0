@@ -171,6 +171,7 @@ export default {
         description: "Select the player to eliminate from the tournament.",
       },
       rebuy: "Rebuy",
+      rebuys: "Rebuys",
     },
 
     card: {
