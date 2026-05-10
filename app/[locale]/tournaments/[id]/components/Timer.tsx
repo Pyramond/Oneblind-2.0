@@ -26,7 +26,7 @@ function formatTime(s: number): string {
 
 export default function Timer({ duration, onPrev, onNext }: Props) {
   const [timeRemaining, setTimeRemaining] = useState(duration);
-  const [playing, setPlaying] = useState(true);
+  const [playing, setPlaying] = useState(false);
 
   // Tick every second
   useEffect(() => {
