@@ -163,6 +163,15 @@ export default {
       },
     },
 
+    runner: {
+      players: "{count} players",
+      eliminate: {
+        btn: "Eliminate a player",
+        title: "Eliminate a player",
+        description: "Select the player to eliminate from the tournament.",
+      },
+    },
+
     card: {
       finished: "Completed",
       viewBtn: "View",
