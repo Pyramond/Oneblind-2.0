@@ -17,11 +17,13 @@ interface TournamentRunnerContextType {
   currentStep: number;
   step: BlindStep;
   remaining: TournamentParticipation[];
+  rankings: TournamentParticipation[];
   totalStack: number;
   addRebuy: () => void;
   goToPrev: () => void;
   goToNext: () => void;
   eliminatePlayer: (playerId: string) => void;
+  finishTournament: () => Promise<void>;
 }
 
 const TournamentRunnerContext =
@@ -40,11 +42,12 @@ export function TournamentRunnerProvider({
   blindStructure,
   children,
 }: TournamentRunnerProviderProps) {
-  const { updateParticipationRank } = useTournaments();
+  const { updateParticipationRank, finishTournament: finishTournamentInDB } = useTournaments();
   const steps = blindStructure.steps;
   const [currentStep, setCurrentStep] = useState(0);
   const [remaining, setRemaining] =
     useState<TournamentParticipation[]>(participations);
+  const [rankings, setRankings] = useState<TournamentParticipation[]>([]);
   const [totalStack, setTotalStack] = useState<number>(
     tournament.startingStack * remaining.length,
   );
@@ -56,7 +59,19 @@ export function TournamentRunnerProvider({
   const eliminatePlayer = (playerId: string) => {
     const rank = remaining.length;
     void updateParticipationRank(tournament.id!, playerId, rank);
+    const eliminated = remaining.find((p) => p.playerId === playerId);
+    if (eliminated) {
+      setRankings((prev) => [...prev, { ...eliminated, rank }]);
+    }
     setRemaining((prev) => prev.filter((p) => p.playerId !== playerId));
+  };
+
+  const finishTournament = async () => {
+    if (remaining.length === 1) {
+      const winner = remaining[0];
+      void updateParticipationRank(tournament.id!, winner.playerId, 1);
+    }
+    await finishTournamentInDB(tournament.id!);
   };
 
   const addRebuy = (): void => {
@@ -72,11 +87,13 @@ export function TournamentRunnerProvider({
         currentStep,
         step: steps[currentStep],
         remaining,
+        rankings,
         totalStack,
         addRebuy,
         goToPrev,
         goToNext,
         eliminatePlayer,
+        finishTournament,
       }}
     >
       {children}

@@ -172,6 +172,11 @@ export default {
       },
       rebuy: "Rebuy",
       rebuys: "Rebuys",
+      endModal: {
+        title: "Tournament over!",
+        subtitle: "Final standings",
+        finishBtn: "Finish tournament",
+      },
     },
 
     card: {

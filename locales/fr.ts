@@ -166,6 +166,11 @@ export default {
       },
       rebuy: "Recave",
       rebuys: "Recaves",
+      endModal: {
+        title: "Tournoi terminé !",
+        subtitle: "Classement final",
+        finishBtn: "Terminer le tournoi",
+      },
     },
 
     card: {

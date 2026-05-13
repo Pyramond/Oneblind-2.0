@@ -40,6 +40,7 @@ type TournamentsContextType = {
   };
   removeParticipation: (tournamentId: string, playerId: string) => Promise<void>;
   updateParticipationRank: (tournamentId: string, playerId: string, rank: number) => Promise<void>;
+  finishTournament: (id: string) => Promise<void>;
 };
 
 const TournamentContext = createContext<TournamentsContextType | null>(null);
@@ -192,6 +193,17 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const finishTournament = async (id: string) => {
+    const db = getFirebaseConfig();
+    if (!db) return;
+    try {
+      await updateDoc(doc(db, "tournaments", id), { finished: true });
+      await update();
+    } catch (error) {
+      console.error("Error :", error);
+    }
+  };
+
   const removeTournament = async (id: string) => {
     const db = getFirebaseConfig();
     if (!db) return;
@@ -244,6 +256,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
         getTournamentById,
         removeParticipation,
         updateParticipationRank,
+        finishTournament,
       }}
     >
       {children}
