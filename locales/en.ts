@@ -177,6 +177,7 @@ export default {
         subtitle: "Final standings",
         finishBtn: "Finish tournament",
       },
+      blindStructure: "Blind Structure",
     },
 
     card: {

@@ -171,6 +171,7 @@ export default {
         subtitle: "Classement final",
         finishBtn: "Terminer le tournoi",
       },
+      blindStructure: "Structure des blinds",
     },
 
     card: {

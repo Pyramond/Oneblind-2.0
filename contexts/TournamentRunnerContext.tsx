@@ -24,6 +24,7 @@ interface TournamentRunnerContextType {
   goToNext: () => void;
   eliminatePlayer: (playerId: string) => void;
   finishTournament: () => Promise<void>;
+  getBlindStructure: () => BlindStructure;
 }
 
 const TournamentRunnerContext =
@@ -42,7 +43,8 @@ export function TournamentRunnerProvider({
   blindStructure,
   children,
 }: TournamentRunnerProviderProps) {
-  const { updateParticipationRank, finishTournament: finishTournamentInDB } = useTournaments();
+  const { updateParticipationRank, finishTournament: finishTournamentInDB } =
+    useTournaments();
   const steps = blindStructure.steps;
   const [currentStep, setCurrentStep] = useState(0);
   const [remaining, setRemaining] =
@@ -79,6 +81,10 @@ export function TournamentRunnerProvider({
     setTotalStack(newTotal);
   };
 
+  const getBlindStructure = (): BlindStructure => {
+    return blindStructure;
+  };
+
   return (
     <TournamentRunnerContext.Provider
       value={{
@@ -94,6 +100,7 @@ export function TournamentRunnerProvider({
         goToNext,
         eliminatePlayer,
         finishTournament,
+        getBlindStructure,
       }}
     >
       {children}
