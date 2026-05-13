@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import "@radix-ui/themes/styles.css";
-import { ReactElement } from "react";
+import { ReactNode } from "react";
 import Header from "@/components/header/Header";
 import Aside from "@/components/Aside/Aside";
 import ClientProviders from "@/app/[locale]/ClientProvider";
@@ -17,7 +17,7 @@ export default async function RootLayout({
   children,
 }: {
   params: Promise<{ locale: string }>;
-  children: ReactElement;
+  children: ReactNode;
 }) {
   const { locale } = await params;
 
