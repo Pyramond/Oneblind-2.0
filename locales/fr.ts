@@ -172,6 +172,11 @@ export default {
         finishBtn: "Terminer le tournoi",
       },
       blindStructure: "Structure des blinds",
+      table: {
+        btn: "Table",
+        title: "Placement des joueurs",
+        replaceBtn: "Replacer",
+      },
     },
 
     card: {

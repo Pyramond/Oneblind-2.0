@@ -178,6 +178,11 @@ export default {
         finishBtn: "Finish tournament",
       },
       blindStructure: "Blind Structure",
+      table: {
+        btn: "Table",
+        title: "Players placement",
+        replaceBtn: "Replace",
+      },
     },
 
     card: {
