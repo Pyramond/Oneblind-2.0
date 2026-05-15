@@ -183,6 +183,13 @@ export default {
         title: "Players placement",
         replaceBtn: "Replace",
       },
+      info: {
+        players: "Players",
+        totalChips: "Total chips",
+        blindStructure: "Blind structure",
+        step: "Step",
+        nextLevel: "Next step",
+      },
     },
 
     card: {

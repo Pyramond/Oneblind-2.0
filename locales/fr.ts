@@ -177,6 +177,13 @@ export default {
         title: "Placement des joueurs",
         replaceBtn: "Replacer",
       },
+      info: {
+        players: "Joueurs",
+        totalChips: "Jetons en jeu",
+        blindStructure: "Structure des blinds",
+        step: "Etape",
+        nextLevel: "Prochaine étape",
+      },
     },
 
     card: {
