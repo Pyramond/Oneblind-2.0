@@ -48,7 +48,12 @@ export default {
     },
     profile: {
       playerDate: "Membre depuis le",
-      history: "Historique",
+      history: {
+        title: "Historique",
+        tournament: "Tournoi",
+        date: "Date",
+        place: "Place",
+      },
     },
   },
 

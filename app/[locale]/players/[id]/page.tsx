@@ -9,6 +9,7 @@ import { useI18n } from "@/locales/client";
 import { useUsers } from "@/contexts/UsersContext";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
+import PlayerHistory from "@/app/[locale]/players/[id]/components/PlayerHistory";
 
 export default function PlayerProfilePage() {
   const params = useParams();
@@ -79,7 +80,7 @@ export default function PlayerProfilePage() {
           </Card>
         </div>
       </div>
-      <Title level="h2">{t("player.profile.history")}</Title>
+      <PlayerHistory playerId={id} />
     </div>
   );
 }
