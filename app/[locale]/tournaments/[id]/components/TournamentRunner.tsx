@@ -56,6 +56,7 @@ function TournamentRunnerContent() {
         <Card className="m-6">
           <Timer
             key={currentStep}
+            currentStep={currentStep}
             duration={step.time * 60}
             onPrev={goToPrev}
             onNext={goToNext}

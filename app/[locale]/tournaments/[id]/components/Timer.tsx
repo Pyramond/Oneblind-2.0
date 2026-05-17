@@ -14,6 +14,7 @@ interface Props {
   duration: number;
   onPrev: () => void;
   onNext: () => void;
+  currentStep: number;
 }
 
 function formatTime(s: number): string {
@@ -24,9 +25,14 @@ function formatTime(s: number): string {
   return `${m}:${sec}`;
 }
 
-export default function Timer({ duration, onPrev, onNext }: Props) {
+export default function Timer({
+  duration,
+  onPrev,
+  onNext,
+  currentStep,
+}: Props) {
   const [timeRemaining, setTimeRemaining] = useState(duration);
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(currentStep !== 0);
 
   // Tick every second
   useEffect(() => {
