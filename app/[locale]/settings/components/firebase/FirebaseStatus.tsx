@@ -14,7 +14,12 @@ import {
   TextField,
   Tooltip,
 } from "@radix-ui/themes";
-import { EyeClosedIcon, EyeOpenIcon, Pencil1Icon, SymbolIcon } from "@radix-ui/react-icons";
+import {
+  EyeClosedIcon,
+  EyeOpenIcon,
+  Pencil1Icon,
+  SymbolIcon,
+} from "@radix-ui/react-icons";
 
 export default function FirebaseStatus() {
   const t = useI18n();
@@ -85,7 +90,7 @@ export default function FirebaseStatus() {
           </AlertDialog.Description>
           <AlertDialog.Description size="2">
             <a
-              href="https://github.com/Pyramond"
+              href="https://github.com/Pyramond/Oneblind-2.0/tree/main#firebase-setup"
               className="text-blue-400 hover:underline"
             >
               {t("settings.firebase.setup.link")}
