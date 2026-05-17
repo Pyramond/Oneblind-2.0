@@ -214,6 +214,12 @@ export default {
     },
   },
 
+  mobile: {
+    title: "Application desktop uniquement",
+    description:
+      "Cette application nécessite un grand écran pour être utilisée correctement.",
+  },
+
   settings: {
     title: "Paramètres",
 

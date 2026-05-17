@@ -220,6 +220,12 @@ export default {
     },
   },
 
+  mobile: {
+    title: "Desktop only",
+    description:
+      "This application requires a large screen to be used properly.",
+  },
+
   settings: {
     title: "Settings",
 

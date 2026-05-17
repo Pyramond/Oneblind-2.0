@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
+import MobileBlock from "@/components/MobileBlock";
 
 export default function LayoutChrome({
   children,
@@ -16,18 +17,20 @@ export default function LayoutChrome({
   const isTournamentPage = /\/tournaments\/[^/]+/.test(pathname);
 
   if (isTournamentPage) {
-    return <>{children}</>;
+    return <MobileBlock>{children}</MobileBlock>;
   }
 
   return (
-    <div className="flex flex-col h-full">
-      {header}
-      <div className="flex flex-1">
-        {aside}
-        <main className="flex-1 overflow-y-auto bg-zinc-100 dark:bg-zinc-900 p-8">
-          {children}
-        </main>
+    <MobileBlock>
+      <div className="flex flex-col h-full">
+        {header}
+        <div className="flex flex-1">
+          {aside}
+          <main className="flex-1 overflow-y-auto bg-zinc-100 dark:bg-zinc-900 p-8">
+            {children}
+          </main>
+        </div>
       </div>
-    </div>
+    </MobileBlock>
   );
 }
