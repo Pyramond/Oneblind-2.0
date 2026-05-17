@@ -7,6 +7,7 @@ import Aside from "@/components/Aside/Aside";
 import ClientProviders from "@/app/[locale]/ClientProvider";
 import CheckFirebase from "@/app/CheckFirebase";
 import LayoutChrome from "@/components/LayoutChrome";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Oneblind 2.0",
@@ -23,6 +24,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} suppressHydrationWarning>
+      <Analytics />
       <body className="h-screen">
         <ClientProviders locale={locale}>
           <CheckFirebase>

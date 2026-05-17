@@ -1,36 +1,114 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Oneblind 2.0
 
-## Getting Started
+**Oneblind** is a poker tournament management application designed for desktop use. It lets you manage players, define blind structures, and run tournaments with a built-in timer — all synced in real time through your own Firebase project.
 
-First, run the development server:
+Live app: [www.oneblind.app](https://www.oneblind.app)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## Features
+
+- **Players** — Create and manage players, track their tournament history and points.
+- **Blind structures** — Define custom blind levels, antes, and durations.
+- **Tournaments** — Configure tournaments with a starting stack, player list, and blind structure. Run them with a live timer that auto-advances through levels.
+- **Rankings** — Automatically computed standings when a tournament ends.
+- **Appearance** — Choose your accent color, border radius, and logo theme.
+- **Multilingual** — English and French supported.
+
+---
+
+## Tech stack
+
+- [Next.js 16](https://nextjs.org/)
+- [React 19](https://react.dev/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [Tailwind CSS v4](https://tailwindcss.com/)
+- [Radix UI Themes](https://www.radix-ui.com/themes)
+- [Firebase Firestore](https://firebase.google.com/docs/firestore)
+
+---
+
+## Firebase setup
+
+Oneblind stores all its data in a Firestore database. You need to create your own Firebase project and connect it in the app settings.
+
+### 1. Create a Firebase project
+
+Go to [https://console.firebase.google.com](https://console.firebase.google.com) and click **Add project**.
+
+---
+
+### 2. Enable Firestore
+
+In your project's left sidebar, go to **Database > Firestore**, then click **Create database**.
+
+![Firebase — enable Firestore](docs/screenshots/01_enable_firestore.png)
+
+When prompted:
+
+- **Edition** — select **Standard**
+- **Server location** — choose the region closest to your users
+- **Security rules** — select **Production mode**
+
+---
+
+### 3. Update Firestore security rules
+
+Once Firestore is created, go to the **Rules** tab and replace the default rules with the following:
+
+```
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write;
+    }
+  }
+}
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Click **Publish**.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+![Firebase — Firestore rules](docs/screenshots/02_firestore_rules.png)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+> These rules allow open read/write access. Since the app runs entirely client-side with no authentication, this is intentional — only share your Firebase credentials with people you trust.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+### 4. Register a web app
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+In your Firebase project, go to **Project settings** then the **General** tab. Scroll down to **Your apps** and click the **Web** icon (`</>`).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+![Firebase — register web app](docs/screenshots/03_register_web_app.png)
 
-## Deploy on Vercel
+Give your app a name and click **Register app**. Firebase will display a configuration snippet like this:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```js
+const firebaseConfig = {
+  apiKey: "AIzaSy...",
+  authDomain: "your-project.firebaseapp.com",
+  projectId: "your-project",
+  storageBucket: "your-project.firebasestorage.app",
+  messagingSenderId: "000000000000",
+  appId: "1:000000000000:web:..."
+};
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Copy the **`apiKey`** and **`projectId`** values — you will need them in the next step.
+
+> These values are always available later under **Project settings > General > Your apps**.
+
+---
+
+## Local development
+
+```bash
+# Install dependencies
+pnpm install
+
+# Start the dev server
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.

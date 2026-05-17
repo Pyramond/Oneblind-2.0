@@ -48,7 +48,12 @@ export default {
     },
     profile: {
       playerDate: "Membre depuis le",
-      history: "Historique",
+      history: {
+        title: "Historique",
+        tournament: "Tournoi",
+        date: "Date",
+        place: "Place",
+      },
     },
   },
 
@@ -172,6 +177,18 @@ export default {
         finishBtn: "Terminer le tournoi",
       },
       blindStructure: "Structure des blinds",
+      table: {
+        btn: "Table",
+        title: "Placement des joueurs",
+        replaceBtn: "Replacer",
+      },
+      info: {
+        players: "Joueurs",
+        totalChips: "Jetons en jeu",
+        blindStructure: "Structure des blinds",
+        step: "Etape",
+        nextLevel: "Prochaine étape",
+      },
     },
 
     card: {
@@ -195,6 +212,12 @@ export default {
       blindStructureNotFoundTooltipContent:
         "La structure des blinds est introuvable ou a été supprimée. Le tournoi ne peut pas être lancé.",
     },
+  },
+
+  mobile: {
+    title: "Application desktop uniquement",
+    description:
+      "Cette application nécessite un grand écran pour être utilisée correctement.",
   },
 
   settings: {

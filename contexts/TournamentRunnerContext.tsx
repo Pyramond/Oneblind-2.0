@@ -25,6 +25,7 @@ interface TournamentRunnerContextType {
   eliminatePlayer: (playerId: string) => void;
   finishTournament: () => Promise<void>;
   getBlindStructure: () => BlindStructure;
+  getParticipations: () => TournamentParticipation[];
 }
 
 const TournamentRunnerContext =
@@ -85,6 +86,10 @@ export function TournamentRunnerProvider({
     return blindStructure;
   };
 
+  const getParticipations = (): TournamentParticipation[] => {
+    return participations;
+  };
+
   return (
     <TournamentRunnerContext.Provider
       value={{
@@ -101,6 +106,7 @@ export function TournamentRunnerProvider({
         eliminatePlayer,
         finishTournament,
         getBlindStructure,
+        getParticipations,
       }}
     >
       {children}

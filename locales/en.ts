@@ -48,7 +48,12 @@ export default {
     },
     profile: {
       playerDate: "Member since",
-      history: "History",
+      history: {
+        title: "History",
+        tournament: "Tournament",
+        date: "Date",
+        place: "Place",
+      },
     },
   },
 
@@ -178,6 +183,18 @@ export default {
         finishBtn: "Finish tournament",
       },
       blindStructure: "Blind Structure",
+      table: {
+        btn: "Table",
+        title: "Players placement",
+        replaceBtn: "Replace",
+      },
+      info: {
+        players: "Players",
+        totalChips: "Total chips",
+        blindStructure: "Blind structure",
+        step: "Step",
+        nextLevel: "Next step",
+      },
     },
 
     card: {
@@ -201,6 +218,12 @@ export default {
       blindStructureNotFoundTooltipContent:
         "The blind structure is missing or has been deleted. The tournament cannot be started.",
     },
+  },
+
+  mobile: {
+    title: "Desktop only",
+    description:
+      "This application requires a large screen to be used properly.",
   },
 
   settings: {
