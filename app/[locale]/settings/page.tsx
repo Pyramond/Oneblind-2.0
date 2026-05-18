@@ -7,6 +7,7 @@ import LogoThemeSelection from "@/app/[locale]/settings/components/appearance/Lo
 import LanguageSelection from "@/app/[locale]/settings/components/other/LanguageSelection";
 import FirebaseStatus from "@/app/[locale]/settings/components/firebase/FirebaseStatus";
 import GithubLink from "@/app/[locale]/settings/components/informations/GithubLink";
+import AppVersion from "@/app/[locale]/settings/components/informations/AppVersion";
 
 export default async function SettingsPage() {
   const t = await getI18n();
@@ -32,6 +33,7 @@ export default async function SettingsPage() {
 
         <SettingsCard title={t("settings.informations.title")}>
           <GithubLink />
+          <AppVersion />
         </SettingsCard>
       </div>
     </>
