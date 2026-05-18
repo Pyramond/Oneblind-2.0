@@ -6,6 +6,7 @@ import RadiusSelection from "@/app/[locale]/settings/components/appearance/Radiu
 import LogoThemeSelection from "@/app/[locale]/settings/components/appearance/LogoThemeSelection";
 import LanguageSelection from "@/app/[locale]/settings/components/other/LanguageSelection";
 import FirebaseStatus from "@/app/[locale]/settings/components/firebase/FirebaseStatus";
+import GithubLink from "@/app/[locale]/settings/components/informations/GithubLink";
 
 export default async function SettingsPage() {
   const t = await getI18n();
@@ -27,6 +28,10 @@ export default async function SettingsPage() {
           <ColorSelection />
           <RadiusSelection />
           <LogoThemeSelection />
+        </SettingsCard>
+
+        <SettingsCard title={t("settings.informations.title")}>
+          <GithubLink />
         </SettingsCard>
       </div>
     </>

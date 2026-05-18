@@ -229,6 +229,10 @@ export default {
   settings: {
     title: "Settings",
 
+    informations: {
+      title: "Informations",
+    },
+
     other: {
       title: "Others",
 
