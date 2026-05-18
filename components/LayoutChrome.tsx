@@ -22,7 +22,7 @@ export default function LayoutChrome({
 
   return (
     <MobileBlock>
-      <div className="flex flex-col h-full overflow-hidden">
+      <div className="flex flex-col h-screen overflow-hidden">
         {header}
         <div className="flex flex-1 min-h-0">
           {aside}
