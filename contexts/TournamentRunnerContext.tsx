@@ -67,7 +67,8 @@ export function TournamentRunnerProvider({
 
     const points: number = calculatePoints(rank, participations.length);
 
-    void updateParticipationRank(tournament.id!, playerId, rank, points);
+    const earnedPoints = tournament.countPoints ? points : 0;
+    void updateParticipationRank(tournament.id!, playerId, rank, earnedPoints);
     if (tournament.countPoints) void addPoints(playerId, points);
     const eliminated = remaining.find((p) => p.playerId === playerId);
     if (eliminated) {
@@ -80,7 +81,8 @@ export function TournamentRunnerProvider({
     if (remaining.length === 1) {
       const winner = remaining[0];
       const points: number = calculatePoints(1, participations.length);
-      void updateParticipationRank(tournament.id!, winner.playerId, 1, points);
+      const earnedPoints = tournament.countPoints ? points : 0;
+      void updateParticipationRank(tournament.id!, winner.playerId, 1, earnedPoints);
       if (tournament.countPoints) void addPoints(winner.playerId, points);
     }
     await finishTournamentInDB(tournament.id!);
