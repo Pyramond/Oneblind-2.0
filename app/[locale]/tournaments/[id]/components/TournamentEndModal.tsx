@@ -7,9 +7,10 @@ import { useUsers } from "@/contexts/UsersContext";
 import { useI18n } from "@/locales/client";
 import { Badge, Button, Dialog, Flex, Text } from "@radix-ui/themes";
 import { StarFilledIcon } from "@radix-ui/react-icons";
+import calculatePoints from "@/utils/calculatePoints";
 
 export default function TournamentEndModal() {
-  const { remaining, rankings, finishTournament } = useTournamentRunner();
+  const { remaining, rankings, finishTournament, getParticipations } = useTournamentRunner();
   const { getUserById } = useUsers();
   const t = useI18n();
   const router = useRouter();
@@ -23,8 +24,9 @@ export default function TournamentEndModal() {
     }
   }, [remaining.length]);
 
+  const totalPlayers = getParticipations().length;
   const fullRanking = [
-    { ...remaining[0], rank: 1 },
+    { ...remaining[0], rank: 1, points: calculatePoints(1, totalPlayers) },
     ...rankings.sort((a, b) => a.rank - b.rank),
   ].filter(Boolean);
 
@@ -78,6 +80,7 @@ export default function TournamentEndModal() {
                 {isWinner && (
                   <StarFilledIcon color="goldenrod" width={18} height={18} />
                 )}
+                {p.points != null && <Text>+{p.points}</Text>}
               </Flex>
             );
           })}

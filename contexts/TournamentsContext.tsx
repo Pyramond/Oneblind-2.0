@@ -38,8 +38,16 @@ type TournamentsContextType = {
     tournament: Tournament | undefined;
     participations: TournamentParticipation[] | undefined;
   };
-  removeParticipation: (tournamentId: string, playerId: string) => Promise<void>;
-  updateParticipationRank: (tournamentId: string, playerId: string, rank: number) => Promise<void>;
+  removeParticipation: (
+    tournamentId: string,
+    playerId: string,
+  ) => Promise<void>;
+  updateParticipationRank: (
+    tournamentId: string,
+    playerId: string,
+    rank: number,
+    points: number,
+  ) => Promise<void>;
   finishTournament: (id: string) => Promise<void>;
 };
 
@@ -175,6 +183,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
     tournamentId: string,
     playerId: string,
     rank: number,
+    points: number,
   ) => {
     const db = getFirebaseConfig();
     if (!db) return;
@@ -186,7 +195,10 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
       );
       const snapshot = await getDocs(q);
       for (const participation of snapshot.docs) {
-        await updateDoc(doc(db, "participations", participation.id), { rank });
+        await updateDoc(doc(db, "participations", participation.id), {
+          rank,
+          points,
+        });
       }
     } catch (error) {
       console.error("Error :", error);

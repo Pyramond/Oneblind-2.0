@@ -14,4 +14,5 @@ export interface TournamentParticipation {
   playerId: string;
   tournamentId: string;
   rank: number;
+  points?: number;
 }
