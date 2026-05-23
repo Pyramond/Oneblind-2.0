@@ -85,6 +85,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
           playerId: doc.data().playerId,
           tournamentId: doc.data().tournamentId,
           rank: doc.data().rank,
+          points: doc.data().points,
         }),
       );
       setParticipations(participationsList);

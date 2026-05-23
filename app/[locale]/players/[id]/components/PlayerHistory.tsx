@@ -44,6 +44,9 @@ export default function PlayerHistory({
             <Table.ColumnHeaderCell>
               {t("player.profile.history.place")}
             </Table.ColumnHeaderCell>
+            <Table.ColumnHeaderCell>
+              {t("player.profile.history.points")}
+            </Table.ColumnHeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -64,6 +67,7 @@ export default function PlayerHistory({
                   })}
                 </Table.Cell>
                 <Table.Cell>{p.rank}</Table.Cell>
+                <Table.Cell>{p.points ? `+${p.points}` : "—"}</Table.Cell>
               </Table.Row>
             );
           })}

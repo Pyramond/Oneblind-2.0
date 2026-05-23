@@ -53,6 +53,7 @@ export default {
         tournament: "Tournoi",
         date: "Date",
         place: "Place",
+        points: "Points",
       },
     },
   },
