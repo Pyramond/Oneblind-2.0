@@ -23,6 +23,7 @@ import {
   where,
 } from "firebase/firestore";
 import getFirebaseConfig from "@/utils/firebase/getFirebaseConfig";
+import { log } from "@/utils/log";
 
 type TournamentsContextType = {
   tournaments: Array<Tournament>;
@@ -116,6 +117,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
       }
 
       await update();
+      await log("tournaments", "create", tournament.name);
     } catch (error) {
       console.error("Error :", error);
     }
@@ -153,6 +155,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
       }
 
       await update();
+      await log("tournaments", "update", tournament.id!);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -174,6 +177,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
       for (const participation of participationsSnapshot.docs) {
         await deleteDoc(doc(db, "participations", participation.id));
       }
+      await log("participations", "delete", `${tournamentId} / ${playerId}`);
       await update();
     } catch (error) {
       console.error("Error :", error);
@@ -201,6 +205,11 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
           points,
         });
       }
+      await log(
+        "participations",
+        "update",
+        `${tournamentId} / ${playerId}: rank ${rank}`,
+      );
     } catch (error) {
       console.error("Error :", error);
     }
@@ -211,6 +220,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
     if (!db) return;
     try {
       await updateDoc(doc(db, "tournaments", id), { finished: true });
+      await log("tournaments", "update", `${id}: finished`);
       await update();
     } catch (error) {
       console.error("Error :", error);
@@ -231,6 +241,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
       }
 
       await deleteDoc(doc(db, "tournaments", id));
+      await log("tournaments", "delete", id);
       await update();
     } catch (error) {
       console.error("Error :", error);
