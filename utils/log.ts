@@ -4,6 +4,7 @@ import {
   addDoc,
   collection,
   getDocs,
+  limit,
   orderBy,
   query,
   Timestamp,
@@ -29,12 +30,14 @@ async function log(
   }
 }
 
-async function getLogs(): Promise<Log[]> {
+async function getLogs(count?: number): Promise<Log[]> {
   const db = getFirebaseConfig();
   if (!db) return [];
 
   try {
-    const q = query(collection(db, "logs"), orderBy("creationDate", "desc"));
+    const q = count
+      ? query(collection(db, "logs"), orderBy("creationDate", "desc"), limit(count))
+      : query(collection(db, "logs"), orderBy("creationDate", "desc"));
     const snapshot = await getDocs(q);
     return snapshot.docs.map((doc) => ({
       id: doc.id,

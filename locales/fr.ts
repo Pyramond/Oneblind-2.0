@@ -216,6 +216,8 @@ export default {
   },
 
   logs: {
+    recent: "Derniers logs",
+    viewAll: "Voir tous les logs",
     title: "Logs",
     empty: "Aucun log disponible",
     table: {

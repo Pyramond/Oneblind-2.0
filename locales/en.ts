@@ -222,6 +222,8 @@ export default {
   },
 
   logs: {
+    recent: "Recent logs",
+    viewAll: "View all logs",
     title: "Logs",
     empty: "No logs available",
     table: {

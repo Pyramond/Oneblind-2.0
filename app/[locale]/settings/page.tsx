@@ -8,6 +8,7 @@ import LanguageSelection from "@/app/[locale]/settings/components/other/Language
 import FirebaseStatus from "@/app/[locale]/settings/components/firebase/FirebaseStatus";
 import GithubLink from "@/app/[locale]/settings/components/informations/GithubLink";
 import AppVersion from "@/app/[locale]/settings/components/informations/AppVersion";
+import LogsSettings from "@/app/[locale]/settings/components/logs/LogsSettings";
 
 export default async function SettingsPage() {
   const t = await getI18n();
@@ -29,6 +30,10 @@ export default async function SettingsPage() {
           <ColorSelection />
           <RadiusSelection />
           <LogoThemeSelection />
+        </SettingsCard>
+
+        <SettingsCard title={t("logs.title")}>
+          <LogsSettings />
         </SettingsCard>
 
         <SettingsCard title={t("settings.informations.title")}>
