@@ -1,6 +1,13 @@
 import getFirebaseConfig from "@/utils/firebase/getFirebaseConfig";
-import { DbAction, DbCollection } from "@/interfaces/log.interface";
-import { addDoc, collection, Timestamp } from "firebase/firestore";
+import { DbAction, DbCollection, Log } from "@/interfaces/log.interface";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  orderBy,
+  query,
+  Timestamp,
+} from "firebase/firestore";
 
 async function log(
   col: DbCollection,
@@ -22,4 +29,24 @@ async function log(
   }
 }
 
-export { log };
+async function getLogs(): Promise<Log[]> {
+  const db = getFirebaseConfig();
+  if (!db) return [];
+
+  try {
+    const q = query(collection(db, "logs"), orderBy("creationDate", "desc"));
+    const snapshot = await getDocs(q);
+    return snapshot.docs.map((doc) => ({
+      id: doc.id,
+      date: doc.data().creationDate,
+      action: doc.data().action as DbAction,
+      collection: doc.data().collection as DbCollection,
+      info: doc.data().info,
+    }));
+  } catch (err) {
+    console.error("Error fetching logs:", err);
+    return [];
+  }
+}
+
+export { log, getLogs };

@@ -221,6 +221,28 @@ export default {
     },
   },
 
+  logs: {
+    title: "Logs",
+    empty: "No logs available",
+    table: {
+      date: "Date",
+      action: "Action",
+      collection: "Collection",
+      info: "Info",
+    },
+    action: {
+      create: "Create",
+      update: "Update",
+      delete: "Delete",
+    },
+    collection: {
+      users: "Players",
+      tournaments: "Tournaments",
+      participations: "Participations",
+      blindStructures: "Blind structures",
+    },
+  },
+
   mobile: {
     title: "Desktop only",
     description:

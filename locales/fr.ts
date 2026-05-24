@@ -215,6 +215,28 @@ export default {
     },
   },
 
+  logs: {
+    title: "Logs",
+    empty: "Aucun log disponible",
+    table: {
+      date: "Date",
+      action: "Action",
+      collection: "Collection",
+      info: "Info",
+    },
+    action: {
+      create: "Création",
+      update: "Modification",
+      delete: "Suppression",
+    },
+    collection: {
+      users: "Joueurs",
+      tournaments: "Tournois",
+      participations: "Participations",
+      blindStructures: "Structures des blinds",
+    },
+  },
+
   mobile: {
     title: "Application desktop uniquement",
     description:
