@@ -10,7 +10,7 @@ export interface ChangelogEntry {
 export const changelog: ChangelogEntry[] = [
   {
     version: "2.0.0",
-    date: "2026-05-18",
+    date: "2026-05-26",
     changes: {
       fr: [
         "Intégration Firebase (connexion via clé API)",
@@ -21,6 +21,12 @@ export const changelog: ChangelogEntry[] = [
         "Création et gestion des structures de blinds",
         "Création et gestion des tournois",
         "Runner de tournoi avec timer, éliminations et recaves",
+        "Calcul automatique des points à la fin d'un tournoi",
+        "Affichage des points gagnés dans l'historique des joueurs",
+        "Journalisation des requêtes Firebase",
+        "Page des logs avec aperçu dans les réglages",
+        "Alerte sonore quand il reste 10 secondes à une étape",
+        "Paramètre de son d'alerte avec mode silencieux",
       ],
       en: [
         "Firebase integration (connection via API key)",
@@ -31,6 +37,12 @@ export const changelog: ChangelogEntry[] = [
         "Blind structure creation and management",
         "Tournament creation and management",
         "Tournament runner with timer, eliminations and rebuys",
+        "Automatic points calculation at tournament end",
+        "Display earned points in player history",
+        "Firebase request logging",
+        "Logs page with preview in settings",
+        "Sound alert when 10 seconds remain in a tournament step",
+        "Alert sound setting with silent mode",
       ],
     },
   },
