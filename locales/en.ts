@@ -313,6 +313,14 @@ export default {
           onePiece: "One Piece",
         },
       },
+      alertSound: {
+        title: "Alert Sound",
+
+        type: {
+          default: "Default",
+          onePiece: "One Piece",
+        },
+      },
     },
   },
 } as const;
