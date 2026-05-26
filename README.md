@@ -1,5 +1,7 @@
 # Oneblind 2.0
 
+[Lire en français](docs/README.fr.md)
+
 **Oneblind** is a poker tournament management application designed for desktop use. It lets you manage players, define blind structures, and run tournaments with a built-in timer — all synced in real time through your own Firebase project.
 
 Live app: [www.oneblind.app](https://www.oneblind.app)
