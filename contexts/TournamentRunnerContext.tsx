@@ -10,6 +10,8 @@ import {
   BlindStructure,
 } from "@/interfaces/blindStructure.interface";
 import { useTournaments } from "@/contexts/TournamentsContext";
+import { useUsers } from "@/contexts/UsersContext";
+import calculatePoints from "@/utils/calculatePoints";
 
 interface TournamentRunnerContextType {
   tournament: Tournament;
@@ -46,6 +48,7 @@ export function TournamentRunnerProvider({
 }: TournamentRunnerProviderProps) {
   const { updateParticipationRank, finishTournament: finishTournamentInDB } =
     useTournaments();
+  const { addPoints } = useUsers();
   const steps = blindStructure.steps;
   const [currentStep, setCurrentStep] = useState(0);
   const [remaining, setRemaining] =
@@ -61,10 +64,15 @@ export function TournamentRunnerProvider({
 
   const eliminatePlayer = (playerId: string) => {
     const rank = remaining.length;
-    void updateParticipationRank(tournament.id!, playerId, rank);
+
+    const points: number = calculatePoints(rank, participations.length);
+
+    const earnedPoints = tournament.countPoints ? points : 0;
+    void updateParticipationRank(tournament.id!, playerId, rank, earnedPoints);
+    if (tournament.countPoints) void addPoints(playerId, points);
     const eliminated = remaining.find((p) => p.playerId === playerId);
     if (eliminated) {
-      setRankings((prev) => [...prev, { ...eliminated, rank }]);
+      setRankings((prev) => [...prev, { ...eliminated, rank, points }]);
     }
     setRemaining((prev) => prev.filter((p) => p.playerId !== playerId));
   };
@@ -72,7 +80,10 @@ export function TournamentRunnerProvider({
   const finishTournament = async () => {
     if (remaining.length === 1) {
       const winner = remaining[0];
-      void updateParticipationRank(tournament.id!, winner.playerId, 1);
+      const points: number = calculatePoints(1, participations.length);
+      const earnedPoints = tournament.countPoints ? points : 0;
+      void updateParticipationRank(tournament.id!, winner.playerId, 1, earnedPoints);
+      if (tournament.countPoints) void addPoints(winner.playerId, points);
     }
     await finishTournamentInDB(tournament.id!);
   };

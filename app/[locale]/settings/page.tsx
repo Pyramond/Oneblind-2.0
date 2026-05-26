@@ -6,6 +6,10 @@ import RadiusSelection from "@/app/[locale]/settings/components/appearance/Radiu
 import LogoThemeSelection from "@/app/[locale]/settings/components/appearance/LogoThemeSelection";
 import LanguageSelection from "@/app/[locale]/settings/components/other/LanguageSelection";
 import FirebaseStatus from "@/app/[locale]/settings/components/firebase/FirebaseStatus";
+import GithubLink from "@/app/[locale]/settings/components/informations/GithubLink";
+import AppVersion from "@/app/[locale]/settings/components/informations/AppVersion";
+import LogsSettings from "@/app/[locale]/settings/components/logs/LogsSettings";
+import AlertSoundSelection from "@/app/[locale]/settings/components/appearance/AlertSoundSelection";
 
 export default async function SettingsPage() {
   const t = await getI18n();
@@ -27,6 +31,16 @@ export default async function SettingsPage() {
           <ColorSelection />
           <RadiusSelection />
           <LogoThemeSelection />
+          <AlertSoundSelection />
+        </SettingsCard>
+
+        <SettingsCard title={t("logs.title")}>
+          <LogsSettings />
+        </SettingsCard>
+
+        <SettingsCard title={t("settings.informations.title")}>
+          <GithubLink />
+          <AppVersion />
         </SettingsCard>
       </div>
     </>

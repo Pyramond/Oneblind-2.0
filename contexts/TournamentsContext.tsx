@@ -23,6 +23,7 @@ import {
   where,
 } from "firebase/firestore";
 import getFirebaseConfig from "@/utils/firebase/getFirebaseConfig";
+import { log } from "@/utils/log";
 
 type TournamentsContextType = {
   tournaments: Array<Tournament>;
@@ -38,8 +39,16 @@ type TournamentsContextType = {
     tournament: Tournament | undefined;
     participations: TournamentParticipation[] | undefined;
   };
-  removeParticipation: (tournamentId: string, playerId: string) => Promise<void>;
-  updateParticipationRank: (tournamentId: string, playerId: string, rank: number) => Promise<void>;
+  removeParticipation: (
+    tournamentId: string,
+    playerId: string,
+  ) => Promise<void>;
+  updateParticipationRank: (
+    tournamentId: string,
+    playerId: string,
+    rank: number,
+    points: number,
+  ) => Promise<void>;
   finishTournament: (id: string) => Promise<void>;
 };
 
@@ -77,6 +86,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
           playerId: doc.data().playerId,
           tournamentId: doc.data().tournamentId,
           rank: doc.data().rank,
+          points: doc.data().points,
         }),
       );
       setParticipations(participationsList);
@@ -107,6 +117,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
       }
 
       await update();
+      await log("tournaments", "create", tournament.name);
     } catch (error) {
       console.error("Error :", error);
     }
@@ -144,6 +155,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
       }
 
       await update();
+      await log("tournaments", "update", tournament.id!);
     } catch (error) {
       console.error("Error:", error);
     }
@@ -165,6 +177,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
       for (const participation of participationsSnapshot.docs) {
         await deleteDoc(doc(db, "participations", participation.id));
       }
+      await log("participations", "delete", `${tournamentId} / ${playerId}`);
       await update();
     } catch (error) {
       console.error("Error :", error);
@@ -175,6 +188,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
     tournamentId: string,
     playerId: string,
     rank: number,
+    points: number,
   ) => {
     const db = getFirebaseConfig();
     if (!db) return;
@@ -186,8 +200,16 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
       );
       const snapshot = await getDocs(q);
       for (const participation of snapshot.docs) {
-        await updateDoc(doc(db, "participations", participation.id), { rank });
+        await updateDoc(doc(db, "participations", participation.id), {
+          rank,
+          points,
+        });
       }
+      await log(
+        "participations",
+        "update",
+        `${tournamentId} / ${playerId}: rank ${rank}`,
+      );
     } catch (error) {
       console.error("Error :", error);
     }
@@ -198,6 +220,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
     if (!db) return;
     try {
       await updateDoc(doc(db, "tournaments", id), { finished: true });
+      await log("tournaments", "update", `${id}: finished`);
       await update();
     } catch (error) {
       console.error("Error :", error);
@@ -218,6 +241,7 @@ export function TournamentProvider({ children }: { children: ReactNode }) {
       }
 
       await deleteDoc(doc(db, "tournaments", id));
+      await log("tournaments", "delete", id);
       await update();
     } catch (error) {
       console.error("Error :", error);

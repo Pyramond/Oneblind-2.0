@@ -53,6 +53,7 @@ export default {
         tournament: "Tournoi",
         date: "Date",
         place: "Place",
+        points: "Points",
       },
     },
   },
@@ -214,6 +215,30 @@ export default {
     },
   },
 
+  logs: {
+    recent: "Derniers logs",
+    viewAll: "Voir tous les logs",
+    title: "Logs",
+    empty: "Aucun log disponible",
+    table: {
+      date: "Date",
+      action: "Action",
+      collection: "Collection",
+      info: "Info",
+    },
+    action: {
+      create: "Création",
+      update: "Modification",
+      delete: "Suppression",
+    },
+    collection: {
+      users: "Joueurs",
+      tournaments: "Tournois",
+      participations: "Participations",
+      blindStructures: "Structures des blinds",
+    },
+  },
+
   mobile: {
     title: "Application desktop uniquement",
     description:
@@ -222,6 +247,10 @@ export default {
 
   settings: {
     title: "Paramètres",
+
+    informations: {
+      title: "Informations",
+    },
 
     other: {
       title: "Autres",
@@ -276,6 +305,15 @@ export default {
         type: {
           default: "Par défaut",
           onePiece: "One Piece",
+        },
+      },
+      alertSound: {
+        title: "Son d'alerte",
+
+        type: {
+          default: "Par défaut",
+          onePiece: "One Piece",
+          silent: "Silencieux",
         },
       },
     },

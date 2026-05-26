@@ -53,6 +53,7 @@ export default {
         tournament: "Tournament",
         date: "Date",
         place: "Place",
+        points: "Points",
       },
     },
   },
@@ -220,6 +221,30 @@ export default {
     },
   },
 
+  logs: {
+    recent: "Recent logs",
+    viewAll: "View all logs",
+    title: "Logs",
+    empty: "No logs available",
+    table: {
+      date: "Date",
+      action: "Action",
+      collection: "Collection",
+      info: "Info",
+    },
+    action: {
+      create: "Create",
+      update: "Update",
+      delete: "Delete",
+    },
+    collection: {
+      users: "Players",
+      tournaments: "Tournaments",
+      participations: "Participations",
+      blindStructures: "Blind structures",
+    },
+  },
+
   mobile: {
     title: "Desktop only",
     description:
@@ -228,6 +253,10 @@ export default {
 
   settings: {
     title: "Settings",
+
+    informations: {
+      title: "Informations",
+    },
 
     other: {
       title: "Others",
@@ -282,6 +311,15 @@ export default {
         type: {
           default: "Default",
           onePiece: "One Piece",
+        },
+      },
+      alertSound: {
+        title: "Alert Sound",
+
+        type: {
+          default: "Default",
+          onePiece: "One Piece",
+          silent: "Silent",
         },
       },
     },

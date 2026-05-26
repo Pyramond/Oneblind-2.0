@@ -14,10 +14,13 @@ import {
   deleteDoc,
   doc,
   getDocs,
+  increment,
   query,
   Timestamp,
+  updateDoc,
 } from "firebase/firestore";
 import getFirebaseConfig from "@/utils/firebase/getFirebaseConfig";
+import { log } from "@/utils/log";
 
 type UsersContextType = {
   users: User[];
@@ -25,6 +28,7 @@ type UsersContextType = {
   addUser: (userName: string) => Promise<void>;
   getUserById: (id: string) => User | undefined;
   removeUser: (id: string) => void;
+  addPoints: (playerId: string, points: number) => Promise<void>;
 };
 
 const UsersContext = createContext<UsersContextType | null>(null);
@@ -66,6 +70,7 @@ export function UsersProvider({ children }: { children: ReactNode }) {
         points: 0,
       });
       await update();
+      await log("users", "create", userName);
     } catch (error) {
       console.error("Error :", error);
     }
@@ -75,7 +80,26 @@ export function UsersProvider({ children }: { children: ReactNode }) {
     const db = getFirebaseConfig();
     if (!db) return;
     await deleteDoc(doc(db, "users", id));
+    await log("users", "delete", id);
     await update();
+  };
+
+  const addPoints = async (playerId: string, points: number) => {
+    const db = getFirebaseConfig();
+    if (!db) return;
+    try {
+      await updateDoc(doc(db, "users", playerId), {
+        points: increment(points),
+      });
+      await log("users", "update", `${playerId}: +${points}pts`);
+      setUsers((prev) =>
+        prev.map((u) =>
+          u.id === playerId ? { ...u, points: u.points + points } : u,
+        ),
+      );
+    } catch (error) {
+      console.error("Error updating points:", error);
+    }
   };
 
   useEffect(() => {
@@ -86,7 +110,7 @@ export function UsersProvider({ children }: { children: ReactNode }) {
 
   return (
     <UsersContext.Provider
-      value={{ users, update, addUser, getUserById, removeUser }}
+      value={{ users, update, addUser, getUserById, removeUser, addPoints }}
     >
       {children}
     </UsersContext.Provider>

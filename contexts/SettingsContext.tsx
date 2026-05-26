@@ -10,16 +10,19 @@ import {
 import { ColorName } from "@/interfaces/colorName";
 import { RadiusType } from "@/interfaces/radius.interface";
 import { LogoTheme } from "@/interfaces/logoTheme.interface";
+import { AlertSound } from "@/interfaces/alert.interface";
 
 type SettingsContextType = {
   theme: "dark" | "light";
   color: ColorName;
   radius: RadiusType;
   logoTheme: LogoTheme;
+  alertSound: AlertSound;
   setTheme: (theme: "dark" | "light") => void;
   setColor: (color: ColorName) => void;
   setRadius: (radius: RadiusType) => void;
   setLogoTheme: (logoTheme: LogoTheme) => void;
+  setAlertSound: (alertSound: AlertSound) => void;
 };
 
 const SettingsContext = createContext<SettingsContextType | null>(null);
@@ -53,12 +56,20 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
     return (saved as RadiusType) || "medium";
   });
 
+  const [alertSound, setAlertSound] = useState<AlertSound>(() => {
+    if (typeof window === "undefined") return "default";
+
+    const saved = localStorage.getItem("alertSound");
+    return (saved as AlertSound) || "default";
+  });
+
   useEffect(() => {
     localStorage.setItem("theme", theme);
     localStorage.setItem("color", color);
     localStorage.setItem("radius", radius);
     localStorage.setItem("logoTheme", logoTheme);
-  }, [theme, color, radius, logoTheme]);
+    localStorage.setItem("alertSound", alertSound);
+  }, [theme, color, radius, logoTheme, alertSound]);
 
   return (
     <SettingsContext.Provider
@@ -67,10 +78,12 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
         color,
         radius,
         logoTheme,
+        alertSound,
         setTheme,
         setColor,
         setRadius,
         setLogoTheme,
+        setAlertSound,
       }}
     >
       {children}

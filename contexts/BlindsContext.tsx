@@ -7,7 +7,6 @@ import {
   useState,
   ReactNode,
 } from "react";
-
 import { BlindStructure } from "@/interfaces/blindStructure.interface";
 import {
   addDoc,
@@ -18,6 +17,7 @@ import {
   query,
 } from "firebase/firestore";
 import getFirebaseConfig from "@/utils/firebase/getFirebaseConfig";
+import { log } from "@/utils/log";
 
 type BlindContextType = {
   blindStructures: BlindStructure[];
@@ -41,6 +41,7 @@ export function BlindProvider({ children }: { children: ReactNode }) {
         steps: structure.steps,
       });
       await update();
+      await log("blindStructures", "create", structure.name);
     } catch (error) {
       console.error("Error :", error);
     }
@@ -50,10 +51,13 @@ export function BlindProvider({ children }: { children: ReactNode }) {
     const db = getFirebaseConfig();
     if (!db) return;
     await deleteDoc(doc(db, "blind_structures", id));
+    await log("blindStructures", "delete", id);
     await update();
   }
 
-  function getBlindStructureById(id: string | undefined): BlindStructure | undefined {
+  function getBlindStructureById(
+    id: string | undefined,
+  ): BlindStructure | undefined {
     return blindStructures.find((structure) => structure.id === id);
   }
 

@@ -9,6 +9,7 @@ import {
   TrackNextIcon,
   TrackPreviousIcon,
 } from "@radix-ui/react-icons";
+import playAlert from "@/utils/playAlert";
 
 interface Props {
   duration: number;
@@ -42,6 +43,13 @@ export default function Timer({
     }, 1000);
     return () => clearInterval(interval);
   }, [playing]);
+
+  // Log when 10 seconds remain
+  useEffect(() => {
+    if (timeRemaining === 10 && playing) {
+      playAlert();
+    }
+  }, [timeRemaining, playing]);
 
   // Advance to next step once timer reaches 0
   useEffect(() => {
