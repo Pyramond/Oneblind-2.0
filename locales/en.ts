@@ -319,6 +319,7 @@ export default {
         type: {
           default: "Default",
           onePiece: "One Piece",
+          silent: "Silent",
         },
       },
     },
