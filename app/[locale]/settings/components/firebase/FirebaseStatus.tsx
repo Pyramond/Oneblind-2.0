@@ -50,6 +50,7 @@ export default function FirebaseStatus() {
           alt={"check icon"}
           width={64}
           height={64}
+          loading="eager"
         />
 
         <Title level={"h4"}>

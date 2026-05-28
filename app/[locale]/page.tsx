@@ -1,12 +1,11 @@
-import { getI18n, getScopedI18n } from '../../locales/server'
+import BestPlayers from "@/app/[locale]/components/BestPlayers";
+import LastTournaments from "@/app/[locale]/components/LastTournaments";
 
 export default async function Home() {
-
-    const t = await getI18n()
-
-      return (
-        <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-          <h1>{t("hello")}</h1>
-        </div>
-      );
+  return (
+    <div className={"flex gap-3"}>
+      <BestPlayers />
+      <LastTournaments />
+    </div>
+  );
 }

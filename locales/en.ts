@@ -13,6 +13,13 @@ export default {
     edit: "Edit",
   },
 
+  homepage: {
+    lastTournaments: {
+      finished: "Finished",
+      onGoing: "On going",
+    },
+  },
+
   aside: {
     home: "Home",
     players: "Players",
@@ -311,6 +318,7 @@ export default {
         type: {
           default: "Default",
           onePiece: "One Piece",
+          og: "OG",
         },
       },
       alertSound: {
