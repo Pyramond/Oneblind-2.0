@@ -9,6 +9,20 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: "2.1.0",
+    date: "2026-05-28",
+    changes: {
+      fr: [
+        "Page d'accueil : affichage du top 3 des joueurs par points",
+        "Page d'accueil : affichage des 3 derniers tournois avec statut et date",
+      ],
+      en: [
+        "Home page: display top 3 players by points",
+        "Home page: display last 3 tournaments with status and date",
+      ],
+    },
+  },
+  {
     version: "2.0.0",
     date: "2026-05-26",
     changes: {
