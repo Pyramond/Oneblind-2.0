@@ -18,6 +18,7 @@ export default function HeaderTitle() {
         alt={"Oneblind title"}
         height={50}
         width={200}
+        loading="eager"
       />
     );
 
