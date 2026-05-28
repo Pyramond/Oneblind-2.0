@@ -11,11 +11,11 @@ export default function HeaderTitle() {
 
   let element: ReactNode = <Title level={"h1"}>One blind</Title>;
 
-  if (logoTheme === "onePiece")
+  if (logoTheme !== "default")
     element = (
       <Image
-        src={"/onepiece-title.png"}
-        alt={"One piece title"}
+        src={`/${logoTheme}.png`}
+        alt={"Oneblind title"}
         height={50}
         width={200}
       />

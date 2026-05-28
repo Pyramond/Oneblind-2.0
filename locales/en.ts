@@ -318,6 +318,7 @@ export default {
         type: {
           default: "Default",
           onePiece: "One Piece",
+          og: "OG",
         },
       },
       alertSound: {

@@ -312,6 +312,7 @@ export default {
         type: {
           default: "Par défaut",
           onePiece: "One Piece",
+          og: "OG",
         },
       },
       alertSound: {
