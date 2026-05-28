@@ -13,6 +13,13 @@ export default {
     edit: "Edit",
   },
 
+  homepage: {
+    lastTournaments: {
+      finished: "Finished",
+      onGoing: "On going",
+    },
+  },
+
   aside: {
     home: "Home",
     players: "Players",

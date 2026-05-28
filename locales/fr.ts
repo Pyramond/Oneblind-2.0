@@ -13,6 +13,13 @@ export default {
     edit: "Modifier",
   },
 
+  homepage: {
+    lastTournaments: {
+      finished: "Terminé",
+      onGoing: "En cours",
+    },
+  },
+
   aside: {
     home: "Accueil",
     players: "Joueurs",
