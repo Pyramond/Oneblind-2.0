@@ -15,10 +15,12 @@ export const changelog: ChangelogEntry[] = [
       fr: [
         "Page d'accueil : affichage du top 3 des joueurs par points",
         "Page d'accueil : affichage des 3 derniers tournois avec statut et date",
+        "Thème de logo 'OG'",
       ],
       en: [
         "Home page: display top 3 players by points",
         "Home page: display last 3 tournaments with status and date",
+        "'OG' logo theme",
       ],
     },
   },
