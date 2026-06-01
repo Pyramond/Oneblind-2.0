@@ -14,13 +14,10 @@ export default function SpotifyCallback() {
       return;
     }
 
-    const returnUrl = localStorage.getItem("spotify_return_url") || "/";
-
     sdk.currentUser
       .profile()
       .then(() => {
-        localStorage.removeItem("spotify_return_url");
-        router.replace(returnUrl);
+        router.replace("/tournaments");
       })
       .catch(() => router.replace("/tournaments"));
   }, [router]);

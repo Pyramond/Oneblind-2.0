@@ -13,6 +13,16 @@ export default {
     edit: "Edit",
   },
 
+  spotify: {
+    prompt: "Connect Spotify to display the current track?",
+    connect: "Connect",
+    decline: "No thanks",
+    reconnect: "Connect Spotify",
+    label: "Spotify",
+    notPlaying: "Nothing playing",
+    paused: "Paused",
+  },
+
   homepage: {
     lastTournaments: {
       finished: "Finished",
