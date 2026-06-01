@@ -19,6 +19,7 @@ import Link from "next/link";
 import AverageStack from "@/app/[locale]/tournaments/[id]/components/AverageStack";
 import TournamentEndModal from "@/app/[locale]/tournaments/[id]/components/TournamentEndModal";
 import TournamentInformations from "@/app/[locale]/tournaments/[id]/components/TournamentInformations";
+import SpotifyDisplay from "@/app/[locale]/tournaments/[id]/components/SpotifyDisplay";
 
 interface Props {
   tournament: Tournament;
@@ -66,6 +67,7 @@ function TournamentRunnerContent() {
         <Card className="m-6">
           <ToolBar />
           <TournamentInformations />
+          <SpotifyDisplay />
         </Card>
 
         <Card className="m-6">
