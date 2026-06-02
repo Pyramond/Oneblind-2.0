@@ -335,5 +335,12 @@ export default {
         },
       },
     },
+
+    spotify: {
+      login: "Se connecter à Spotify",
+      disconnect: "Se déconnecter",
+      connectedAs: "Connecté en tant que {name}",
+      followers: "{count} abonnés",
+    },
   },
 } as const;

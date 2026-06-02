@@ -10,6 +10,7 @@ import GithubLink from "@/app/[locale]/settings/components/informations/GithubLi
 import AppVersion from "@/app/[locale]/settings/components/informations/AppVersion";
 import LogsSettings from "@/app/[locale]/settings/components/logs/LogsSettings";
 import AlertSoundSelection from "@/app/[locale]/settings/components/appearance/AlertSoundSelection";
+import SpotifyLogin from "@/app/[locale]/settings/components/spotify/SpotifyLogin";
 
 export default async function SettingsPage() {
   const t = await getI18n();
@@ -32,6 +33,10 @@ export default async function SettingsPage() {
           <RadiusSelection />
           <LogoThemeSelection />
           <AlertSoundSelection />
+        </SettingsCard>
+
+        <SettingsCard title={"Spotify"}>
+          <SpotifyLogin />
         </SettingsCard>
 
         <SettingsCard title={t("logs.title")}>

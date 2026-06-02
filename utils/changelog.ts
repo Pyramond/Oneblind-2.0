@@ -13,10 +13,12 @@ export const changelog: ChangelogEntry[] = [
     date: "2026-06-02",
     changes: {
       fr: [
-        "Intégration Spotify : affichage de la musique en cours dans le tournoi",
+        "Spotify: affichage de la musique en cours dans le tournoi",
+        "Spotify: connexion et déconnexion du compte depuis les réglages",
       ],
       en: [
-        "Spotify integration: display currently playing track in tournament",
+        "Spotify: display currently playing track in tournament",
+        "Spotify: connect and disconnect account from settings",
       ],
     },
   },
