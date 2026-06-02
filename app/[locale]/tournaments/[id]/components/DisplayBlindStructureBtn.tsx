@@ -7,7 +7,7 @@ import { BlindStructure } from "@/interfaces/blindStructure.interface";
 export default function DisplayBlindStructureBtn(): ReactNode {
   const t = useI18n();
 
-  const { getBlindStructure } = useTournamentRunner();
+  const { getBlindStructure, currentStep } = useTournamentRunner();
   const blindStructure: BlindStructure = getBlindStructure();
 
   return (
@@ -44,7 +44,10 @@ export default function DisplayBlindStructureBtn(): ReactNode {
 
           <Table.Body>
             {blindStructure?.steps.map((step, index) => (
-              <Table.Row key={index}>
+              <Table.Row
+                key={index}
+                className={index === currentStep ? "opacity-100" : "opacity-50"}
+              >
                 <Table.RowHeaderCell>
                   <Badge
                     color={step.type == "game" ? "grass" : "amber"}
