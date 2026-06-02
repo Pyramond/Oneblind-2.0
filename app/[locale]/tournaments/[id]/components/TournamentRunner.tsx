@@ -19,6 +19,7 @@ import Link from "next/link";
 import AverageStack from "@/app/[locale]/tournaments/[id]/components/AverageStack";
 import TournamentEndModal from "@/app/[locale]/tournaments/[id]/components/TournamentEndModal";
 import TournamentInformations from "@/app/[locale]/tournaments/[id]/components/TournamentInformations";
+import SpotifyDisplay from "@/app/[locale]/tournaments/[id]/components/SpotifyDisplay";
 
 interface Props {
   tournament: Tournament;
@@ -33,18 +34,18 @@ function TournamentRunnerContent() {
 
   return (
     <div className="flex flex-col h-screen w-full">
-      <header className="flex items-center justify-between px-8 py-4 border-b border-zinc-800 bg-zinc-950 shrink-0">
+      <header className="flex items-center justify-between px-8 py-4 border-b border-zinc-200 dark:border-zinc-800 bg-white dark:bg-zinc-950 shrink-0">
         <div className="flex flex-row gap-3 items-center">
           <Link href="/">
             <IconButton variant="ghost" radius="full">
               <HomeIcon width={25} height={25} />
             </IconButton>
           </Link>
-          <span className="text-white text-xl font-semibold">
+          <span className="text-zinc-900 dark:text-white text-xl font-semibold">
             {tournament.name}
           </span>
         </div>
-        <span className="text-zinc-400 text-lg">
+        <span className="text-zinc-500 dark:text-zinc-400 text-lg">
           {t("tournaments.runner.players", { count: remaining.length })}
         </span>
       </header>
@@ -66,6 +67,7 @@ function TournamentRunnerContent() {
         <Card className="m-6">
           <ToolBar />
           <TournamentInformations />
+          <SpotifyDisplay />
         </Card>
 
         <Card className="m-6">

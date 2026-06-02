@@ -13,6 +13,16 @@ export default {
     edit: "Modifier",
   },
 
+  spotify: {
+    prompt: "Connecter Spotify pour afficher la musique en cours ?",
+    connect: "Connecter",
+    decline: "Non merci",
+    reconnect: "Connecter Spotify",
+    label: "Spotify",
+    notPlaying: "Rien en cours",
+    paused: "En pause",
+  },
+
   homepage: {
     lastTournaments: {
       finished: "Terminé",
@@ -324,6 +334,13 @@ export default {
           silent: "Silencieux",
         },
       },
+    },
+
+    spotify: {
+      login: "Se connecter à Spotify",
+      disconnect: "Se déconnecter",
+      connectedAs: "Connecté en tant que {name}",
+      followers: "{count} abonnés",
     },
   },
 } as const;
