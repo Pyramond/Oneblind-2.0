@@ -16,11 +16,13 @@ export const changelog: ChangelogEntry[] = [
         "Spotify: affichage de la musique en cours dans le tournoi",
         "Spotify: connexion et déconnexion du compte depuis les réglages",
         "Affichage de l'étape de blind actuelle dans la structure",
+        "Thème light pour le header du runner de tournoi",
       ],
       en: [
         "Spotify: display currently playing track in tournament",
         "Spotify: connect and disconnect account from settings",
         "highlight current blind step in structure table",
+        "Light theme for tournament runner header",
       ],
     },
   },
