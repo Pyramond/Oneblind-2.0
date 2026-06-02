@@ -9,6 +9,18 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    version: "2.2.0",
+    date: "2026-06-02",
+    changes: {
+      fr: [
+        "Intégration Spotify : affichage de la musique en cours dans le tournoi",
+      ],
+      en: [
+        "Spotify integration: display currently playing track in tournament",
+      ],
+    },
+  },
+  {
     version: "2.1.0",
     date: "2026-05-28",
     changes: {
