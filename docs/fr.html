@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oneblind — Documentation</title>
+  <meta name="description" content="Oneblind est une application de gestion de tournois de poker avec timer de blinds, classements et synchronisation Firebase en temps réel." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ─── Barre mobile ─────────────────────────────────── -->
+  <div class="mobile-bar">
+    <div class="mobile-bar-logo">One<span>blind</span></div>
+    <button class="mobile-menu-btn" id="menu-btn" aria-label="Ouvrir la navigation">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <line x1="2" y1="5" x2="16" y2="5"/><line x1="2" y1="9" x2="16" y2="9"/><line x1="2" y1="13" x2="16" y2="13"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+
+  <div class="layout">
+
+    <!-- ═══════════════════════════════════════════════
+         SIDEBAR
+         Ajouter des .nav-group pour de nouvelles sections.
+    ═══════════════════════════════════════════════ -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-inner">
+
+        <div class="sidebar-brand">
+          <a class="brand-logo" href="#">One<span>blind</span></a>
+          <span class="version-badge">v2.2.0</span>
+        </div>
+
+        <div class="lang-switcher">
+          <a href="index.html" class="lang-btn">EN</a>
+          <a href="fr.html" class="lang-btn active">FR</a>
+        </div>
+
+        <nav class="sidebar-nav" aria-label="Documentation">
+
+          <div class="nav-group">
+            <p class="nav-group-title">Aperçu</p>
+            <div class="nav-links">
+              <a href="#fonctionnalites" class="nav-link active">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="1" width="6" height="6" rx="1.2"/><rect x="9" y="1" width="6" height="6" rx="1.2"/><rect x="1" y="9" width="6" height="6" rx="1.2"/><rect x="9" y="9" width="6" height="6" rx="1.2"/></svg>
+                Fonctionnalités
+              </a>
+              <a href="#technologies" class="nav-link">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="1" width="14" height="4" rx="1.2"/><rect x="1" y="7" width="14" height="4" rx="1.2"/><rect x="1" y="13" width="14" height="2" rx="1"/></svg>
+                Technologies
+              </a>
+            </div>
+          </div>
+
+          <div class="nav-group">
+            <p class="nav-group-title">Configuration</p>
+            <div class="nav-links">
+              <a href="#firebase" class="nav-link">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1L3 13h10L8 1z"/><path d="M5.5 9l2.5 4 2.5-4"/></svg>
+                Configuration Firebase
+              </a>
+              <a href="#developpement" class="nav-link">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><polyline points="4,6 2,8 4,10"/><polyline points="12,6 14,8 12,10"/><line x1="9" y1="4" x2="7" y2="12"/></svg>
+                Développement local
+              </a>
+            </div>
+          </div>
+
+          <div class="nav-group">
+            <p class="nav-group-title">Versions</p>
+            <div class="nav-links">
+              <a href="#changelog" class="nav-link">
+                <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><polyline points="8,5 8,8 10,10"/></svg>
+                Changelog
+              </a>
+            </div>
+          </div>
+
+        </nav>
+
+        <div class="sidebar-footer">
+          <a href="https://www.oneblind.app" class="btn btn-accent" target="_blank" rel="noopener">Ouvrir l'app</a>
+          <a href="https://github.com/Pyramond/Oneblind-2.0" class="btn btn-ghost" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub
+          </a>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- ═══════════════════════════════════════════════
+         CONTENU PRINCIPAL
+    ═══════════════════════════════════════════════ -->
+    <main class="main">
+
+      <!-- ─── Hero ───────────────────────────────────── -->
+      <div class="hero" id="hero">
+        <div class="hero-badge">v2.2.0 — Maintenant avec Spotify</div>
+        <h1>Des tournois de poker,<br>en toute simplicité.</h1>
+        <p class="hero-desc">
+          Oneblind est un gestionnaire de tournois de poker pour desktop — timer de blinds en direct, classements des joueurs et synchronisation Firebase en temps réel, depuis votre navigateur, sans serveur.
+        </p>
+        <div class="hero-actions">
+          <a href="https://www.oneblind.app" class="btn btn-accent" target="_blank" rel="noopener">Ouvrir l'app</a>
+          <a href="#firebase" class="btn btn-ghost">Commencer →</a>
+        </div>
+      </div>
+
+      <!-- ═══════════════════════════════════════════════
+           SECTION — FONCTIONNALITÉS
+           Ajouter/retirer des .feature-card librement.
+      ═══════════════════════════════════════════════ -->
+      <section class="content-section" id="fonctionnalites">
+        <p class="section-eyebrow">Aperçu</p>
+        <h2 class="section-title">Fonctionnalités</h2>
+        <p class="section-desc">Tout ce qu'il faut pour organiser une soirée poker — des structures de blinds aux classements en temps réel.</p>
+
+        <div class="feature-grid">
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="5" r="3"/><path d="M2 14c0-3.31 2.69-6 6-6s6 2.69 6 6"/></svg>
+            </div>
+            <h3>Joueurs</h3>
+            <p>Créez et gérez vos joueurs, suivez l'historique des tournois et les points.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="14" height="9" rx="1.5"/><line x1="1" y1="7" x2="15" y2="7"/><line x1="5" y1="4" x2="5" y2="2"/><line x1="11" y1="4" x2="11" y2="2"/></svg>
+            </div>
+            <h3>Structures de blinds</h3>
+            <p>Définissez des niveaux de blinds, antes, pauses et durées personnalisés.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><polyline points="8,5 8,8 10,10"/></svg>
+            </div>
+            <h3>Timer en direct</h3>
+            <p>Timer à avancement automatique avec gestion des éliminations et recaves.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="2,12 6,7 10,10 14,4"/></svg>
+            </div>
+            <h3>Classements</h3>
+            <p>Classements calculés automatiquement à la fin d'un tournoi.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="5"/><path d="M6 9.5 L8 6 L10 9.5"/><line x1="6.5" y1="8.5" x2="9.5" y2="8.5"/></svg>
+            </div>
+            <h3>Spotify</h3>
+            <p>Affichez la musique en cours de lecture pendant votre session.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="3"/><path d="M8 1v2M8 13v2M1 8h2M13 8h2M3.22 3.22l1.42 1.42M11.36 11.36l1.42 1.42M3.22 12.78l1.42-1.42M11.36 4.64l1.42-1.42"/></svg>
+            </div>
+            <h3>Apparence</h3>
+            <p>Couleur d'accent, rayon de bordure, thème du logo, mode clair/sombre.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="4" r="2"/><path d="M3 14v-1a5 5 0 0 1 10 0v1"/><line x1="12" y1="2" x2="14" y2="2"/><line x1="12" y1="5" x2="14" y2="5"/></svg>
+            </div>
+            <h3>Multilingue</h3>
+            <p>Anglais et français disponibles dans toute l'application.</p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 7c0 4-5 7-5 7S3 11 3 7a5 5 0 0 1 10 0z"/><circle cx="8" cy="7" r="1.5"/></svg>
+            </div>
+            <h3>Votre Firebase</h3>
+            <p>Toutes les données restent dans votre propre Firestore. Pas de serveur partagé.</p>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+           SECTION — TECHNOLOGIES
+           Ajouter/retirer des lignes librement.
+      ═══════════════════════════════════════════════ -->
+      <section class="content-section" id="technologies">
+        <p class="section-eyebrow">Construit avec</p>
+        <h2 class="section-title">Technologies</h2>
+        <p class="section-desc">Oneblind repose sur des outils open-source modernes et maintenus activement.</p>
+
+        <div class="table-wrap">
+          <table class="stack-table">
+            <thead>
+              <tr>
+                <th>Package</th>
+                <th>Version</th>
+                <th class="role">Rôle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><a href="https://nextjs.org/" target="_blank" rel="noopener">Next.js</a></td>
+                <td>16</td>
+                <td class="role">Framework React &amp; routing</td>
+              </tr>
+              <tr>
+                <td><a href="https://react.dev/" target="_blank" rel="noopener">React</a></td>
+                <td>19</td>
+                <td class="role">Bibliothèque UI</td>
+              </tr>
+              <tr>
+                <td><a href="https://www.typescriptlang.org/" target="_blank" rel="noopener">TypeScript</a></td>
+                <td>5</td>
+                <td class="role">Typage statique</td>
+              </tr>
+              <tr>
+                <td><a href="https://tailwindcss.com/" target="_blank" rel="noopener">Tailwind CSS</a></td>
+                <td>4</td>
+                <td class="role">Styles utilitaires</td>
+              </tr>
+              <tr>
+                <td><a href="https://www.radix-ui.com/themes" target="_blank" rel="noopener">Radix UI Themes</a></td>
+                <td>3</td>
+                <td class="role">Système de composants &amp; thème</td>
+              </tr>
+              <tr>
+                <td><a href="https://firebase.google.com/docs/firestore" target="_blank" rel="noopener">Firebase Firestore</a></td>
+                <td>11</td>
+                <td class="role">Base de données temps réel</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+           SECTION — CONFIGURATION FIREBASE
+           Ajouter/retirer des .step librement.
+      ═══════════════════════════════════════════════ -->
+      <section class="content-section" id="firebase">
+        <p class="section-eyebrow">Configuration</p>
+        <h2 class="section-title">Configuration Firebase</h2>
+        <p class="section-desc">Oneblind stocke toutes ses données dans Firestore. Vous devez créer votre propre projet Firebase et le connecter dans les réglages de l'application.</p>
+
+        <div class="steps">
+
+          <!-- Étape 1 -->
+          <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h3>Créer un projet Firebase</h3>
+              <p>Rendez-vous sur <a href="https://console.firebase.google.com" target="_blank" rel="noopener" style="color:var(--accent)">console.firebase.google.com</a> et cliquez sur <strong>Ajouter un projet</strong>. Suivez les étapes pour terminer la création.</p>
+            </div>
+          </div>
+
+          <!-- Étape 2 -->
+          <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h3>Activer Firestore</h3>
+              <p>Dans le menu de gauche, allez dans <strong>Base de données &gt; Firestore</strong>, puis cliquez sur <strong>Créer une base de données</strong>.</p>
+              <div class="screenshot">
+                <img src="screenshots/01_enable_firestore.png" alt="Firebase — activer Firestore" loading="lazy" />
+              </div>
+              <p>Lorsque vous y êtes invité, choisissez :</p>
+              <ul>
+                <li><strong>Édition</strong> — Standard</li>
+                <li><strong>Emplacement du serveur</strong> — la région la plus proche de vos utilisateurs</li>
+                <li><strong>Règles de sécurité</strong> — Mode production</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Étape 3 -->
+          <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h3>Mettre à jour les règles de sécurité</h3>
+              <p>Allez dans l'onglet <strong>Règles</strong> et remplacez le contenu par défaut par :</p>
+              <pre><code>rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write;
+    }
+  }
+}</code></pre>
+              <p>Cliquez sur <strong>Publier</strong>.</p>
+              <div class="screenshot">
+                <img src="screenshots/02_firestore_rules.png" alt="Firebase — règles Firestore" loading="lazy" />
+              </div>
+              <div class="callout">
+                <svg class="callout-icon" width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><line x1="8" y1="5" x2="8" y2="8"/><circle cx="8" cy="11" r=".5" fill="currentColor"/></svg>
+                <span><strong>Note :</strong> Ces règles autorisent un accès en lecture/écriture ouvert. Puisque l'application fonctionne entièrement côté client sans authentification, c'est intentionnel — ne partagez vos identifiants Firebase qu'avec des personnes de confiance.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Étape 4 -->
+          <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h3>Enregistrer une application web</h3>
+              <p>Dans votre projet Firebase, allez dans <strong>Paramètres du projet &gt; Général</strong>. Faites défiler jusqu'à <strong>Vos applications</strong> et cliquez sur l'<strong>icône Web</strong> (<code>&lt;/&gt;</code>).</p>
+              <div class="screenshot">
+                <img src="screenshots/03_register_web_app.png" alt="Firebase — enregistrer une app web" loading="lazy" />
+              </div>
+              <p>Donnez un nom à votre application et cliquez sur <strong>Enregistrer l'application</strong>. Firebase affichera un extrait de configuration :</p>
+              <pre><code>const firebaseConfig = {
+  apiKey: "AIzaSy...",
+  authDomain: "your-project.firebaseapp.com",
+  projectId: "your-project",
+  storageBucket: "your-project.firebasestorage.app",
+  messagingSenderId: "000000000000",
+  appId: "1:000000000000:web:..."
+};</code></pre>
+              <p>Copiez les valeurs <code>apiKey</code> et <code>projectId</code> — vous en aurez besoin dans les réglages de l'application.</p>
+              <div class="callout">
+                <svg class="callout-icon" width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><line x1="8" y1="5" x2="8" y2="8"/><circle cx="8" cy="11" r=".5" fill="currentColor"/></svg>
+                <span>Ces valeurs sont toujours accessibles plus tard dans <strong>Paramètres du projet &gt; Général &gt; Vos applications</strong>.</span>
+              </div>
+            </div>
+          </div>
+
+        </div><!-- /steps -->
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+           SECTION — DÉVELOPPEMENT LOCAL
+      ═══════════════════════════════════════════════ -->
+      <section class="content-section" id="developpement">
+        <p class="section-eyebrow">Développement</p>
+        <h2 class="section-title">Développement local</h2>
+        <p class="section-desc">Lancez l'application localement avec pnpm.</p>
+
+        <pre><code># Installer les dépendances
+pnpm install
+
+# Démarrer le serveur de développement
+pnpm dev</code></pre>
+
+        <p style="color:var(--text-muted);font-size:14px;margin-top:12px">
+          Ouvrez <a href="http://localhost:3000" style="color:var(--accent)">http://localhost:3000</a> dans votre navigateur.
+        </p>
+      </section>
+
+      <!-- ═══════════════════════════════════════════════
+           SECTION — CHANGELOG
+           Ajouter un .cl-entry par version.
+      ═══════════════════════════════════════════════ -->
+      <section class="content-section" id="changelog">
+        <p class="section-eyebrow">Historique des versions</p>
+        <h2 class="section-title">Changelog</h2>
+        <p class="section-desc">Toutes les modifications notables, de la plus récente à la plus ancienne.</p>
+
+        <div class="changelog">
+
+          <!-- v2.2.0 -->
+          <div class="cl-entry">
+            <div class="cl-header">
+              <span class="cl-version">2.2.0</span>
+              <span class="cl-tag latest">Dernière</span>
+              <span class="cl-date">2026-06-02</span>
+            </div>
+            <div class="cl-body">
+              <ul>
+                <li>Spotify : affichage de la musique en cours dans le tournoi</li>
+                <li>Spotify : connexion et déconnexion du compte depuis les réglages</li>
+                <li>Affichage de l'étape de blind actuelle dans la structure</li>
+                <li>Thème light pour le header du runner de tournoi</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- v2.1.0 -->
+          <div class="cl-entry">
+            <div class="cl-header">
+              <span class="cl-version">2.1.0</span>
+              <span class="cl-tag stable">Stable</span>
+              <span class="cl-date">2026-05-28</span>
+            </div>
+            <div class="cl-body">
+              <ul>
+                <li>Page d'accueil : affichage du top 3 des joueurs par points</li>
+                <li>Page d'accueil : affichage des 3 derniers tournois avec statut et date</li>
+                <li>Thème de logo 'OG'</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- v2.0.0 -->
+          <div class="cl-entry">
+            <div class="cl-header">
+              <span class="cl-version">2.0.0</span>
+              <span class="cl-tag stable">Stable</span>
+              <span class="cl-date">2026-05-26</span>
+            </div>
+            <div class="cl-body">
+              <ul>
+                <li>Intégration Firebase (connexion via clé API)</li>
+                <li>Sélection de la langue (FR / EN)</li>
+                <li>Sélection de la couleur et du rayon de bordure</li>
+                <li>Thème du logo (défaut / One Piece)</li>
+                <li>Gestion des joueurs et de l'historique de tournois</li>
+                <li>Création et gestion des structures de blinds</li>
+                <li>Création et gestion des tournois</li>
+                <li>Runner de tournoi avec timer, éliminations et recaves</li>
+                <li>Calcul automatique des points à la fin d'un tournoi</li>
+                <li>Affichage des points gagnés dans l'historique des joueurs</li>
+                <li>Journalisation des requêtes Firebase</li>
+                <li>Page des logs avec aperçu dans les réglages</li>
+                <li>Alerte sonore quand il reste 10 secondes à une étape</li>
+                <li>Paramètre de son d'alerte avec mode silencieux</li>
+              </ul>
+            </div>
+          </div>
+
+        </div><!-- /changelog -->
+      </section>
+
+      <!-- ─── Pied de page ──────────────────────────────── -->
+      <footer style="padding:32px 48px;border-top:1px solid var(--border);display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;font-size:13px;color:var(--text-subtle)">
+        <span>Oneblind 2.0</span>
+        <span>
+          <a href="https://github.com/Pyramond/Oneblind-2.0" target="_blank" rel="noopener" style="color:var(--text-subtle);text-decoration:none" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-subtle)'">GitHub</a>
+          &nbsp;·&nbsp;
+          <a href="https://www.oneblind.app" target="_blank" rel="noopener" style="color:var(--text-subtle);text-decoration:none" onmouseover="this.style.color='var(--text)'" onmouseout="this.style.color='var(--text-subtle)'">Ouvrir l'app</a>
+        </span>
+      </footer>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
