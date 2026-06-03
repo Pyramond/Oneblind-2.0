@@ -268,6 +268,7 @@ export default {
 
     informations: {
       title: "Informations",
+      documentationUrl: "https://docs.oneblind.app/fr.html",
     },
 
     other: {
