@@ -144,6 +144,7 @@ export default {
       playerCountErr:
         "At least two players are required to create a tournament",
       initialStackErr: "The initial stack must be greater than zero",
+      playerSearch: "Search a player",
     },
 
     edit: {

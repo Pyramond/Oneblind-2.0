@@ -141,6 +141,7 @@ export default {
       playerErr: "Vous n'avez pas encore créé de joueur.",
       playerCountErr: "Au moins deux joueurs sont requis pour créer un tournoi",
       initialStackErr: "Le tapis de départ doit être supérieur à zéro",
+      playerSearch: "Rechercher un joueur",
     },
 
     edit: {

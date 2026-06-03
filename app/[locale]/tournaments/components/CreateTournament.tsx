@@ -10,6 +10,7 @@ import {
   Text,
   Select,
   Callout,
+  Badge,
 } from "@radix-ui/themes";
 import { useI18n } from "@/locales/client";
 import { useEffect, useState } from "react";
@@ -18,7 +19,7 @@ import { BlindStructure } from "@/interfaces/blindStructure.interface";
 import { useUsers } from "@/contexts/UsersContext";
 import { useTournaments } from "@/contexts/TournamentsContext";
 import { Tournament } from "@/interfaces/tournament.interface";
-import { InfoCircledIcon } from "@radix-ui/react-icons";
+import { InfoCircledIcon, MagnifyingGlassIcon } from "@radix-ui/react-icons";
 import Link from "next/link";
 
 export default function CreateTournament() {
@@ -32,6 +33,7 @@ export default function CreateTournament() {
   const [startingStack, setStartingStack] = useState<number | "">("");
   const [countPoints, setCountPoints] = useState<boolean>(true);
   const [playerIds, setPlayerIds] = useState<string[]>([]);
+  const [playerSearch, setPlayerSearch] = useState<string>("");
 
   const [errorTitle, setErrorTitle] = useState<string>("");
   const [errorMessage, setErrorMessage] = useState<string>("");
@@ -163,24 +165,50 @@ export default function CreateTournament() {
             </Flex>
 
             <div>
-              <Text as="div" size="2" mb="1" weight="bold">
-                {t("tournaments.create.players")}
-              </Text>
+              <Flex align="center" gap="2" mb="1">
+                <Text as="div" size="2" weight="bold">
+                  {t("tournaments.create.players")}
+                </Text>
+                {playerIds.length > 0 && (
+                  <Badge radius="full">{playerIds.length}</Badge>
+                )}
+              </Flex>
               {users.length > 0 ? (
                 <Flex direction="column" gap="2">
-                  {users.map((user) => (
-                    <Flex asChild key={user.id} align="center" gap="2">
-                      <label>
-                        <Checkbox
-                          checked={playerIds.includes(user.id)}
-                          onCheckedChange={() => togglePlayer(user.id)}
-                        />
-                        <Text as="span" size="2">
-                          {user.name}
-                        </Text>
-                      </label>
-                    </Flex>
-                  ))}
+                  <TextField.Root
+                    placeholder={t("tournaments.create.playerSearch")}
+                    value={playerSearch}
+                    onChange={(e) => setPlayerSearch(e.target.value)}
+                  >
+                    <TextField.Slot>
+                      <MagnifyingGlassIcon />
+                    </TextField.Slot>
+                  </TextField.Root>
+                  <Flex
+                    direction="column"
+                    gap="2"
+                    className="max-h-40 overflow-y-auto pr-1"
+                  >
+                    {users
+                      .filter((user) =>
+                        user.name
+                          .toLowerCase()
+                          .includes(playerSearch.toLowerCase()),
+                      )
+                      .map((user) => (
+                        <Flex asChild key={user.id} align="center" gap="2">
+                          <label>
+                            <Checkbox
+                              checked={playerIds.includes(user.id)}
+                              onCheckedChange={() => togglePlayer(user.id)}
+                            />
+                            <Text as="span" size="2">
+                              {user.name}
+                            </Text>
+                          </label>
+                        </Flex>
+                      ))}
+                  </Flex>
                 </Flex>
               ) : (
                 <Link href={"/players"}>
