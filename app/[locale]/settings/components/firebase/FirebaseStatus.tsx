@@ -91,7 +91,7 @@ export default function FirebaseStatus() {
           </AlertDialog.Description>
           <AlertDialog.Description size="2">
             <a
-              href="https://github.com/Pyramond/Oneblind-2.0/tree/main#firebase-setup"
+              href={t("settings.firebase.setup.url")}
               className="text-blue-400 hover:underline"
             >
               {t("settings.firebase.setup.link")}

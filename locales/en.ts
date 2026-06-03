@@ -293,6 +293,7 @@ export default {
         title: "Firebase not configured",
         description: "Enter your Firebase credentials to get started.",
         link: "Set up a Firebase project",
+        url: "https://docs.oneblind.app/index.html#firebase-setup",
         apiKey: "API Key",
         projectId: "Project ID",
         connectBtn: "Connect",

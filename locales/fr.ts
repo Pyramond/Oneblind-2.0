@@ -287,6 +287,7 @@ export default {
         title: "Firebase non configuré",
         description: "Renseignez vos identifiants Firebase pour commencer.",
         link: "Configurer un projet Firebase",
+        url: "https://docs.oneblind.app/fr.html#firebase",
         apiKey: "Clé API",
         projectId: "Identifiant du projet",
         connectBtn: "Connecter",
