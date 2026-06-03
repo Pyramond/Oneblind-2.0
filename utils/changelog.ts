@@ -18,6 +18,7 @@ export const changelog: ChangelogEntry[] = [
         "Affichage de l'étape de blind actuelle dans la structure",
         "Thème light pour le header du runner de tournoi",
         "Site de documentation en ligne (FR / EN)",
+        "Améliorations de l'UI/UX",
       ],
       en: [
         "Spotify: display currently playing track in tournament",
@@ -25,6 +26,7 @@ export const changelog: ChangelogEntry[] = [
         "highlight current blind step in structure table",
         "Light theme for tournament runner header",
         "Online documentation site (FR / EN)",
+        "UI/UX improvements",
       ],
     },
   },
