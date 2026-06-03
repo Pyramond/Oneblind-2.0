@@ -164,6 +164,7 @@ export default {
       all: "Tous les tournois",
       sortNewest: "Plus récents",
       sortOldest: "Plus anciens",
+      empty: "Aucun tournoi pour le moment",
     },
 
     dashboard: {

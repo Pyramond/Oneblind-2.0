@@ -169,6 +169,7 @@ export default {
       all: "All tournaments",
       sortNewest: "Newest",
       sortOldest: "Oldest",
+      empty: "No tournaments yet",
     },
 
     dashboard: {
