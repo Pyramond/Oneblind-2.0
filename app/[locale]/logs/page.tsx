@@ -8,6 +8,7 @@ import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import { useEffect, useState } from "react";
 import { getLogs } from "@/utils/log";
 import { Log, DbAction, DbCollection } from "@/interfaces/log.interface";
+import GoBackBtn from "@/components/GoBackBtn";
 
 const ACTION_COLOR: Record<DbAction, "green" | "orange" | "red"> = {
   create: "green",
@@ -39,11 +40,7 @@ export default function LogsPage() {
   return (
     <div className={"flex flex-col gap-13"}>
       <div className="flex flex-row items-center gap-2">
-        <Link href="/settings">
-          <IconButton variant={"ghost"} radius={"full"}>
-            <ArrowLeftIcon width={30} height={30} />
-          </IconButton>
-        </Link>
+        <GoBackBtn />
         <Title level={"h2"}>{t("logs.title")}</Title>
       </div>
 

@@ -1,22 +1,19 @@
 "use client";
 
-import {useParams, useRouter} from "next/navigation";
+import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import Title from "@/components/Title/Title";
 import { useI18n } from "@/locales/client";
 import { useBlinds } from "@/contexts/BlindsContext";
 import { BlindStructure } from "@/interfaces/blindStructure.interface";
-import {Table, Badge, IconButton, Button} from "@radix-ui/themes";
-import Link from "next/link";
-import { ArrowLeftIcon } from "@radix-ui/react-icons";
+import { Table, Badge } from "@radix-ui/themes";
 import DeleteBlindBtn from "@/app/[locale]/blinds/components/DeleteBlindBtn";
 import ExportBlindBtn from "@/app/[locale]/blinds/components/ExporBlindBtn";
-import {goBack} from "@/utils/goBack";
+import GoBackBtn from "@/components/GoBackBtn";
 
 export default function BlindStructurePage() {
   const params = useParams();
   const id = params.id as string;
-  const router = useRouter();
 
   const t = useI18n();
   const { getBlindStructureById } = useBlinds();
@@ -30,9 +27,7 @@ export default function BlindStructurePage() {
   return (
     <div className={"flex flex-col gap-13"}>
       <div className="flex flex-row items-center gap-2">
-          <IconButton variant={"ghost"} radius={"full"} onClick={() => goBack(router)}>
-            <ArrowLeftIcon width={30} height={30} />
-          </IconButton>
+        <GoBackBtn />
         <Title level={"h2"}>{blindStructure?.name}</Title>
       </div>
 
