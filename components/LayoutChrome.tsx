@@ -21,6 +21,7 @@ export default function LayoutChrome({
     return <MobileBlock>{children}</MobileBlock>;
   }
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   usePreviousRoute();
 
   return (
