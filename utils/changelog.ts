@@ -19,6 +19,7 @@ export const changelog: ChangelogEntry[] = [
         "Thème light pour le header du runner de tournoi",
         "Site de documentation en ligne (FR / EN)",
         "Améliorations de l'UI/UX",
+          "Export/Import des structure des blinds en JSON"
       ],
       en: [
         "Spotify: display currently playing track in tournament",
@@ -27,6 +28,7 @@ export const changelog: ChangelogEntry[] = [
         "Light theme for tournament runner header",
         "Online documentation site (FR / EN)",
         "UI/UX improvements",
+          "Export/Import blind structures into JSON file"
       ],
     },
   },
