@@ -10,6 +10,7 @@ import {Table, Badge, IconButton, Button} from "@radix-ui/themes";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import DeleteBlindBtn from "@/app/[locale]/blinds/components/DeleteBlindBtn";
+import ExportBlindBtn from "@/app/[locale]/blinds/components/ExporBlindBtn";
 
 export default function BlindStructurePage() {
   const params = useParams();
@@ -36,7 +37,7 @@ export default function BlindStructurePage() {
       </div>
 
       <div className="flex flex-row items-center gap-2">
-        <Button color={"gray"} variant={"soft"}>{t("blinds.exportBtn")}</Button>
+        <ExportBlindBtn id={id} />
         <DeleteBlindBtn id={id} replace={true}/>
       </div>
 
