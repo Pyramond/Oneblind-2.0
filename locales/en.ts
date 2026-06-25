@@ -78,6 +78,7 @@ export default {
   blinds: {
     title: "Blind structure",
     exportBtn: "Export",
+    importBtn: "Import blind structure",
 
     type: {
       game: "Game",
