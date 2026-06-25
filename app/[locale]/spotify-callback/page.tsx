@@ -8,6 +8,7 @@ export default function SpotifyCallback() {
   const router = useRouter();
 
   useEffect(() => {
+    const prev = localStorage.getItem("currentRoute");
     const code = new URLSearchParams(window.location.search).get("code");
     if (!code) {
       router.replace("/");
@@ -17,9 +18,11 @@ export default function SpotifyCallback() {
     sdk.currentUser
       .profile()
       .then(() => {
-        router.replace("/tournaments");
+        router.replace(prev ?? "/");
       })
-      .catch(() => router.replace("/tournaments"));
+      .catch(() => {
+        router.replace(prev ?? "/");
+      });
   }, [router]);
 
   return null;
