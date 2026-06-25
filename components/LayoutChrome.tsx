@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { ReactNode } from "react";
 import MobileBlock from "@/components/MobileBlock";
+import {usePreviousRoute} from "@/contexts/usePreviousRoute";
 
 export default function LayoutChrome({
   children,
@@ -19,6 +20,8 @@ export default function LayoutChrome({
   if (isTournamentPage) {
     return <MobileBlock>{children}</MobileBlock>;
   }
+
+  usePreviousRoute();
 
   return (
     <MobileBlock>

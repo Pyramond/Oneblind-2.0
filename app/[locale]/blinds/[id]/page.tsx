@@ -11,10 +11,12 @@ import Link from "next/link";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import DeleteBlindBtn from "@/app/[locale]/blinds/components/DeleteBlindBtn";
 import ExportBlindBtn from "@/app/[locale]/blinds/components/ExporBlindBtn";
+import {goBack} from "@/utils/goBack";
 
 export default function BlindStructurePage() {
   const params = useParams();
   const id = params.id as string;
+  const router = useRouter();
 
   const t = useI18n();
   const { getBlindStructureById } = useBlinds();
@@ -28,11 +30,9 @@ export default function BlindStructurePage() {
   return (
     <div className={"flex flex-col gap-13"}>
       <div className="flex flex-row items-center gap-2">
-        <Link href="/blinds">
-          <IconButton variant={"ghost"} radius={"full"}>
+          <IconButton variant={"ghost"} radius={"full"} onClick={() => goBack(router)}>
             <ArrowLeftIcon width={30} height={30} />
           </IconButton>
-        </Link>
         <Title level={"h2"}>{blindStructure?.name}</Title>
       </div>
 
