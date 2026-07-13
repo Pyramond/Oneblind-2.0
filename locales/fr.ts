@@ -87,7 +87,15 @@ export default {
       downloadBtn: "Télécharger le ficher de la structure",
     },
 
-    importBtn: "Importer une structure des blinds",
+    import: {
+      btn: "Importer une structure des blinds",
+      title: "Importer une structure des blinds",
+      description: "Importer une structure des blinds depuis un fichier ou un lien de partage",
+      fileBtn: "Importer depuis un fichier",
+      linkBtn: "Importer depuis un lien",
+      linkPlaceholder: "Coller le lien de partage ici",
+      invalidLink: "Lien invalide",
+    },
 
     type: {
       game: "Jeu",

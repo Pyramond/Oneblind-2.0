@@ -87,7 +87,15 @@ export default {
       downloadBtn: "Download structure file",
     },
 
-    importBtn: "Import blind structure",
+    import: {
+      btn: "Import blind structure",
+      title: "Import blind structure",
+      description: "Import a blind structure from a file or a share link",
+      fileBtn: "Import from file",
+      linkBtn: "Import from link",
+      linkPlaceholder: "Paste the share link here",
+      invalidLink: "Invalid link",
+    },
 
     type: {
       game: "Game",
