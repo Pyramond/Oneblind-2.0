@@ -8,7 +8,7 @@ import { useBlinds } from "@/contexts/BlindsContext";
 import { BlindStructure } from "@/interfaces/blindStructure.interface";
 import { Table, Badge } from "@radix-ui/themes";
 import DeleteBlindBtn from "@/app/[locale]/blinds/components/DeleteBlindBtn";
-import ExportBlindBtn from "@/app/[locale]/blinds/components/ExporBlindBtn";
+import ExportBlindBtn from "@/app/[locale]/blinds/components/ExportBlindBtn";
 import GoBackBtn from "@/components/GoBackBtn";
 
 export default function BlindStructurePage() {
