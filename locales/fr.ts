@@ -77,7 +77,16 @@ export default {
 
   blinds: {
     title: "Structure des blinds",
-    exportBtn: "Exporter",
+
+    export: {
+      btn: "Exporter",
+      title: "Exporter une structure des blinds",
+      description: "Exporter une structure des blinds pour la partager",
+      linkBtn: "Copier le lien de la structure",
+      linkCopiedBtn: "Copié !",
+      downloadBtn: "Télécharger le ficher de la structure",
+    },
+
     importBtn: "Importer une structure des blinds",
 
     type: {

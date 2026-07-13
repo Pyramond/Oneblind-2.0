@@ -77,7 +77,16 @@ export default {
 
   blinds: {
     title: "Blind structure",
-    exportBtn: "Export",
+
+    export: {
+      btn: "Export",
+      title: "Export blind structure",
+      description: "Export blind structure to share it",
+      linkBtn: "Copy blind structure link",
+      linkCopiedBtn: "Copied !",
+      downloadBtn: "Download structure file",
+    },
+
     importBtn: "Import blind structure",
 
     type: {
