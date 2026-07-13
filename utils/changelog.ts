@@ -19,7 +19,7 @@ export const changelog: ChangelogEntry[] = [
         "Thème light pour le header du runner de tournoi",
         "Site de documentation en ligne (FR / EN)",
         "Améliorations de l'UI/UX",
-        "Export/Import des structure des blinds en JSON",
+        "Export/Import des structure des blinds en JSON et via un lien",
         "Correction des bouton retour",
         "Correction de l'URL de retour lors d'une connextion Spotify"
       ],
@@ -30,7 +30,7 @@ export const changelog: ChangelogEntry[] = [
         "Light theme for tournament runner header",
         "Online documentation site (FR / EN)",
         "UI/UX improvements",
-        "Export/Import blind structures into JSON file",
+        "Export/Import blind structures into JSON file and link",
         "Fix back buttons",
         "Fix back URL in spotify connection"
       ],
