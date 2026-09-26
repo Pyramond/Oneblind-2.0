@@ -8,7 +8,19 @@ export interface ChangelogEntry {
 }
 
 export const changelog: ChangelogEntry[] = [
-  {
+    {
+      version: "2.3.0",
+      date: "2026-09-26",
+      changes: {
+        fr: [
+            "Affichage de l'heure sur l'écran de tournoi"
+        ],
+        en: [
+            "Display time on tournament screen"
+        ]
+      }
+    },
+    {
     version: "2.2.0",
     date: "2026-06-02",
     changes: {
