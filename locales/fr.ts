@@ -78,6 +78,25 @@ export default {
   blinds: {
     title: "Structure des blinds",
 
+    export: {
+      btn: "Exporter",
+      title: "Exporter une structure des blinds",
+      description: "Exporter une structure des blinds pour la partager",
+      linkBtn: "Copier le lien de la structure",
+      linkCopiedBtn: "Copié !",
+      downloadBtn: "Télécharger le ficher de la structure",
+    },
+
+    import: {
+      btn: "Importer une structure des blinds",
+      title: "Importer une structure des blinds",
+      description: "Importer une structure des blinds depuis un fichier ou un lien de partage",
+      fileBtn: "Importer depuis un fichier",
+      linkBtn: "Importer depuis un lien",
+      linkPlaceholder: "Coller le lien de partage ici",
+      invalidLink: "Lien invalide",
+    },
+
     type: {
       game: "Jeu",
       pause: "Pause",
@@ -141,6 +160,7 @@ export default {
       playerErr: "Vous n'avez pas encore créé de joueur.",
       playerCountErr: "Au moins deux joueurs sont requis pour créer un tournoi",
       initialStackErr: "Le tapis de départ doit être supérieur à zéro",
+      playerSearch: "Rechercher un joueur",
     },
 
     edit: {
@@ -164,6 +184,7 @@ export default {
       all: "Tous les tournois",
       sortNewest: "Plus récents",
       sortOldest: "Plus anciens",
+      empty: "Aucun tournoi pour le moment",
     },
 
     dashboard: {
@@ -267,6 +288,7 @@ export default {
 
     informations: {
       title: "Informations",
+      documentationUrl: "https://docs.oneblind.app/fr.html",
     },
 
     other: {
@@ -287,6 +309,7 @@ export default {
         title: "Firebase non configuré",
         description: "Renseignez vos identifiants Firebase pour commencer.",
         link: "Configurer un projet Firebase",
+        url: "https://docs.oneblind.app/fr.html#firebase",
         apiKey: "Clé API",
         projectId: "Identifiant du projet",
         connectBtn: "Connecter",

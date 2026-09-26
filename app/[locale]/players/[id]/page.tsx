@@ -10,6 +10,7 @@ import { useUsers } from "@/contexts/UsersContext";
 import Link from "next/link";
 import { ArrowLeftIcon } from "@radix-ui/react-icons";
 import PlayerHistory from "@/app/[locale]/players/[id]/components/PlayerHistory";
+import GoBackBtn from "@/components/GoBackBtn";
 
 export default function PlayerProfilePage() {
   const params = useParams();
@@ -35,11 +36,9 @@ export default function PlayerProfilePage() {
 
   return (
     <div className={"flex flex-col gap-13"}>
-      <Link href="/players">
-        <IconButton variant={"ghost"} radius={"full"}>
-          <ArrowLeftIcon width={30} height={30} />
-        </IconButton>
-      </Link>
+      <div>
+          <GoBackBtn />
+      </div>
 
       <div className="flex justify-center px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 w-full max-w-6xl">

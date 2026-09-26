@@ -6,6 +6,7 @@ import TournamentCard from "@/app/[locale]/tournaments/components/TournamentCard
 import { SegmentedControl } from "@radix-ui/themes";
 import { useI18n } from "@/locales/client";
 import { Tournament } from "@/interfaces/tournament.interface";
+import Title from "@/components/Title/Title";
 
 type filterType = "onGoing" | "finished" | "all";
 
@@ -67,9 +68,15 @@ export default function TournamentsList(): ReactNode {
         </SegmentedControl.Root>
       </div>
 
-      {sorted.map((tournament) => (
-        <TournamentCard key={tournament.id} tournament={tournament} />
-      ))}
+      {sorted.length === 0 ? (
+        <Title level={"h4"}>{t("tournaments.list.empty")}</Title>
+      ) : (
+        <>
+          {sorted.map((tournament) => (
+            <TournamentCard key={tournament.id} tournament={tournament} />
+          ))}
+        </>
+      )}
     </div>
   );
 }

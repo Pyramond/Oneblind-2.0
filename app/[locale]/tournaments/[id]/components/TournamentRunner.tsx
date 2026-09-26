@@ -20,6 +20,7 @@ import AverageStack from "@/app/[locale]/tournaments/[id]/components/AverageStac
 import TournamentEndModal from "@/app/[locale]/tournaments/[id]/components/TournamentEndModal";
 import TournamentInformations from "@/app/[locale]/tournaments/[id]/components/TournamentInformations";
 import SpotifyDisplay from "@/app/[locale]/tournaments/[id]/components/SpotifyDisplay";
+import Clock from "@/components/Clock";
 
 interface Props {
   tournament: Tournament;
@@ -45,6 +46,7 @@ function TournamentRunnerContent() {
             {tournament.name}
           </span>
         </div>
+        <Clock />
         <span className="text-zinc-500 dark:text-zinc-400 text-lg">
           {t("tournaments.runner.players", { count: remaining.length })}
         </span>

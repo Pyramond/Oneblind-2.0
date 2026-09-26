@@ -78,6 +78,25 @@ export default {
   blinds: {
     title: "Blind structure",
 
+    export: {
+      btn: "Export",
+      title: "Export blind structure",
+      description: "Export blind structure to share it",
+      linkBtn: "Copy blind structure link",
+      linkCopiedBtn: "Copied !",
+      downloadBtn: "Download structure file",
+    },
+
+    import: {
+      btn: "Import blind structure",
+      title: "Import blind structure",
+      description: "Import a blind structure from a file or a share link",
+      fileBtn: "Import from file",
+      linkBtn: "Import from link",
+      linkPlaceholder: "Paste the share link here",
+      invalidLink: "Invalid link",
+    },
+
     type: {
       game: "Game",
       pause: "Pause",
@@ -144,6 +163,7 @@ export default {
       playerCountErr:
         "At least two players are required to create a tournament",
       initialStackErr: "The initial stack must be greater than zero",
+      playerSearch: "Search a player",
     },
 
     edit: {
@@ -169,6 +189,7 @@ export default {
       all: "All tournaments",
       sortNewest: "Newest",
       sortOldest: "Oldest",
+      empty: "No tournaments yet",
     },
 
     dashboard: {
@@ -273,6 +294,7 @@ export default {
 
     informations: {
       title: "Informations",
+      documentationUrl: " https://docs.oneblind.app/",
     },
 
     other: {
@@ -293,6 +315,7 @@ export default {
         title: "Firebase not configured",
         description: "Enter your Firebase credentials to get started.",
         link: "Set up a Firebase project",
+        url: "https://docs.oneblind.app/index.html#firebase-setup",
         apiKey: "API Key",
         projectId: "Project ID",
         connectBtn: "Connect",

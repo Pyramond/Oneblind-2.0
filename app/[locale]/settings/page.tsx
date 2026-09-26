@@ -8,6 +8,7 @@ import LanguageSelection from "@/app/[locale]/settings/components/other/Language
 import FirebaseStatus from "@/app/[locale]/settings/components/firebase/FirebaseStatus";
 import GithubLink from "@/app/[locale]/settings/components/informations/GithubLink";
 import AppVersion from "@/app/[locale]/settings/components/informations/AppVersion";
+import DocumentationLink from "@/app/[locale]/settings/components/informations/DocumentationLink";
 import LogsSettings from "@/app/[locale]/settings/components/logs/LogsSettings";
 import AlertSoundSelection from "@/app/[locale]/settings/components/appearance/AlertSoundSelection";
 import SpotifyLogin from "@/app/[locale]/settings/components/spotify/SpotifyLogin";
@@ -44,6 +45,7 @@ export default async function SettingsPage() {
         </SettingsCard>
 
         <SettingsCard title={t("settings.informations.title")}>
+          <DocumentationLink />
           <GithubLink />
           <AppVersion />
         </SettingsCard>

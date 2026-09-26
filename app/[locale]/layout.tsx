@@ -7,13 +7,13 @@ import Aside from "@/components/Aside/Aside";
 import ClientProviders from "@/app/[locale]/ClientProvider";
 import CheckFirebase from "@/app/CheckFirebase";
 import LayoutChrome from "@/components/LayoutChrome";
-import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Oneblind 2.0",
   description: "Oneblind en mieux",
 };
-export default async function RootLayout({
+
+export default async function LocaleLayout({
   params,
   children,
 }: {
@@ -23,17 +23,12 @@ export default async function RootLayout({
   const { locale } = await params;
 
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <Analytics />
-      <body className="h-screen">
-        <ClientProviders locale={locale}>
-          <CheckFirebase>
-            <LayoutChrome header={<Header />} aside={<Aside />}>
-              {children}
-            </LayoutChrome>
-          </CheckFirebase>
-        </ClientProviders>
-      </body>
-    </html>
+    <ClientProviders locale={locale}>
+      <CheckFirebase>
+        <LayoutChrome header={<Header />} aside={<Aside />}>
+          {children}
+        </LayoutChrome>
+      </CheckFirebase>
+    </ClientProviders>
   );
 }

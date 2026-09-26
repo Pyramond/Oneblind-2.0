@@ -1,9 +1,8 @@
 "use client";
 
-import { ReactNode } from "react";
+import { ReactNode, useEffect } from "react";
 import { SettingsProvider } from "@/contexts/SettingsContext";
 import { I18nProviderClient } from "@/locales/client";
-import { ThemeProvider } from "next-themes";
 import { UsersProvider } from "@/contexts/UsersContext";
 import ThemeWrapper from "@/components/ThemeWrapper/ThemeWrapper";
 import { BlindProvider } from "@/contexts/BlindsContext";
@@ -16,18 +15,20 @@ export default function ClientProviders({
   children: ReactNode;
   locale: string;
 }) {
+  useEffect(() => {
+    document.documentElement.lang = locale;
+  }, [locale]);
+
   return (
     <SettingsProvider>
       <I18nProviderClient locale={locale}>
-        <ThemeProvider attribute="class">
-          <ThemeWrapper>
-            <BlindProvider>
-              <TournamentProvider>
-                <UsersProvider>{children}</UsersProvider>
-              </TournamentProvider>
-            </BlindProvider>
-          </ThemeWrapper>
-        </ThemeProvider>
+        <ThemeWrapper>
+          <BlindProvider>
+            <TournamentProvider>
+              <UsersProvider>{children}</UsersProvider>
+            </TournamentProvider>
+          </BlindProvider>
+        </ThemeWrapper>
       </I18nProviderClient>
     </SettingsProvider>
   );

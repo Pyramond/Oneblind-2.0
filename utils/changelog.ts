@@ -8,7 +8,19 @@ export interface ChangelogEntry {
 }
 
 export const changelog: ChangelogEntry[] = [
-  {
+    {
+      version: "2.3.0",
+      date: "2026-09-26",
+      changes: {
+        fr: [
+            "Affichage de l'heure sur l'écran de tournoi"
+        ],
+        en: [
+            "Display time on tournament screen"
+        ]
+      }
+    },
+    {
     version: "2.2.0",
     date: "2026-06-02",
     changes: {
@@ -17,12 +29,22 @@ export const changelog: ChangelogEntry[] = [
         "Spotify: connexion et déconnexion du compte depuis les réglages",
         "Affichage de l'étape de blind actuelle dans la structure",
         "Thème light pour le header du runner de tournoi",
+        "Site de documentation en ligne (FR / EN)",
+        "Améliorations de l'UI/UX",
+        "Export/Import des structure des blinds en JSON et via un lien",
+        "Correction des bouton retour",
+        "Correction de l'URL de retour lors d'une connextion Spotify"
       ],
       en: [
         "Spotify: display currently playing track in tournament",
         "Spotify: connect and disconnect account from settings",
         "highlight current blind step in structure table",
         "Light theme for tournament runner header",
+        "Online documentation site (FR / EN)",
+        "UI/UX improvements",
+        "Export/Import blind structures into JSON file and link",
+        "Fix back buttons",
+        "Fix back URL in spotify connection"
       ],
     },
   },
