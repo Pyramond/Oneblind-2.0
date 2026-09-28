@@ -5,6 +5,7 @@ import { useTournamentRunner } from "@/contexts/TournamentRunnerContext";
 import RebuyBtn from "@/app/[locale]/tournaments/[id]/components/RebuyBtn";
 import DisplayBlindStructureBtn from "@/app/[locale]/tournaments/[id]/components/DisplayBlindStructureBtn";
 import DisplayTableBtn from "@/app/[locale]/tournaments/[id]/components/DisplayTableBtn";
+import AddonBtn from "@/app/[locale]/tournaments/[id]/components/AddonBtn";
 
 export default function ToolBar() {
   const { remaining, eliminatePlayer } = useTournamentRunner();
@@ -16,6 +17,7 @@ export default function ToolBar() {
         onEliminate={eliminatePlayer}
       />
       <RebuyBtn />
+        <AddonBtn />
       <DisplayBlindStructureBtn />
       <DisplayTableBtn />
     </div>

@@ -208,6 +208,7 @@ export default {
         title: "Eliminer un joueur",
         description: "Sélectionnez le joueur à éliminer du tournoi.",
       },
+      addon: "Add-On",
       rebuy: "Recave",
       rebuys: "Recaves",
       endModal: {

@@ -22,6 +22,7 @@ interface TournamentRunnerContextType {
   rankings: TournamentParticipation[];
   totalStack: number;
   addRebuy: () => void;
+  addAddon: () => void;
   goToPrev: () => void;
   goToNext: () => void;
   eliminatePlayer: (playerId: string) => void;
@@ -93,6 +94,11 @@ export function TournamentRunnerProvider({
     setTotalStack(newTotal);
   };
 
+  const addAddon = (): void => {
+    const newTotal = totalStack + tournament.startingStack;
+    setTotalStack(newTotal);
+  };
+
   const getBlindStructure = (): BlindStructure => {
     return blindStructure;
   };
@@ -112,6 +118,7 @@ export function TournamentRunnerProvider({
         rankings,
         totalStack,
         addRebuy,
+        addAddon,
         goToPrev,
         goToNext,
         eliminatePlayer,

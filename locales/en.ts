@@ -214,6 +214,7 @@ export default {
         title: "Eliminate a player",
         description: "Select the player to eliminate from the tournament.",
       },
+      addon: "Add-On",
       rebuy: "Rebuy",
       rebuys: "Rebuys",
       endModal: {
