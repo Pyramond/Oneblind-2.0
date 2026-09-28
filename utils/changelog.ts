@@ -9,6 +9,18 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
     {
+      version: "2.4.0",
+      date: "2026",
+      changes: {
+        fr: [
+            "Ajout d'un bouton Add-On"
+        ],
+        en: [
+            "Add Add-On button"
+        ]
+      }
+    },
+    {
       version: "2.3.0",
       date: "2026-09-26",
       changes: {
